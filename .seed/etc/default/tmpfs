@@ -1,0 +1,3 @@
+RAMLOCK=yes
+RAMSHM=yes
+RAMTMP=yes

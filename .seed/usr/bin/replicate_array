@@ -1,0 +1,4 @@
+#!/bin/bash
+
+rsync -aHAXv --numeric-ids --delete --progress \
+/array0/ /array1/

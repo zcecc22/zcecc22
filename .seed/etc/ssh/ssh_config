@@ -1,0 +1,8 @@
+Host *
+  ServerAliveInterval 60
+  SendEnv LANG LC_*
+  HashKnownHosts yes
+  GSSAPIAuthentication yes
+  GSSAPIDelegateCredentials yes
+  GSSAPIKeyExchange yes
+  Compression yes

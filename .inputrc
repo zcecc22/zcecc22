@@ -1,0 +1,7 @@
+# ~/.inputrc
+
+# ignore case when tab-completing paths
+set completion-ignore-case on
+
+# symlink auto-complete
+set mark-symlinked-directories on

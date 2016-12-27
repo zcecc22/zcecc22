@@ -1,0 +1,4 @@
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+*/10 * * * *   root	/usr/bin/ipv4_addr_notify.sh >/dev/null

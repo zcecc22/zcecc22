@@ -1,0 +1,24 @@
+# ~/.gitignore
+
+# Temporary Files
+*.pid
+.cache/
+.bash_history
+.rtorrent_session/
+
+# Private
+.bin/
+.ssh/
+.gnupg/*.gpg*
+.gnupg/random_seed
+
+# Standard Config Files
+.config/
+.local/
+.emacs.d/
+.go/
+.node/
+.npm/
+
+# Storage
+projects/

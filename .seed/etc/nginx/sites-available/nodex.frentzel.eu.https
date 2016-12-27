@@ -1,0 +1,29 @@
+server {
+  listen 443 ssl default_server;
+  listen [::]:443 ssl default_server ipv6only=on;
+  
+  ssl_certificate /etc/letsencrypt/live/nodex.frentzel.eu/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/nodex.frentzel.eu/privkey.pem;
+  ssl_dhparam /etc/letsencrypt/live/nodex.frentzel.eu/dhparam.pem;
+
+  resolver localhost;
+
+  add_header Strict-Transport-Security "max-age=31536000; includeSubdomains";
+  add_header X-Frame-Options DENY;
+  add_header X-Content-Type-Options nosniff;
+
+  location /.well-known {
+    alias /var/www/nodex.frentzel.eu/.well-known;
+  }
+
+  location / {
+    root                   /array0;
+    autoindex              on;
+    dav_methods            PUT DELETE MKCOL COPY MOVE;
+    dav_ext_methods        PROPFIND OPTIONS;
+    create_full_put_path   on;
+    dav_access             user:rw group:rw all:rw;
+    auth_basic             "Restricted";
+    auth_basic_user_file   /etc/nginx/.htpasswd;
+  }
+}

@@ -1,0 +1,13 @@
+# ~/.gitconfig
+
+[user]
+	name = Vincent Frentzel
+	email = vincent@frentzel.eu
+	signingkey = CCBEDB71
+
+[push]
+	default = simple
+[commit]
+	gpgsign = true
+[core]
+	autocrlf = input

@@ -1,0 +1,3 @@
+Package: *
+Pin: release a=stable-backports
+Pin-Priority: 900

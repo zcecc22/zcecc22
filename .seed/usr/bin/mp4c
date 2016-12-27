@@ -1,0 +1,28 @@
+#!/bin/bash
+
+OUTPUT_DIR="$1"
+INPUT_FILE="$2"
+
+filename=$(basename "$INPUT_FILE")
+extension="${filename##*.}"
+
+if ffprobe "$INPUT_FILE" 2>&1 | grep "Video: h264" > /dev/null
+then
+  vcodec=copy
+else
+  vcodec=libx264
+fi
+
+if ffprobe "$INPUT_FILE" 2>&1 | grep "Audio: aac" > /dev/null
+then
+  acodec=copy
+else
+  acodec=aac
+fi
+
+echo "[Converting] ${filename} (${vcodec}/${acodec})"
+ffmpeg -threads 2 -i "$INPUT_FILE" -strict experimental -map_metadata -1 \
+	-c:v ${vcodec} -preset medium -crf 23 \
+	-c:a ${acodec} -b:a 192k \
+	-f mp4 "${OUTPUT_DIR}/${filename/%.${extension}/.mp4}" &
+wait $!

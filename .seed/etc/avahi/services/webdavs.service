@@ -1,0 +1,9 @@
+<?xml version="1.0" standalone='no'?><!--*-nxml-*-->
+<!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+<service-group>
+<name replace-wildcards="yes">%h DAVS</name>
+<service>
+<type>_webdavs._tcp</type>
+<port>443</port>
+</service>
+</service-group>

@@ -1,0 +1,44 @@
+#!/bin/sh
+
+OVH_CONSUMER_KEY="$1"
+OVH_APP_KEY="$2"
+OVH_APP_SECRET="$3"
+RECORD="$4"
+DOMAIN="$5"
+SUBDOMAIN="$6"
+IP="$7"
+
+TIME=$(date '+%s')
+API_URL="https://api.ovh.com/1.0"
+
+get_sig() {
+  SIGDATA="$OVH_APP_SECRET+$OVH_CONSUMER_KEY+$1+${API_URL}$2+$3+$TIME"
+  echo '$1$'$(echo -n $SIGDATA | sha1sum - | cut -d' ' -f1)
+}
+
+request() {
+  SIG=$(get_sig "$1" "$2" "$3")
+  RESPONSE=$(curl -s -w "\n%{http_code}\n" -X $1 --header 'Content-Type:application/json;charset=utf-8' --header "X-Ovh-Application:$OVH_APP_KEY" --header "X-Ovh-Timestamp:$TIME" --header "X-Ovh-Signature:$SIG" --header "X-Ovh-Consumer:$OVH_CONSUMER_KEY" --data "$3" ${API_URL}$2)
+  RESPONSE_STATUS=$(echo "$RESPONSE" | sed -n '$p')
+  RESPONSE_CONTENT=$(echo "$RESPONSE" | sed '$d')
+  echo "$RESPONSE_STATUS $RESPONSE_CONTENT"
+}
+
+refresh_zone() {
+  request 'POST' "/domain/zone/$DOMAIN/refresh"
+}
+
+get_id() {
+  echo $(request 'GET' "/domain/zone/$DOMAIN/record?fieldType=$RECORD&subDomain=$SUBDOMAIN" | cut -d' ' -f2 | tr -d "[]")
+}
+
+update_record() {
+  RECORD_ID=$(get_id)
+  request 'PUT' "/domain/zone/$DOMAIN/record/$RECORD_ID" '{"target":"'$IP'", "ttl": 60}'
+  refresh_zone
+}
+
+echo "OVH Domain Update"
+echo "Domain: ${DOMAIN} Sub-Domain: ${SUBDOMAIN} Record: ${RECORD}"
+echo "Address: ${IP}"
+echo "Response: " $(update_record | cut -d' ' -f1)
