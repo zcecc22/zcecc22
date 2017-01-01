@@ -1,0 +1,12 @@
+#!/bin/sh
+
+TABLE=$OPENVPN_ROUTE_TABLE
+
+/sbin/ip route flush table $TABLE
+/sbin/ip route add $route_vpn_gateway dev $dev table $TABLE
+/sbin/ip route add default via $route_vpn_gateway table $TABLE
+
+/sbin/ip rule del pref 30000
+/sbin/ip rule add from $ifconfig_local table $TABLE pref 30000
+
+exit 0

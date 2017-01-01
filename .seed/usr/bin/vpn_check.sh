@@ -15,7 +15,7 @@ then
   COUNTER=$(( $COUNTER + 1 ))
   if [ "$COUNTER" -eq "$MAX_TRY" ]
   then
-    /etc/init.d/openvpn restart >/dev/null 2>&1
+    systemctl restart openvpn >/dev/null 2>&1
     rm "$STORE"
   else
     echo "$COUNTER" > "$STORE"

@@ -15,9 +15,3 @@ address 192.168.178.2
 netmask 255.255.255.0
 gateway 192.168.178.1
 up systemctl restart dnsmasq
-up ip route add 192.168.178.0/24 dev br0 table bridge
-up ip route add default via 192.168.178.1 table bridge
-up ip rule add from 192.168.178.2 table bridge
-down ip rule del from 192.168.178.2 table bridge
-down ip route del default via 192.168.178.1 table bridge
-down ip route del 192.168.178.0/24 dev br0 table bridge
