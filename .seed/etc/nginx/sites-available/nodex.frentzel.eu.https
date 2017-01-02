@@ -4,7 +4,7 @@ server {
   
   ssl_certificate /etc/letsencrypt/live/nodex.frentzel.eu/fullchain.pem;
   ssl_certificate_key /etc/letsencrypt/live/nodex.frentzel.eu/privkey.pem;
-  ssl_dhparam /etc/letsencrypt/live/nodex.frentzel.eu/dhparam.pem;
+  ssl_dhparam /etc/nginx/dhparam.pem;
 
   resolver localhost;
 
