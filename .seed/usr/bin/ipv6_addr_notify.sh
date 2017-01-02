@@ -1,6 +1,6 @@
 #!/bin/sh
 
-IFACE=br0
+IFACE=enp1s0f1
 STORE="/tmp/${IFACE}_ipv6"
 CK=""
 AK=""
