@@ -22,7 +22,7 @@ ChallengeResponseAuthentication no
 PasswordAuthentication no
 AllowTcpForwarding yes
 GatewayPorts no
-X11Forwarding yes
+X11Forwarding no
 PrintMotd no
 PrintLastLog no
 TCPKeepAlive yes
