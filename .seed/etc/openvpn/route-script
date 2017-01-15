@@ -9,4 +9,6 @@ TABLE=$OPENVPN_ROUTE_TABLE
 /sbin/ip rule del pref 30000
 /sbin/ip rule add from $ifconfig_local table $TABLE pref 30000
 
+systemctl restart qbittorrent
+
 exit 0
