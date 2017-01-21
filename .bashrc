@@ -55,7 +55,6 @@ export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls:ll:la:clear:exit'
 export HISTSIZE=100
 export HISTFILESIZE=${HISTSIZE}
 export HISTTIMEFORMAT="[%Y-%m-%d - %H:%M:%S] "
-export GREP_OPTIONS='--color=auto'
 export EDITOR=emacs
 
 export GROFF_NO_SGR=1
