@@ -2,23 +2,30 @@
 
 # Temporary Files
 *.pid
-.cache/
 .bash_history
-.rtorrent_session/
+.cache/
+.dbus/
+.ICEauthority
+.sudo_as_admin_successful
+.Xauthority
 
 # Private
 .bin/
-.ssh/
 .gnupg/*.gpg*
 .gnupg/random_seed
+.pki/
+.ssh/
 
 # Standard Config Files
 .config/
-.local/
+.dmrc
 .emacs.d/
 .go/
+.gnome/
+.local/
 .node/
 .npm/
 
 # Storage
+downloads/
 projects/
