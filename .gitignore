@@ -8,10 +8,13 @@
 .ICEauthority
 .sudo_as_admin_successful
 .Xauthority
+.xsession-errors*
 
 # Private
 .bin/
 .gnupg/*.gpg*
+.gnupg/gpg-agent.conf
+.gnupg/private-keys-v1.d/
 .gnupg/random_seed
 .pki/
 .ssh/
@@ -20,11 +23,13 @@
 .config/
 .dmrc
 .emacs.d/
+.gconf/
 .go/
 .gnome/
 .local/
 .node/
 .npm/
+.thunderbird/
 
 # Storage
 downloads/
