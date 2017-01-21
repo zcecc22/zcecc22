@@ -20,6 +20,7 @@
 .ssh/
 
 # Standard Config Files
+.atom/
 .config/
 .dmrc
 .emacs.d/
