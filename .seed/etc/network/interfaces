@@ -5,14 +5,14 @@ iface wlp3s0 inet dhcp
 wpa-ssid ssid
 wpa-psk password
 
-auto enp1s0f0
-iface enp1s0f0 inet static
-address 172.30.42.1
-netmask 255.255.255.0
+allow-hotplug enp1s0f0
+iface enp1s0f0 inet dhcp
 
-auto enp1s0f1
-iface enp1s0f1 inet static
-address 192.168.178.2
-netmask 255.255.255.0
-gateway 192.168.178.1
-up sysctl net.ipv6.conf.enp1s0f1.accept_ra=2
+allow-hotplug enp1s0f1
+iface enp1s0f1 inet dhcp
+
+allow-hotplug enp3s0
+iface enp3s0 inet dhcp
+
+allow-hotplug eno1
+iface eno1 inet dhcp

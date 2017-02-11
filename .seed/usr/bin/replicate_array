@@ -1,6 +1,8 @@
 #!/bin/bash
 
 zfs set readonly=off array1
+zfs umount array1
+zfs mount -a
 rsync -aHAXv --numeric-ids --delete --progress \
 /array0/ /array1/
 zfs set readonly=on array1
