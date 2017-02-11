@@ -28,6 +28,7 @@
 .go/
 .gnome/
 .local/
+.mozilla/
 .node/
 .npm/
 .thunderbird/
