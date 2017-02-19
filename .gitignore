@@ -28,10 +28,12 @@
 .gconf/
 .go/
 .gnome/
+.icons/
 .local/
 .mozilla/
 .node/
 .npm/
+.themes/
 .thunderbird/
 
 # Storage
