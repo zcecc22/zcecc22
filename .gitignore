@@ -21,6 +21,7 @@
 
 # Standard Config Files
 .atom/
+.bogofilter/
 .config/
 .compiz/
 .dmrc
