@@ -23,19 +23,15 @@
 .atom/
 .bogofilter/
 .config/
-.compiz/
-.dmrc
 .emacs.d/
 .gconf/
 .go/
-.gnome/
 .icons/
 .local/
 .mozilla/
 .node/
 .npm/
 .themes/
-.thunderbird/
 
 # Storage
 Desktop
