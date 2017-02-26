@@ -4,6 +4,7 @@ rsync -aHAXv --numeric-ids --delete --progress \
 --exclude "/tmp/*" \
 --exclude "/export/*" \
 --exclude "/array*/*" \
+--exclude "/backup/*" \
 --exclude "/dev/*" \
 --exclude "/proc/*" \
 --exclude "/mnt/*" \
@@ -13,3 +14,18 @@ rsync -aHAXv --numeric-ids --delete --progress \
 --exclude "/run/*" \
 --exclude "/sys/*" \
 / /array0/backup/nodex/
+
+rsync -aHAXv --numeric-ids --delete --progress \
+--exclude "/tmp/*" \
+--exclude "/export/*" \
+--exclude "/array*/*" \
+--exclude "/backup/*" \
+--exclude "/dev/*" \
+--exclude "/proc/*" \
+--exclude "/mnt/*" \
+--exclude "/media/*" \
+--exclude "/var/tmp/*" \
+--exclude "/var/run/*" \
+--exclude "/run/*" \
+--exclude "/sys/*" \
+/ /backup/
