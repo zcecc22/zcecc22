@@ -26,11 +26,7 @@ BLACK='\[\033[1;30m\]'
 DARKGREY='\[\033[0;30m\]'
 NIL='\[\033[00m\]'
 
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-  debian_chroot=$(cat /etc/debian_chroot)
-fi
-
-PS1="\n${GREEN}@\h${RED}[\w]${YELLOW}${debian_chroot:+($debian_chroot)}${LIGHTRED}${NIL}$ "
+PS1="\n${GREEN}@\h${RED}[\w]${YELLOW}${LIGHTRED}${NIL}$ "
 
 complete -cf sudo
 [ -e /etc/bash_completion ] && source /etc/bash_completion
