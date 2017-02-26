@@ -1,7 +1,7 @@
 # ~/.bashrc
 
 # bypass
-# ---------
+# ------
 
 [ -z "$PS1" ] && return
 
@@ -38,52 +38,94 @@ complete -cf sudo
 stty -ixon
 stty -ixoff
 
-shopt -s cmdhist
+shopt -s cdspell
+shopt -s checkwinsize
 shopt -s histappend
+shopt -s cmdhist
+shopt -s extglob
+shopt -s no_empty_cmd_completion
 
-# exports
-# -------
+export EDITOR=nano
+
+# paths
+# -----
 
 export GOPATH="${HOME}/.go"
 export NODEPATH="${HOME}/.node/bin"
 export NODEPKG="${HOME}/.node/pkg"
 export PATH="${HOME}/.bin:${GOPATH}/bin:${NODEPATH}/bin:${NODEPKG}/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
+
+# locale
+# ------
+
 export LC_ALL=en_US.utf8
 export LANG=en_US.utf8
-export HISTCONTROL=eraseboth
-export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls:ll:la:clear:exit'
-export HISTSIZE=100
-export HISTFILESIZE=${HISTSIZE}
-export HISTTIMEFORMAT="[%Y-%m-%d - %H:%M:%S] "
-export EDITOR=emacs
 
-export GROFF_NO_SGR=1
-export LESS_TERMCAP_mb=$'\E[0;31m'
-export LESS_TERMCAP_md=$'\E[1;34m'
-export LESS_TERMCAP_us=$'\E[1;32m'
-export LESS_TERMCAP_so=$'\E[41;1;37m'
-export LESS_TERMCAP_ue=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_me=$'\E[0m'
+# history
+# -------
+
+export HISTSIZE=1000
+export HISTFILESIZE=${HISTSIZE}
+export HISTCONTROL=ignoreboth
+export HISTIGNORE='&:ls:ll:la:cd:exit:clear:history'
 
 # aliases
 # -------
 
-alias ls="ls -hHF --group-directories-first --color=auto"
 alias cp="cp -rv"
 alias mv="mv -v"
 alias rm="rm -rIv"
-alias ..="cd .."
-alias ...="cd ../.."
-alias df="df -H"
 
-alias search="apt-cache search"
-alias update="sudo apt-get update"
-alias upgrade="sudo apt-get dist-upgrade"
-alias install="sudo apt-get install"
-alias remove="sudo apt-get --purge remove"
-alias autoremove="sudo apt-get --purge autoremove"
-alias clean="sudo apt-get clean"
+alias ls='ls -hF --color=auto'
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias ..='cd ..'
+alias df='df -h'
+alias diff='diff -u'
+alias du='du -ch'
+alias free='free -m'
+alias grep='grep --color=auto'
+alias mkdir='mkdir -pv'
+alias more='less'
+alias nano='nano -w'
+alias ping='ping -c 5'
+alias tmux='tmux attach'
 
-alias tmux="tmux attach"
-alias diff="diff -u"
+alias search='apt-cache search'
+alias update='sudo apt-get update'
+alias upgrade='sudo apt-get dist-upgrade'
+alias install='sudo apt-get install'
+alias remove='sudo apt-get --purge remove'
+alias autoremove='sudo apt-get --purge autoremove'
+alias clean='sudo apt-get clean'
+
+alias reboot='sudo reboot'
+alias halt='sudo halt'
+
+# functions
+# ---------
+
+# SYSTEMD SERVICES
+  if which systemctl &>/dev/null; then
+    start() {
+      sudo systemctl start $1.service
+    }
+    restart() {
+      sudo systemctl restart $1.service
+    }
+    stop() {
+      sudo systemctl stop $1.service
+    }
+    enable() {
+      sudo systemctl enable $1.service
+    }
+    status() {
+      sudo systemctl status $1.service
+    }
+    disable() {
+      sudo systemctl disable $1.service
+    }
+  fi
