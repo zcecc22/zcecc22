@@ -60,7 +60,7 @@ export LANG=en_US.utf8
 # history
 # -------
 
-export HISTSIZE=1000
+export HISTSIZE=10000
 export HISTFILESIZE=${HISTSIZE}
 export HISTCONTROL=ignoreboth
 export HISTIGNORE='&:ls:ll:la:cd:exit:clear:history'
@@ -104,7 +104,7 @@ alias halt='sudo halt'
 # functions
 # ---------
 
-# SYSTEMD SERVICES
+# SYSTEMD COMMANDS
   if which systemctl &>/dev/null; then
     start() {
       sudo systemctl start $1.service
