@@ -125,3 +125,35 @@ alias halt='sudo halt'
       sudo systemctl disable $1.service
     }
   fi
+
+# TORRENT COMMANDS
+  if which qbittorrent-nox &>/dev/null; then
+    torrent_add() {
+      curl --data "urls=${1}" http://localhost:8080/command/download
+    }
+    torrent_delete() {
+      curl --data "hashes={1}" http://localhost:8080/command/deletePerm
+    }
+    torrent_pause() {
+      curl --data "" http://localhost:8080/command/pauseall
+    }
+    torrent_resume() {
+      curl --data "" http://localhost:8080/command/resumeall
+    }
+    torrent_list() {
+      curl http://localhost:8080/json/torrents
+    }
+    torrent_port() {
+      curl --data "json={\"listen_port\" : ${1}}" http://localhost:8080/command/setPreferences
+    }
+  fi
+
+# MP4C COMMANDS
+  if which mp4c &>/dev/null; then
+    convert_mp4() {
+      find ./ -name "$1" -exec mp4c "$2" {} \;
+    }
+    convert_mp4_force() {
+      find ./ -name "$1" -exec mp4c_f "$2" {} \;
+    }
+  fi
