@@ -132,7 +132,7 @@ alias halt='sudo halt'
       curl --data "urls=${1}" http://localhost:8080/command/download
     }
     torrent_delete() {
-      curl --data "hashes={1}" http://localhost:8080/command/deletePerm
+      curl --data "hashes=${1}" http://localhost:8080/command/deletePerm
     }
     torrent_pause() {
       curl --data "" http://localhost:8080/command/pauseall
