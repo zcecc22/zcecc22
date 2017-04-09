@@ -14,6 +14,7 @@
 .bin/
 .gnupg/*.gpg*
 .gnupg/gpg-agent.conf
+.gnupg/*.kbx*
 .gnupg/private-keys-v1.d/
 .gnupg/random_seed
 .pki/
@@ -28,7 +29,6 @@
 .go/
 .icons/
 .local/
-.mozilla/
 .node/
 .npm/
 .themes/
