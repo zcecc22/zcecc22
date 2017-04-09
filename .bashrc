@@ -127,33 +127,104 @@ alias halt='sudo halt'
   fi
 
 # TORRENT COMMANDS
-  if which qbittorrent-nox &>/dev/null; then
-    torrent_add() {
-      curl --data "urls=${1}" http://localhost:8080/command/download
+  torrent_add() {
+    ssh nodex "curl -s --data \"urls=${1}\" http://localhost:8080/command/download"
+  }
+  torrent_delete() {
+    ssh nodex "curl -s --data \"hashes=${1}\" http://localhost:8080/command/deletePerm"
+  }
+  torrent_pause() {
+    ssh nodex "curl -s --data \"\" http://localhost:8080/command/pauseall"
+  }
+  torrent_resume() {
+    ssh nodex "curl -s --data \"\" http://localhost:8080/command/resumeall"
+  }
+  torrent_list() {
+    ssh nodex "curl -s http://localhost:8080/json/torrents"
+  }
+  torrent_port() {
+    ssh nodex "curl -s --data \"json={\"listen_port\" : ${1}}\" http://localhost:8080/command/setPreferences"
+  }
+
+# MP4C COMMANDS
+  if which ffmpeg &>/dev/null; then
+    mp4c() {
+      OUTPUT_DIR="$1"
+      INPUT_FILE="$2"
+
+      filename=$(basename "$INPUT_FILE")
+      extension="${filename##*.}"
+
+      if ffprobe "$INPUT_FILE" 2>&1 | grep "Video: h264" > /dev/null
+      then
+        vcodec=copy
+      else
+        vcodec=libx264
+      fi
+
+      if ffprobe "$INPUT_FILE" 2>&1 | grep "Audio: aac" > /dev/null
+      then
+        acodec=copy
+      else
+        acodec=aac
+      fi
+
+      echo "[Converting] ${filename} (${vcodec}/${acodec})"
+      ffmpeg -threads 2 -i "$INPUT_FILE" -strict experimental -map_metadata -1 \
+        -c:v ${vcodec} -preset medium -crf 23 \
+        -c:a ${acodec} -b:a 192k \
+        -f mp4 "${OUTPUT_DIR}/${filename/%.${extension}/.mp4}" &
+      wait $!
     }
-    torrent_delete() {
-      curl --data "hashes=${1}" http://localhost:8080/command/deletePerm
-    }
-    torrent_pause() {
-      curl --data "" http://localhost:8080/command/pauseall
-    }
-    torrent_resume() {
-      curl --data "" http://localhost:8080/command/resumeall
-    }
-    torrent_list() {
-      curl http://localhost:8080/json/torrents
-    }
-    torrent_port() {
-      curl --data "json={\"listen_port\" : ${1}}" http://localhost:8080/command/setPreferences
+    convert_mp4() {
+      export -f mp4c
+      find ./ -name "$1" -exec bash -c "mp4c \"$2\" \"{}\"" \;
     }
   fi
 
-# MP4C COMMANDS
-  if which mp4c &>/dev/null; then
-    convert_mp4() {
-      find ./ -name "$1" -exec mp4c "$2" {} \;
+# BACKUP COMMANDS
+  if which rsync &>/dev/null; then
+    root_backup() {
+      sudo rsync -aHAXv --numeric-ids --delete --progress \
+      --exclude "/tmp/*" \
+      --exclude "/export/*" \
+      --exclude "/array*/*" \
+      --exclude "/backup/*" \
+      --exclude "/dev/*" \
+      --exclude "/proc/*" \
+      --exclude "/mnt/*" \
+      --exclude "/media/*" \
+      --exclude "/var/tmp/*" \
+      --exclude "/var/run/*" \
+      --exclude "/run/*" \
+      --exclude "/sys/*" \
+      / nodex:/array0/backup/"$HOSTNAME"/
+
+      sudo rsync -aHAXv --numeric-ids --delete --progress \
+      --exclude "/tmp/*" \
+      --exclude "/export/*" \
+      --exclude "/array*/*" \
+      --exclude "/backup/*" \
+      --exclude "/dev/*" \
+      --exclude "/proc/*" \
+      --exclude "/mnt/*" \
+      --exclude "/media/*" \
+      --exclude "/var/tmp/*" \
+      --exclude "/var/run/*" \
+      --exclude "/run/*" \
+      --exclude "/sys/*" \
+      / /backup/
     }
-    convert_mp4_force() {
-      find ./ -name "$1" -exec mp4c_f "$2" {} \;
+  fi
+
+# ZFS COMMANDS
+  if which zfs &>/dev/null; then
+    replicate_array() {
+      sudo zfs set readonly=off array1
+      sudo zfs umount array1
+      sudo zfs mount -a
+      sudo rsync -aHAXv --numeric-ids --delete --progress \
+      /array0/ /array1/
+      sudo zfs set readonly=on array1
     }
   fi
