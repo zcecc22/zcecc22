@@ -198,6 +198,7 @@ alias halt='sudo halt'
       --exclude "/var/run/*" \
       --exclude "/run/*" \
       --exclude "/sys/*" \
+      --exclude "/swapfile" \
       / nodex:/array0/backup/"$HOSTNAME"/
 
       sudo rsync -aHAXv --numeric-ids --delete --progress \
@@ -213,6 +214,7 @@ alias halt='sudo halt'
       --exclude "/var/run/*" \
       --exclude "/run/*" \
       --exclude "/sys/*" \
+      --exclude "/swapfile" \
       / /backup/
     }
   fi
