@@ -99,7 +99,7 @@ alias autoremove='sudo apt-get --purge autoremove'
 alias clean='sudo apt-get clean'
 
 alias reboot='sudo reboot'
-alias halt='sudo halt'
+alias halt='sudo shutdown -h now'
 
 # functions
 # ---------
@@ -148,7 +148,7 @@ alias halt='sudo halt'
 
 # MP4C COMMANDS
   if which ffmpeg &>/dev/null; then
-    mp4c() {
+    __mp4c() {
       OUTPUT_DIR="$1"
       INPUT_FILE="$2"
 
@@ -177,8 +177,8 @@ alias halt='sudo halt'
       wait $!
     }
     convert_mp4() {
-      export -f mp4c
-      find ./ -name "$1" -exec bash -c "mp4c \"$2\" \"{}\"" \;
+      export -f __mp4c
+      find ./ -name "$1" -exec bash -c "__mp4c \"$2\" \"{}\"" \;
     }
   fi
 
