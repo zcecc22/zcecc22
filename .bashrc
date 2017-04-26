@@ -129,22 +129,22 @@ alias halt='sudo shutdown -h now'
 # TORRENT COMMANDS
   if which qbittorrent-nox &>/dev/null; then
     torrent_add() {
-      curl -s --data \"urls=${1}\" http://localhost:8080/command/download
+      curl -s --data "urls=${1}" http://localhost:8080/command/download
     }
     torrent_delete() {
-      curl -s --data \"hashes=${1}\" http://localhost:8080/command/deletePerm
+      curl -s --data "hashes=${1}" http://localhost:8080/command/deletePerm
     }
     torrent_pause() {
-      curl -s --data \"\" http://localhost:8080/command/pauseall
+      curl -s --data "" http://localhost:8080/command/pauseall
     }
     torrent_resume() {
-      curl -s --data \"\" http://localhost:8080/command/resumeall
+      curl -s --data "" http://localhost:8080/command/resumeall
     }
     torrent_list() {
       curl -s http://localhost:8080/json/torrents
     }
     torrent_port() {
-      curl -s --data \"json={\"listen_port\" : ${1}}\" http://localhost:8080/command/setPreferences
+      curl -v -s --data "json={\"listen_port\" : ${1}}" http://localhost:8080/command/setPreferences
     }
   fi
 
