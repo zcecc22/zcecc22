@@ -127,24 +127,26 @@ alias halt='sudo shutdown -h now'
   fi
 
 # TORRENT COMMANDS
-  torrent_add() {
-    ssh nodex "curl -s --data \"urls=${1}\" http://localhost:8080/command/download"
-  }
-  torrent_delete() {
-    ssh nodex "curl -s --data \"hashes=${1}\" http://localhost:8080/command/deletePerm"
-  }
-  torrent_pause() {
-    ssh nodex "curl -s --data \"\" http://localhost:8080/command/pauseall"
-  }
-  torrent_resume() {
-    ssh nodex "curl -s --data \"\" http://localhost:8080/command/resumeall"
-  }
-  torrent_list() {
-    ssh nodex "curl -s http://localhost:8080/json/torrents"
-  }
-  torrent_port() {
-    ssh nodex "curl -s --data \"json={\"listen_port\" : ${1}}\" http://localhost:8080/command/setPreferences"
-  }
+  if which qbittorrent-nox &>/dev/null; then
+    torrent_add() {
+      curl -s --data \"urls=${1}\" http://localhost:8080/command/download
+    }
+    torrent_delete() {
+      curl -s --data \"hashes=${1}\" http://localhost:8080/command/deletePerm
+    }
+    torrent_pause() {
+      curl -s --data \"\" http://localhost:8080/command/pauseall
+    }
+    torrent_resume() {
+      curl -s --data \"\" http://localhost:8080/command/resumeall
+    }
+    torrent_list() {
+      curl -s http://localhost:8080/json/torrents
+    }
+    torrent_port() {
+      curl -s --data \"json={\"listen_port\" : ${1}}\" http://localhost:8080/command/setPreferences
+    }
+  fi
 
 # MP4C COMMANDS
   if which ffmpeg &>/dev/null; then
