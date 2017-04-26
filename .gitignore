@@ -30,6 +30,7 @@
 .icons/
 .lein/
 .local/
+.m2/
 .node/
 .npm/
 .themes/
