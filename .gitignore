@@ -28,6 +28,7 @@
 .gconf/
 .go/
 .icons/
+.lein/
 .local/
 .node/
 .npm/
