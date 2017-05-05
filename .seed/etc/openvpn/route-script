@@ -1,14 +1,15 @@
 #!/bin/sh
 
-TABLE=$OPENVPN_ROUTE_TABLE
+ip rule | sed -n 's/.*\(from[ \t]*[0-9\.]*\).*vpn/\1/p' | while read rule
+do
+    ip rule del ${rule}
+done
 
-/sbin/ip route flush table $TABLE
-/sbin/ip route add $route_vpn_gateway dev $dev table $TABLE
-/sbin/ip route add default via $route_vpn_gateway table $TABLE
-
-/sbin/ip rule del pref 30000
-/sbin/ip rule add from $ifconfig_local table $TABLE pref 30000
-
+ip route del 128.0.0.0/1 via ${route_vpn_gateway}
+ip route del 0.0.0.0/1 via ${route_vpn_gateway}
+ip rule add from ${ifconfig_local} lookup $ROUTE_TABLE
+ip route flush table $ROUTE_TABLE
+ip route add default dev ${dev} table $ROUTE_TABLE
 systemctl restart qbittorrent
 
 exit 0
