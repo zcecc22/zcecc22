@@ -28,9 +28,11 @@
 .gconf/
 .go/
 .icons/
-.lein/
+.java/
 .local/
 .m2/
+.nbi/
+.netbeans*/
 .node/
 .npm/
 .themes/
