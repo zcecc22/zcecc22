@@ -141,10 +141,7 @@ alias halt='sudo shutdown -h now'
       curl -s --data "" http://localhost:8080/command/resumeall
     }
     torrent_list() {
-      curl -s http://localhost:8080/json/torrents
-    }
-    torrent_port() {
-      curl -v -s --data "json={\"listen_port\" : ${1}}" http://localhost:8080/command/setPreferences
+      curl -s http://localhost:8080/json/torrents | jq
     }
   fi
 
