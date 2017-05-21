@@ -185,35 +185,36 @@ alias halt='sudo shutdown -h now'
   if which rsync &>/dev/null; then
     root_backup() {
       sudo rsync -aHAXv --numeric-ids --delete --progress \
-      --exclude "/tmp/*" \
-      --exclude "/export/*" \
       --exclude "/array*/*" \
       --exclude "/backup/*" \
       --exclude "/dev/*" \
-      --exclude "/proc/*" \
-      --exclude "/mnt/*" \
+      --exclude "/export/*" \
       --exclude "/media/*" \
-      --exclude "/var/tmp/*" \
-      --exclude "/var/run/*" \
+      --exclude "/mnt/*" \
+      --exclude "/proc/*" \
       --exclude "/run/*" \
-      --exclude "/sys/*" \
       --exclude "/swapfile" \
+      --exclude "/sys/*" \
+      --exclude "/tmp/*" \
+      --exclude "/var/run/*" \
+      --exclude "/var/tmp/*" \
       / nodex:/array0/backup/"$HOSTNAME"/
 
       sudo rsync -aHAXv --numeric-ids --delete --progress \
-      --exclude "/tmp/*" \
-      --exclude "/export/*" \
       --exclude "/array*/*" \
       --exclude "/backup/*" \
       --exclude "/dev/*" \
-      --exclude "/proc/*" \
-      --exclude "/mnt/*" \
+      --exclude "/export/*" \
+      --exclude "/home/*" \
       --exclude "/media/*" \
-      --exclude "/var/tmp/*" \
-      --exclude "/var/run/*" \
+      --exclude "/mnt/*" \
+      --exclude "/proc/*" \
       --exclude "/run/*" \
-      --exclude "/sys/*" \
       --exclude "/swapfile" \
+      --exclude "/sys/*" \
+      --exclude "/tmp/*" \
+      --exclude "/var/run/*" \
+      --exclude "/var/tmp/*" \
       / /backup/
     }
   fi
