@@ -87,7 +87,6 @@ alias grep='grep --color=auto'
 alias mkdir='mkdir -pv'
 alias more='less'
 alias nano='nano -w'
-alias ping='ping -c 5'
 alias tmux='tmux attach'
 
 alias search='apt-cache search'
