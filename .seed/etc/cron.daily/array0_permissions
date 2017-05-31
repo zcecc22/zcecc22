@@ -3,14 +3,11 @@
 find /array0/shows/ -type d -exec chmod 775 {} \; >/dev/null
 find /array0/movies/ -type d -exec chmod 775 {} \; >/dev/null
 find /array0/pictures/ -type d -exec chmod 775 {} \; >/dev/null
-find /array0/subtitles/ -type d -exec chmod 775 {} \; >/dev/null
 
 find /array0/shows/ -type f -exec chmod 664 {} \; >/dev/null
 find /array0/movies/ -type f -exec chmod 664 {} \; >/dev/null
 find /array0/pictures/ -type f -exec chmod 664 {} \; >/dev/null
-find /array0/subtitles/ -type f -exec chmod 664 {} \; >/dev/null
 
 chown -R root:users /array0/shows/ >/dev/null
 chown -R root:users /array0/movies/ >/dev/null
 chown -R root:users /array0/pictures/ >/dev/null
-chown -R root:users /array0/subtitles/ >/dev/null

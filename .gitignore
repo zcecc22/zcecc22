@@ -24,7 +24,6 @@
 .atom/
 .bogofilter/
 .config/
-.emacs.d/
 .gconf/
 .go/
 .icons/
@@ -32,6 +31,7 @@
 .local/
 .m2/
 .nbi/
+.ncftp/
 .netbeans*/
 .node/
 .npm/

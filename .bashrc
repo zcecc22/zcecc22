@@ -216,16 +216,17 @@ alias halt='sudo shutdown -h now'
       --exclude "/var/tmp/*" \
       / /backup/
     }
+    replicate_array() {
+      sudo rsync -aHAXv --numeric-ids --delete --progress \
+      --exclude "backup" \
+      --exclude "temporary" \
+      /array0/* node99:/array0/
+    }
   fi
 
-# ZFS COMMANDS
-  if which zfs &>/dev/null; then
-    replicate_array() {
-      sudo zfs set readonly=off array1
-      sudo zfs umount array1
-      sudo zfs mount -a
-      sudo rsync -aHAXv --numeric-ids --delete --progress \
-      /array0/ /array1/
-      sudo zfs set readonly=on array1
+# FTP COMMANDS
+  if which ncftpput &>/dev/null; then
+    upload_temporary() {
+      ncftpput node99 /temporary/ "$1"
     }
   fi
