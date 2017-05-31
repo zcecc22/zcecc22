@@ -1,3 +1,5 @@
 proc            /proc     proc    defaults                                                                                    0 0
+LABEL=ESP       /boot/efi vfat    defaults                                                                                    0 2
 LABEL=ROOT      /         ext4    noatime,nodiratime,data=writeback,barrier=0,errors=remount-ro,commit=300                    0 1
+LABEL=HOME      /home     ext4    noatime,nodiratime,data=writeback,barrier=0,errors=remount-ro,commit=300                    0 2
 LABEL=SWAP      none      swap    defaults                                                                                    0 0

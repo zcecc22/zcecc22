@@ -1,3 +1,4 @@
-NODEX
+#! /bin/bash
 
-debootstrap sudo parted anacron wireless-tools wpasupplicant ntp hdparm git ssh ca-certificates rsync ncftp jq resolvconf tmux cpufrequtils bash-completion intel-microcode firmware-linux-free firmware-iwlwifi firmware-realtek firmware-linux build-essential ufw avahi-daemon ffmpeg zfs-dkms zfsutils-linux
+sudo apt-get install debootstrap parted anacron wireless-tools wpasupplicant ntp hdparm git ssh ca-certificates rsync ncftp jq tmux bash-completion intel-microcode firmware-linux-free firmware-iwlwifi firmware-realtek firmware-linux ufw ffmpeg zfs-dkms zfsutils-linux
+
