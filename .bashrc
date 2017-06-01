@@ -125,25 +125,6 @@ alias halt='sudo shutdown -h now'
     }
   fi
 
-# TORRENT COMMANDS
-  if which qbittorrent-nox &>/dev/null; then
-    torrent_add() {
-      curl -s --data "urls=${1}" http://localhost:8080/command/download
-    }
-    torrent_delete() {
-      curl -s --data "hashes=${1}" http://localhost:8080/command/deletePerm
-    }
-    torrent_pause() {
-      curl -s --data "" http://localhost:8080/command/pauseall
-    }
-    torrent_resume() {
-      curl -s --data "" http://localhost:8080/command/resumeall
-    }
-    torrent_list() {
-      curl -s http://localhost:8080/json/torrents | jq
-    }
-  fi
-
 # MP4C COMMANDS
   if which ffmpeg &>/dev/null; then
     __mp4c() {
@@ -219,7 +200,6 @@ alias halt='sudo shutdown -h now'
     replicate_array() {
       sudo rsync -aHAXv --numeric-ids --delete --progress \
       --exclude "backup" \
-      --exclude "temporary" \
       /array0/* node99:/array0/
     }
   fi
