@@ -100,6 +100,8 @@ alias clean='sudo apt-get clean'
 alias reboot='sudo reboot'
 alias halt='sudo shutdown -h now'
 
+alias upload_temporary='ncftpput -R node99 /temporary/'
+
 # functions
 # ---------
 
@@ -201,12 +203,5 @@ alias halt='sudo shutdown -h now'
       sudo rsync -aHAXv --numeric-ids --delete --progress \
       --exclude "backup" \
       /array0/* node99:/array0/
-    }
-  fi
-
-# FTP COMMANDS
-  if which ncftpput &>/dev/null; then
-    upload_temporary() {
-      ncftpput node99 /temporary/ "$1"
     }
   fi
