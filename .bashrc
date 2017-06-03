@@ -100,7 +100,8 @@ alias clean='sudo apt-get clean'
 alias reboot='sudo reboot'
 alias halt='sudo shutdown -h now'
 
-alias ftp_temporary='ncftpput -z -R node99 /temporary/'
+alias ftp_node99='ncftpput -z -R node99 /temporary/'
+alias ftp_nodex='ncftpput -z -R nodex /temporary/'
 
 # functions
 # ---------
@@ -199,12 +200,7 @@ alias ftp_temporary='ncftpput -z -R node99 /temporary/'
       --exclude "/var/tmp/*" \
       / /backup/
     }
-    backup_array0_full() {
-      sudo rsync -aHAXv --numeric-ids --delete --progress \
-      --exclude "backup" \
-      /array0/* node99:/array0/
-    }
-    backup_array0_partial() {
+    backup_array0() {
       sudo rsync -aHAXv --numeric-ids --delete --progress \
       --exclude "backup" \
       --exclude "temporary" \
