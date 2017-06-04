@@ -1,3 +1,3 @@
 #! /bin/bash
 
-sudo apt-get install debootstrap parted anacron wireless-tools wpasupplicant ntp hdparm git ssh ca-certificates rsync vsftpd ncftp jq tmux bash-completion intel-microcode firmware-linux-free firmware-iwlwifi firmware-realtek firmware-linux ffmpeg zfs-dkms zfsutils-linux
+sudo apt-get install debootstrap parted anacron wireless-tools wpasupplicant ntp hdparm git dropbear openssh-client openssh-sftp-server ca-certificates rsync vsftpd ncftp jq tmux bash-completion intel-microcode firmware-linux-free firmware-iwlwifi firmware-realtek firmware-linux ffmpeg zfs-dkms zfsutils-linux
