@@ -3,7 +3,7 @@
 [user]
 	name = Vincent Frentzel
 	email = vincent@frentzel.eu
-	signingkey = CCBEDB71
+	signingkey = 230B4D972E9EE4D07440E2649FAE165A66C0060F
 
 [push]
 	default = simple
