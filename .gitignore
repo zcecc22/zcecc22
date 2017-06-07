@@ -37,6 +37,7 @@
 .node/
 .npm/
 .themes/
+.thunderbird/
 
 # Storage
 Desktop
