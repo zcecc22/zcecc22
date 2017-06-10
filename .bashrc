@@ -206,4 +206,8 @@ alias ftp_nodex='ncftpput -z -R nodex /temporary/'
       --exclude "temporary" \
       /array0/* node99:/array0/
     }
+    backup_home() {
+      sudo rsync -aHAXv --numeric-ids --delete --progress \
+      /home/zcecc22/ /media/zcecc22/pod0/
+    }
   fi
