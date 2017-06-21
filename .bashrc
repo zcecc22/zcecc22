@@ -31,9 +31,6 @@ PS1="\n${GREEN}@\h${RED}[\w]${YELLOW}${LIGHTRED}${NIL}$ "
 complete -cf sudo
 [ -e /etc/bash_completion ] && source /etc/bash_completion
 
-stty -ixon
-stty -ixoff
-
 shopt -s cdspell
 shopt -s checkwinsize
 shopt -s histappend
@@ -41,7 +38,7 @@ shopt -s cmdhist
 shopt -s extglob
 shopt -s no_empty_cmd_completion
 
-export EDITOR=nano
+export EDITOR=vi
 
 # paths
 # -----
@@ -69,24 +66,11 @@ export HISTIGNORE='&:ls:ll:la:cd:exit:clear:history'
 # -------
 
 alias cp="cp -rv"
-alias mv="mv -v"
-alias rm="rm -rIv"
-
-alias ls='ls -hF --color=auto'
-alias dir='dir --color=auto'
-alias vdir='vdir --color=auto'
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-alias ..='cd ..'
-alias df='df -h'
 alias diff='diff -u'
-alias du='du -ch'
-alias free='free -m'
-alias grep='grep --color=auto'
+alias ls='ls -hF --color=auto'
 alias mkdir='mkdir -pv'
-alias more='less'
-alias nano='nano -w'
+alias mv="mv -v"
+alias rm="rm -rvi"
 alias tmux='tmux attach'
 
 alias search='apt-cache search'
