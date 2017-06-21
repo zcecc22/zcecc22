@@ -2,7 +2,7 @@
 
 # Temporary Files
 *.pid
-.bash_history
+.*ash_history
 .cache/
 .dbus/
 .ICEauthority
