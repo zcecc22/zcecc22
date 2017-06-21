@@ -18,6 +18,7 @@
 .gnupg/*.kbx*
 .gnupg/private-keys-v1.d/
 .gnupg/random_seed
+.password-store/
 .pki/
 .ssh/
 
