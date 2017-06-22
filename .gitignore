@@ -26,6 +26,7 @@
 .atom/
 .bogofilter/
 .config/
+.dropbox*/
 .gconf/
 .go/
 .icons/
@@ -44,6 +45,7 @@
 Desktop
 Documents
 Downloads
+Dropbox
 Music
 Pictures
 Projects
