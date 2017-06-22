@@ -77,16 +77,17 @@ alias mv="mv -v"
 alias rm="rm -rvi"
 alias tmux='tmux attach'
 
+alias autoremove='sudo apt-get --purge autoremove'
+alias clean='sudo apt-get clean'
+alias install='sudo apt-get install'
+alias mark='sudo apt-mark auto'
+alias remove='sudo apt-get --purge remove'
 alias search='apt-cache search'
 alias update='sudo apt-get update'
 alias upgrade='sudo apt-get dist-upgrade'
-alias install='sudo apt-get install'
-alias remove='sudo apt-get --purge remove'
-alias autoremove='sudo apt-get --purge autoremove'
-alias clean='sudo apt-get clean'
 
-alias reboot='sudo reboot'
 alias halt='sudo shutdown -h now'
+alias reboot='sudo reboot'
 
 alias ftp_node99='ncftpput -z -R node99 /temporary/'
 alias ftp_nodex='ncftpput -z -R nodex /temporary/'
