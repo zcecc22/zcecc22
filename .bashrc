@@ -38,7 +38,7 @@ shopt -s cmdhist
 shopt -s extglob
 shopt -s no_empty_cmd_completion
 
-export EDITOR=vi
+export EDITOR=nano
 
 # paths
 # -----
