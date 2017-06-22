@@ -66,6 +66,7 @@ export HISTIGNORE='&:ls:ll:la:cd:exit:clear:history'
 # -------
 
 alias cp="cp -rv"
+alias df="df -h"
 alias diff='diff -u'
 alias ls='ls -hF --color=auto'
 alias mkdir='mkdir -pv'
