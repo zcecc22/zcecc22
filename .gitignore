@@ -12,7 +12,6 @@
 .xsession-errors*
 
 # Private
-.bin/
 .gnupg/*.gpg*
 .gnupg/gpg-agent.conf
 .gnupg/*.kbx*
