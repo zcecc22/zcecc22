@@ -28,8 +28,11 @@
 .config/
 .dropbox*/
 .gconf/
+.gnome/
 .go/
 .icons/
+.idea/
+.IdeaIC*/
 .java/
 .local/
 .m2/
