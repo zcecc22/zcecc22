@@ -170,7 +170,7 @@ alias ftp_nodex='ncftpput -z -R nodex /temporary/'
       --exclude "/tmp/*" \
       --exclude "/var/run/*" \
       --exclude "/var/tmp/*" \
-      / nodex:/array0/backup/"$HOSTNAME"/
+      / node99:/array0/backup/"$HOSTNAME"/
 
       sudo rsync -aHAXv --numeric-ids --delete --progress \
       --exclude "/array*/*" \
@@ -191,12 +191,11 @@ alias ftp_nodex='ncftpput -z -R nodex /temporary/'
     }
     backup_array0() {
       sudo rsync -aHAXv --numeric-ids --delete --progress \
-      --exclude "backup" \
       --exclude "temporary" \
-      /array0/* node99:/array0/
+      /array0/* nodex:/array0/
     }
     backup_home() {
       sudo rsync -aHAXv --numeric-ids --delete --progress \
-      /home/zcecc22/ /media/zcecc22/pod0/
+      ~/ "$1"
     }
   fi
