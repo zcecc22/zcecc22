@@ -161,9 +161,11 @@ alias ftp_nodex='ncftpput -z -R nodex /temporary/'
       --exclude "/backup/*" \
       --exclude "/dev/*" \
       --exclude "/export/*" \
+      --exclude "/home/*" \
       --exclude "/media/*" \
       --exclude "/mnt/*" \
       --exclude "/proc/*" \
+      --exclude "/root/*" \
       --exclude "/run/*" \
       --exclude "/swapfile" \
       --exclude "/sys/*" \
@@ -171,31 +173,14 @@ alias ftp_nodex='ncftpput -z -R nodex /temporary/'
       --exclude "/var/run/*" \
       --exclude "/var/tmp/*" \
       / node99:/array0/backup/"$HOSTNAME"/
-
-      sudo rsync -aHAXv --numeric-ids --delete --progress \
-      --exclude "/array*/*" \
-      --exclude "/backup/*" \
-      --exclude "/dev/*" \
-      --exclude "/export/*" \
-      --exclude "/home/*" \
-      --exclude "/media/*" \
-      --exclude "/mnt/*" \
-      --exclude "/proc/*" \
-      --exclude "/run/*" \
-      --exclude "/swapfile" \
-      --exclude "/sys/*" \
-      --exclude "/tmp/*" \
-      --exclude "/var/run/*" \
-      --exclude "/var/tmp/*" \
-      / /backup/
     }
     backup_array0() {
       sudo rsync -aHAXv --numeric-ids --delete --progress \
+      --exclude "home" \
       --exclude "temporary" \
       /array0/* nodex:/array0/
     }
     backup_home() {
-      sudo rsync -aHAXv --numeric-ids --delete --progress \
-      ~/ "$1"
+      tar -czvf - -C "$HOME" . | gpg -e -r 66C0060F | ssh node99 "cat > /array0/backup/${HOSTNAME}-home-zcecc22.tgz.gpg"
     }
   fi
