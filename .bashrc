@@ -181,6 +181,6 @@ alias ftp_nodex='ncftpput -z -R nodex /temporary/'
       /array0/* nodex:/array0/
     }
     backup_home() {
-      tar -czvf - -C "$HOME" . | gpg -e -r 66C0060F | ssh node99 "cat > /array0/backup/${HOSTNAME}-home-zcecc22.tgz.gpg"
+      tar -czvf - -C "$HOME" . | gpg -c | ssh node99 "cat > /array0/backup/${HOSTNAME}-home-zcecc22.tgz.gpg"
     }
   fi
