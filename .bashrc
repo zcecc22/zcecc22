@@ -30,9 +30,6 @@ PS1="\n${GREEN}@\h${RED}[\w]${YELLOW}${LIGHTRED}${NIL}$ "
 
 complete -cf sudo
 [ -e /etc/bash_completion ] && source /etc/bash_completion
-[ -e ~/.bash_completion.d ] && for cmpl in ~/.bash_completion.d/* ; do
-  . $cmpl
-done
 
 shopt -s cdspell
 shopt -s checkwinsize
