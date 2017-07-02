@@ -89,8 +89,7 @@ alias upgrade='sudo apt-get dist-upgrade'
 alias halt='sudo shutdown -h now'
 alias reboot='sudo reboot'
 
-alias ftp_node99='ncftpput -z -R node99 /temporary/'
-alias ftp_nodex='ncftpput -z -R nodex /temporary/'
+alias ftp_temporary='ncftpput -z -R node99 /temporary/'
 
 # functions
 # ---------
@@ -176,9 +175,8 @@ alias ftp_nodex='ncftpput -z -R nodex /temporary/'
     }
     backup_array0() {
       sudo rsync -aHAXv --numeric-ids --delete --progress \
-      --exclude "home" \
       --exclude "temporary" \
-      /array0/* nodex:/array0/
+      /array0/ nodex:/array0/
     }
     backup_home() {
       tar -czvf - -C "$HOME" . | gpg -c | ssh node99 "cat > /array0/backup/${HOSTNAME}-home-zcecc22.tgz.gpg"
