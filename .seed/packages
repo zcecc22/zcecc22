@@ -5,10 +5,8 @@ anacron \
 ntp \
 parted \
 cryptsetup \
-luksipc \
+mdadm \
 hdparm \
-zfs-dkms \
-zfsutils-linux \
 wireless-tools \
 wpasupplicant \
 firmware-linux-free \
