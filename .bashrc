@@ -160,11 +160,9 @@ alias ftp_temporary='ncftpput -z -R node99 /temporary/'
       --exclude "/backup/*" \
       --exclude "/dev/*" \
       --exclude "/export/*" \
-      --exclude "/home/*" \
       --exclude "/media/*" \
       --exclude "/mnt/*" \
       --exclude "/proc/*" \
-      --exclude "/root/*" \
       --exclude "/run/*" \
       --exclude "/swapfile" \
       --exclude "/sys/*" \
@@ -177,8 +175,5 @@ alias ftp_temporary='ncftpput -z -R node99 /temporary/'
       sudo rsync -aHAXv --numeric-ids --delete --progress \
       --exclude "temporary" \
       /array0/ nodex:/array0/
-    }
-    backup_home() {
-      tar -czvf - -C "$HOME" . | gpg -c | ssh node99 "cat > /array0/backup/${HOSTNAME}-home-zcecc22.tgz.gpg"
     }
   fi
