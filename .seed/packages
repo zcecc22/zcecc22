@@ -1,6 +1,6 @@
 #! /bin/bash
 
-sudo apt-get install \
+apt-get install \
 anacron \
 ntp \
 parted \
@@ -17,12 +17,5 @@ intel-microcode \
 dropbear \
 openssh-client \
 openssh-sftp-server \
-debootstrap \
-git \
-rsync \
-ca-certificates \
-bash-completion \
-tmux \
-tree \
-pwgen \
-gnupg
+sudo \
+rsync
