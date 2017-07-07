@@ -153,25 +153,25 @@ alias ftp_temporary='ncftpput -z -R node99 /temporary/'
   if which rsync &>/dev/null; then
     backup_root() {
       sudo rsync -aHAXv --numeric-ids --delete --progress \
-      --exclude "/array*/*" \
-      --exclude "/backup/*" \
-      --exclude "/dev/*" \
-      --exclude "/export/*" \
-      --exclude "/media/*" \
-      --exclude "/mnt/*" \
-      --exclude "/proc/*" \
-      --exclude "/run/*" \
-      --exclude "/swapfile" \
-      --exclude "/sys/*" \
-      --exclude "/tmp/*" \
-      --exclude "/var/run/*" \
-      --exclude "/var/tmp/*" \
-      / node99:/array0/backup/"$HOSTNAME"/
+        --exclude "/array*/*" \
+        --exclude "/backup/*" \
+        --exclude "/dev/*" \
+        --exclude "/export/*" \
+        --exclude "/media/*" \
+        --exclude "/mnt/*" \
+        --exclude "/proc/*" \
+        --exclude "/run/*" \
+        --exclude "/swapfile" \
+        --exclude "/sys/*" \
+        --exclude "/tmp/*" \
+        --exclude "/var/run/*" \
+        --exclude "/var/tmp/*" \
+        / node99:/array0/backup/"$HOSTNAME"/
     }
     backup_array0() {
       sudo ssh nodex "/sbin/cryptsetup luksOpen /dev/md/array0 array0; mount /array0"
       sudo rsync -aHAXv --numeric-ids --delete --progress \
-      --exclude "temporary" \
-      /array0/ nodex:/array0/
+        --exclude "temporary" \
+        /array0/ nodex:/array0/
     }
   fi
