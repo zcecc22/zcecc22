@@ -72,7 +72,7 @@ alias ls='ls -hF --color=auto'
 alias mkdir='mkdir -pv'
 alias mv="mv -v"
 alias rm="rm -rvi"
-alias screen="if ! screen -r; then screen; fi"
+alias screen="if ! screen -r > /dev/null; then screen; fi"
 
 alias autoremove='sudo apt-get --purge autoremove'
 alias clean='sudo apt-get clean'
