@@ -169,7 +169,6 @@ alias ftp_temporary='ncftpput -z -R node99 /temporary/'
         / nodex:/array0/backup/"$HOSTNAME"/
     }
     backup_array0() {
-      sudo ssh nodex "/sbin/cryptsetup luksOpen /dev/md/array0 array0; mount /array0"
       sudo rsync -aHAXv --numeric-ids --delete --progress \
         --exclude "temporary" \
         /array0/* nodex:/array0
