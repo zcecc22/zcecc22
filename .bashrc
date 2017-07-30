@@ -71,7 +71,7 @@ alias diff='diff -u'
 alias ls='ls -hF --color=auto'
 alias mkdir='mkdir -pv'
 alias mv="mv -v"
-alias rm="rm -rvi"
+alias rm="rm -Irv"
 alias screen="if ! screen -r &> /dev/null; then screen; fi"
 
 alias autoremove='sudo apt-get --purge autoremove'
@@ -145,7 +145,8 @@ alias ftp_temporary='ncftpput -z -R node99 /temporary/'
     }
     convert_mp4() {
       export -f __mp4c
-      find ./ -name "$1" -exec bash -c "__mp4c \"$2\" \"{}\"" \;
+      find $1 -type f \( -iname \*.avi -o -iname \*.mkv -o -iname \*.mp4 \) \
+        -exec bash -c "__mp4c \"$2\" \"{}\"" \;
     }
   fi
 
