@@ -12,7 +12,7 @@
 .xsession-errors*
 
 # Private
-.gnupg/
+.gnupg
 .password-store/
 .pki/
 .ssh/
