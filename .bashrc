@@ -88,6 +88,8 @@ alias reboot='sudo reboot'
 
 alias ftp_temporary='ncftpput -z -R node99 /temporary/'
 
+alias decrypt_array0='cryptsetup luksOpen /dev/md/array0 array0; mount /array0/'
+
 # functions
 # ---------
 
