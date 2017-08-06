@@ -169,9 +169,9 @@ alias ftp_temporary='ncftpput -z -R node99 /temporary/'
         --exclude "/var/tmp/*" \
         / nodex:/array0/backup/"$HOSTNAME"/
     }
-    backup_array0() {
-      sudo rsync -aHAXv --numeric-ids --delete --progress \
+    backup_node99() {
+      sudo rsync -aHv --delete --progress \
         --exclude "temporary" \
-        /array0/* nodex:/array0
+        node99:/array0/* /array0
     }
   fi
