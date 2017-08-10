@@ -5,6 +5,13 @@
 
 [ -z "$PS1" ] && return
 
+
+# gpg agent
+# ---------
+
+SSH_AUTH_SOCK=/home/zcecc22/.gnupg/S.gpg-agent.ssh
+export SSH_AUTH_SOCK
+
 # main conf
 # ---------
 
@@ -38,7 +45,7 @@ shopt -s cmdhist
 shopt -s extglob
 shopt -s no_empty_cmd_completion
 
-export EDITOR=vi
+export EDITOR=nano
 
 # paths
 # -----
@@ -73,6 +80,7 @@ alias mkdir='mkdir -pv'
 alias mv="mv -v"
 alias rm="rm -Irv"
 alias screen="if ! screen -r &> /dev/null; then screen; fi"
+alias aria2c="aria2c --enable-dht6=true"
 
 alias autoremove='sudo apt-get --purge autoremove'
 alias clean='sudo apt-get clean'
@@ -88,13 +96,13 @@ alias reboot='sudo reboot'
 
 alias ftp_temporary='ncftpput -z -R node99 /temporary/'
 
-alias decrypt_array0='cryptsetup luksOpen /dev/md/array0 array0; mount /array0/'
+alias decrypt_array0='sudo cryptsetup luksOpen /dev/md/array0 array0; sudo mount /array0'
 
 # functions
 # ---------
 
 # SYSTEMD COMMANDS
-  if which systemctl &>/dev/null; then
+  if which systemctl &> /dev/null; then
     start() {
       sudo systemctl start $1.service
     }
@@ -116,7 +124,7 @@ alias decrypt_array0='cryptsetup luksOpen /dev/md/array0 array0; mount /array0/'
   fi
 
 # MP4C COMMANDS
-  if which ffmpeg &>/dev/null; then
+  if which ffmpeg &> /dev/null; then
     __mp4c() {
       OUTPUT_DIR="$1"
       INPUT_FILE="$2"
@@ -153,7 +161,7 @@ alias decrypt_array0='cryptsetup luksOpen /dev/md/array0 array0; mount /array0/'
   fi
 
 # BACKUP COMMANDS
-  if which rsync &>/dev/null; then
+  if which rsync &> /dev/null; then
     backup_root() {
       sudo rsync -aHAXv --numeric-ids --delete --progress \
         --exclude "/array*/*" \

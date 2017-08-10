@@ -12,6 +12,7 @@
 .xsession-errors*
 
 # Private
+.bin/
 .gnupg
 .password-store/
 .pki/

@@ -2,6 +2,7 @@
 
 apt-get install \
 anacron \
+bash-completion \
 ntp \
 parted \
 cryptsetup \
@@ -17,5 +18,8 @@ intel-microcode \
 dropbear \
 openssh-client \
 openssh-sftp-server \
+ufw \
 sudo \
-rsync
+rsync \
+pass \
+openvpn
