@@ -11,3 +11,5 @@
 	gpgsign = true
 [core]
 	autocrlf = input
+[gpg]
+	program = /usr/bin/gpg2
