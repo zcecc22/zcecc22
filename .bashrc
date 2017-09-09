@@ -97,7 +97,7 @@ alias reboot='sudo reboot'
 
 alias ftp_temporary='ncftpput -z -R node99 /temporary/'
 
-alias decrypt_array0='sudo cryptsetup luksOpen /dev/md/array0 array0; sudo mount /array0'
+alias mount_array0='sudo cryptsetup luksOpen /dev/md/array0 array0; sudo mount /array0'
 
 # functions
 # ---------
@@ -154,10 +154,32 @@ alias decrypt_array0='sudo cryptsetup luksOpen /dev/md/array0 array0; sudo mount
         -f mp4 "${OUTPUT_DIR}/${filename/%.${extension}/.mp4}" &
       wait $!
     }
+    __mp4c_force() {
+      OUTPUT_DIR="$1"
+      INPUT_FILE="$2"
+
+      filename=$(basename "$INPUT_FILE")
+      extension="${filename##*.}"
+
+      vcodec=libx264
+      acodec=aac
+
+      echo "[Converting] ${filename} (${vcodec}/${acodec})"
+      ffmpeg -threads 2 -i "$INPUT_FILE" -strict experimental -map_metadata -1 \
+        -c:v ${vcodec} -preset medium -crf 23 \
+        -c:a ${acodec} -b:a 192k \
+        -f mp4 "${OUTPUT_DIR}/${filename/%.${extension}/.mp4}" &
+      wait $!
+    }
     convert_mp4() {
       export -f __mp4c
       find $1 -type f \( -iname \*.avi -o -iname \*.mkv -o -iname \*.mp4 \) \
         -exec bash -c "__mp4c \"$2\" \"{}\"" \;
+    }
+    convert_mp4_force() {
+      export -f __mp4c_force
+      find $1 -type f \( -iname \*.avi -o -iname \*.mkv -o -iname \*.mp4 \) \
+        -exec bash -c "__mp4c_force \"$2\" \"{}\"" \;
     }
   fi
 
