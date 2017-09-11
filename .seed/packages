@@ -4,6 +4,7 @@ apt-get install \
 anacron \
 bash-completion \
 ntp \
+screen \
 parted \
 cryptsetup \
 mdadm \
