@@ -6,6 +6,7 @@
 .cache/
 .dbus/
 .ICEauthority
+.pki/
 .sudo_as_admin_successful
 .viminfo
 .Xauthority
@@ -13,9 +14,8 @@
 
 # Private
 .bin/
-.gnupg
+.gnupg/
 .password-store/
-.pki/
 .ssh/
 
 # Standard Config Files
@@ -41,13 +41,14 @@
 .thunderbird/
 
 # Storage
-Desktop
-Documents
-Downloads
-Dropbox
-Music
-Pictures
-Projects
-Public
-Templates
-Videos
+[Dd]esktop
+[Dd]ocuments
+[Dd]ownloads
+[Dd]ropbox
+[Gg]it
+[Mm]usic
+[Pp]ictures
+[Pp]rojects
+[Pp]ublic
+[Tt]emplates
+[Vv]ideos
