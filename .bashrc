@@ -173,12 +173,12 @@ alias mount_array0='sudo cryptsetup luksOpen /dev/md/array0 array0; sudo mount /
     }
     convert_mp4() {
       export -f __mp4c
-      find $1 -type f \( -iname \*.avi -o -iname \*.mkv -o -iname \*.mp4 \) \
+      find $1 -type f \( -iname \*.mp4 -o -iname \*.avi -o -iname \*.mkv \) \
         -exec bash -c "__mp4c \"$2\" \"{}\"" \;
     }
     convert_mp4_force() {
       export -f __mp4c_force
-      find $1 -type f \( -iname \*.avi -o -iname \*.mkv -o -iname \*.mp4 \) \
+      find $1 -type f \( -iname \*.mp4 -o -iname \*.avi -o -iname \*.mkv \) \
         -exec bash -c "__mp4c_force \"$2\" \"{}\"" \;
     }
   fi
