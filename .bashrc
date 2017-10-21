@@ -5,7 +5,6 @@
 
 [ -z "$PS1" ] && return
 
-
 # gpg agent
 # ---------
 
@@ -80,8 +79,12 @@ alias ls='ls -hF --color=auto'
 alias mkdir='mkdir -pv'
 alias mv="mv -v"
 alias rm="rm -Irv"
+
 alias screen="if ! screen -d -r &> /dev/null; then screen; fi"
 alias aria2c="aria2c --enable-dht6=true"
+alias vpn="sudo openvpn ~/.vpn/IPredator-CLI-Password-https.conf"
+alias ftp='ncftpput -z -R node99 /temporary/'
+alias mount_array0='sudo cryptsetup luksOpen /dev/md/array0 array0; sudo mount /array0'
 
 alias autoremove='sudo apt-get --purge autoremove'
 alias clean='sudo apt-get clean'
@@ -94,10 +97,6 @@ alias upgrade='sudo apt-get dist-upgrade'
 
 alias halt='sudo shutdown -h now'
 alias reboot='sudo reboot'
-
-alias ftp_temporary='ncftpput -z -R node99 /temporary/'
-
-alias mount_array0='sudo cryptsetup luksOpen /dev/md/array0 array0; sudo mount /array0'
 
 # functions
 # ---------
