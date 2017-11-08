@@ -83,7 +83,6 @@ alias rm="rm -Irv"
 alias screen="if ! screen -d -r &> /dev/null; then screen; fi"
 alias aria2c="aria2c --enable-dht6=true --dscp=8"
 alias vpn="sudo openvpn ~/.vpn/IPredator-CLI-Password-https.conf"
-alias ftp='ncftpput -z -R node99 /temporary/'
 alias mount_array0='sudo cryptsetup luksOpen /dev/md/array0 array0; sudo mount /array0'
 
 alias autoremove='sudo apt-get --purge autoremove'
