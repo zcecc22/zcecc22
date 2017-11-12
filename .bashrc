@@ -8,9 +8,15 @@
 # gpg agent
 # ---------
 
-export SSH_AUTH_SOCK=/home/zcecc22/.gnupg/S.gpg-agent.ssh
-export GPG_TTY=$(tty)
-gpg-connect-agent updatestartuptty /bye &> /dev/null
+case $TERM in
+  xterm*|rxvt*)
+    ;;
+  *)
+    export SSH_AUTH_SOCK=/home/zcecc22/.gnupg/S.gpg-agent.ssh
+    export GPG_TTY=$(tty)
+    gpg-connect-agent updatestartuptty /bye &> /dev/null
+    ;;
+esac
 
 # main conf
 # ---------
