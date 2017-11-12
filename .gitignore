@@ -27,13 +27,12 @@
 .gnome/
 .go/
 .icons/
-.idea/
-.IdeaIC*/
+.[Ii]dea*/
 .java/
 .local/
 .m2/
+.mozilla/
 .nbi/
-.ncftp/
 .netbeans*/
 .node/
 .npm/
