@@ -186,7 +186,7 @@ alias reboot='sudo reboot'
 # BACKUP COMMANDS
   if which rsync &> /dev/null; then
     backup_root() {
-      sudo rsync -aHAXv --numeric-ids --delete --progress \
+      sudo rsync -aHAX --numeric-ids --delete --info=progress2 \
         --exclude "/array*/*" \
         --exclude "/backup/*" \
         --exclude "/dev/*" \
@@ -203,8 +203,9 @@ alias reboot='sudo reboot'
         / nodex:/array0/backup/"$HOSTNAME"/
     }
     backup_node99() {
-      sudo rsync -aHv --delete --progress \
+      sudo rsync -axH --delete --info=progress2 \
         --exclude "temporary" \
+        --exclude "chroot/array*/*" \
         node99:/array0/* /array0
     }
   fi
