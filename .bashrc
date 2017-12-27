@@ -3,7 +3,7 @@
 # bypass
 # ------
 
-[ -z "$PS1" ] && return
+[ -z "${PS1}" ] && return
 
 # gpg agent
 # ---------
@@ -101,45 +101,23 @@ alias reboot='sudo reboot'
 # functions
 # ---------
 
-# SYSTEMD COMMANDS
-  if which systemctl &> /dev/null; then
-    start() {
-      sudo systemctl start $1.service
-    }
-    restart() {
-      sudo systemctl restart $1.service
-    }
-    stop() {
-      sudo systemctl stop $1.service
-    }
-    enable() {
-      sudo systemctl enable $1.service
-    }
-    status() {
-      sudo systemctl status $1.service
-    }
-    disable() {
-      sudo systemctl disable $1.service
-    }
-  fi
-
 # MP4C COMMANDS
   if which ffmpeg &> /dev/null; then
     __mp4c() {
       OUTPUT_DIR="$1"
       INPUT_FILE="$2"
 
-      filename=$(basename "$INPUT_FILE")
+      filename=$(basename "${INPUT_FILE}")
       extension="${filename##*.}"
 
-      if ffprobe "$INPUT_FILE" 2>&1 | grep -q "Video: h264" || ffprobe "$INPUT_FILE" 2>&1 | grep -q "Video: hevc"
+      if ffprobe "${INPUT_FILE}" 2>&1 | grep -q "Video: h264" || ffprobe "${INPUT_FILE}" 2>&1 | grep -q "Video: hevc"
       then
         vcodec=copy
       else
         vcodec=libx265
       fi
 
-      if ffprobe "$INPUT_FILE" 2>&1 | grep -q "Audio: aac"
+      if ffprobe "${INPUT_FILE}" 2>&1 | grep -q "Audio: aac"
       then
         acodec=copy
       else
@@ -147,7 +125,8 @@ alias reboot='sudo reboot'
       fi
 
       echo "[Converting] ${filename} (${vcodec}/${acodec})"
-      ffmpeg -threads 2 -i "$INPUT_FILE" -strict experimental -map_metadata -1 \
+      ffmpeg -threads 2 -i "${INPUT_FILE}" \
+        -strict experimental -map_metadata -1 \
         -c:v ${vcodec} -preset medium -crf 28 \
         -c:a ${acodec} -b:a 192k \
         -f mp4 "${OUTPUT_DIR}/${filename/%.${extension}/.mp4}" &
