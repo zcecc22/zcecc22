@@ -85,7 +85,6 @@ alias rm="rm -Irv"
 alias screen="if ! screen -d -r &> /dev/null; then screen; fi"
 alias aria2c="aria2c --enable-dht6=true --dscp=8"
 alias vpn="sudo openvpn ~/.vpn/IPredator-CLI-Password-https.conf"
-alias mount_array0='sudo cryptsetup luksOpen /dev/md/array0 array0; sudo mount /array0'
 
 alias autoremove='sudo apt-get --purge autoremove'
 alias clean='sudo apt-get clean'
@@ -133,14 +132,14 @@ alias reboot='sudo reboot'
       filename=$(basename "$INPUT_FILE")
       extension="${filename##*.}"
 
-      if ffprobe "$INPUT_FILE" 2>&1 | grep "Video: h264" > /dev/null
+      if ffprobe "$INPUT_FILE" 2>&1 | grep -q "Video: h264" || ffprobe "$INPUT_FILE" 2>&1 | grep -q "Video: hevc"
       then
         vcodec=copy
       else
-        vcodec=libx264
+        vcodec=libx265
       fi
 
-      if ffprobe "$INPUT_FILE" 2>&1 | grep "Audio: aac" > /dev/null
+      if ffprobe "$INPUT_FILE" 2>&1 | grep -q "Audio: aac"
       then
         acodec=copy
       else
@@ -149,24 +148,7 @@ alias reboot='sudo reboot'
 
       echo "[Converting] ${filename} (${vcodec}/${acodec})"
       ffmpeg -threads 2 -i "$INPUT_FILE" -strict experimental -map_metadata -1 \
-        -c:v ${vcodec} -preset medium -crf 23 \
-        -c:a ${acodec} -b:a 192k \
-        -f mp4 "${OUTPUT_DIR}/${filename/%.${extension}/.mp4}" &
-      wait $!
-    }
-    __mp4c_force() {
-      OUTPUT_DIR="$1"
-      INPUT_FILE="$2"
-
-      filename=$(basename "$INPUT_FILE")
-      extension="${filename##*.}"
-
-      vcodec=libx264
-      acodec=aac
-
-      echo "[Converting] ${filename} (${vcodec}/${acodec})"
-      ffmpeg -threads 2 -i "$INPUT_FILE" -strict experimental -map_metadata -1 \
-        -c:v ${vcodec} -preset medium -crf 23 \
+        -c:v ${vcodec} -preset medium -crf 28 \
         -c:a ${acodec} -b:a 192k \
         -f mp4 "${OUTPUT_DIR}/${filename/%.${extension}/.mp4}" &
       wait $!
@@ -175,11 +157,6 @@ alias reboot='sudo reboot'
       export -f __mp4c
       find $1 -type f \( -iname \*.mp4 -o -iname \*.avi -o -iname \*.mkv \) \
         -exec bash -c "__mp4c \"$2\" \"{}\"" \;
-    }
-    convert_mp4_force() {
-      export -f __mp4c_force
-      find $1 -type f \( -iname \*.mp4 -o -iname \*.avi -o -iname \*.mkv \) \
-        -exec bash -c "__mp4c_force \"$2\" \"{}\"" \;
     }
   fi
 
@@ -200,11 +177,10 @@ alias reboot='sudo reboot'
         --exclude "/tmp/*" \
         --exclude "/var/run/*" \
         --exclude "/var/tmp/*" \
-        / nodex:/array0/backup/"$HOSTNAME"/
+        / "nodex:/array0/backup/${HOSTNAME}/"
     }
-    backup_node99() {
+    backup_array0() {
       sudo rsync -axH --delete --info=progress2 \
-        --exclude "temporary" \
         --exclude "chroot/array*/*" \
         --exclude "chroot/backup/*" \
         --exclude "chroot/dev/*" \
@@ -218,6 +194,6 @@ alias reboot='sudo reboot'
         --exclude "chroot/tmp/*" \
         --exclude "chroot/var/run/*" \
         --exclude "chroot/var/tmp/*" \
-        node99:/array0/* /array0
+        /array0/* nodex:/array0
     }
   fi
