@@ -5,6 +5,11 @@
 
 [ -z "${PS1}" ] && return
 
+# chroot
+# ------
+
+[ -e /chroot ] && chroot=true
+
 # gpg agent
 # ---------
 
@@ -35,7 +40,7 @@ BLACK='\[\033[1;30m\]'
 DARKGREY='\[\033[0;30m\]'
 NIL='\[\033[00m\]'
 
-PS1="\n${GREEN}@\h${RED}[\w]${YELLOW}${LIGHTRED}${NIL}$ "
+PS1="\n${GREEN}@\h${YELLOW}${chroot:+(chroot)}${RED}[\w]${NIL}$ "
 
 complete -cf sudo
 [ -e /etc/bash_completion ] && source /etc/bash_completion
