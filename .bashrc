@@ -8,7 +8,7 @@
 # gpg agent
 # ---------
 
-if [ -z "$DISPLAY" ]; then
+if [ -z "${DISPLAY}" ] && which gpg &> /dev/null; then
   export GPG_TTY=$(tty)
   export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
   gpg-connect-agent updatestartuptty /bye &> /dev/null
@@ -82,8 +82,8 @@ alias mkdir='mkdir -pv'
 alias mv="mv -v"
 alias rm="rm -Irv"
 
-alias screen="if ! screen -d -r &> /dev/null; then screen; fi"
 alias aria2c="aria2c --enable-dht6=true --dscp=8"
+alias screen="if ! screen -d -r &> /dev/null; then screen; fi"
 alias vpn="sudo openvpn ~/.vpn/IPredator-CLI-Password-https.conf"
 
 alias autoremove='sudo apt-get --purge autoremove'
@@ -101,7 +101,7 @@ alias reboot='sudo reboot'
 # functions
 # ---------
 
-# MP4C COMMANDS
+# mp4c commands
   if which ffmpeg &> /dev/null; then
     __mp4c() {
       OUTPUT_DIR="$1"
@@ -139,7 +139,7 @@ alias reboot='sudo reboot'
     }
   fi
 
-# BACKUP COMMANDS
+# backup commands
   if which rsync &> /dev/null; then
     backup_root() {
       sudo rsync -axHAX --numeric-ids --delete --info=progress2 \
