@@ -85,7 +85,7 @@ alias diff='diff -u'
 alias ls='ls -hF --color=auto'
 alias mkdir='mkdir -pv'
 alias mv="mv -v"
-alias rm="rm -Irv"
+alias rm="rm -rfv"
 
 alias aria2c="aria2c --enable-dht6=true --dscp=8"
 alias screen="if ! screen -d -r &> /dev/null; then screen; fi"
