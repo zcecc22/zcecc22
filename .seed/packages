@@ -16,11 +16,9 @@ firmware-iwlwifi \
 firmware-realtek \
 firmware-linux \
 intel-microcode \
-dropbear \
 openssh-client \
+openssh-server \
 openssh-sftp-server \
 ufw \
 sudo \
 rsync \
-pass \
-openvpn
