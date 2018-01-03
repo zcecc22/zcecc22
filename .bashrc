@@ -147,7 +147,8 @@ alias reboot='sudo reboot'
 # backup commands
   if which rsync &> /dev/null; then
     backup_root() {
-      sudo rsync -axhAXH --numeric-ids --delete --progress \
+      sudo rsync -axhAXH -e "ssh -T -c aes128-ctr -o Compression=no -x" \
+	--numeric-ids --delete --progress \
         --exclude "/array*/*" \
         --exclude "/backup/*" \
         --exclude "/dev/*" \
@@ -164,7 +165,8 @@ alias reboot='sudo reboot'
         / "nodex:/array0/backup/${HOSTNAME}/"
     }
     backup_array0() {
-      sudo rsync -axhH --delete --progress \
+      sudo rsync -axhH -e "ssh -T -c aes128-ctr -o Compression=no -x" \
+	--delete --progress \
         --exclude "chroot/array*/*" \
         --exclude "chroot/backup/*" \
         --exclude "chroot/dev/*" \
