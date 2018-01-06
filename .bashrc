@@ -88,7 +88,7 @@ alias mv="mv -v"
 alias rm="rm -rfv"
 
 alias aria2c="aria2c --enable-dht6=true --dscp=8"
-alias screen="if ! screen -d -r &> /dev/null; then screen; fi"
+alias screen="screen -T ${TERM} -a -D -R"
 alias vpn="sudo openvpn ~/.vpn/IPredator-CLI-Password-https.conf"
 
 alias autoremove='sudo apt-get --purge autoremove'
@@ -165,6 +165,7 @@ alias reboot='sudo reboot'
     }
     backup_array0() {
       sudo rsync -axhH --delete --progress \
+        --exclude "/array*/backup"
         --exclude "chroot/array*/*" \
         --exclude "chroot/backup/*" \
         --exclude "chroot/dev/*" \
@@ -178,6 +179,6 @@ alias reboot='sudo reboot'
         --exclude "chroot/tmp/*" \
         --exclude "chroot/var/run/*" \
         --exclude "chroot/var/tmp/*" \
-        /array0/* nodex:/array0
+        /array0/ nodex:/array0/
     }
   fi
