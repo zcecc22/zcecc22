@@ -165,7 +165,6 @@ alias reboot='sudo reboot'
     }
     backup_array0() {
       sudo rsync -axhH --delete --progress \
-        --exclude "/array*/backup"
         --exclude "chroot/array*/*" \
         --exclude "chroot/backup/*" \
         --exclude "chroot/dev/*" \
@@ -179,6 +178,7 @@ alias reboot='sudo reboot'
         --exclude "chroot/tmp/*" \
         --exclude "chroot/var/run/*" \
         --exclude "chroot/var/tmp/*" \
+        --exclude "/backup/" \
         /array0/ nodex:/array0/
     }
   fi
