@@ -164,7 +164,7 @@ alias reboot='sudo reboot'
         / "nodex:/array0/backup/${HOSTNAME}/"
     }
     backup_array0() {
-      sudo rsync -axhH --delete --progress \
+      sudo rsync -axhH --numeric-ids --delete --progress \
         --exclude "chroot/array*/*" \
         --exclude "chroot/backup/*" \
         --exclude "chroot/dev/*" \
