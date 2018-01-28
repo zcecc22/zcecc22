@@ -40,7 +40,7 @@
 .thunderbird/
 
 # Storage
-[Cc]hroot
+[Cc]hroot*
 [Dd]esktop
 [Dd]ocuments
 [Dd]ownloads
