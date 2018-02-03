@@ -1,0 +1,2 @@
+/array0	*(ro,all_squash,anonuid=1002,anongid=1002,insecure,no_subtree_check,sync,crossmnt,fsid=root)
+/array0	node99(rw,no_root_squash,insecure,no_subtree_check,sync,crossmnt,fsid=root)

@@ -19,6 +19,6 @@ intel-microcode \
 openssh-client \
 openssh-server \
 openssh-sftp-server \
-ufw \
+nfs-kernel-server \
 sudo \
 rsync \
