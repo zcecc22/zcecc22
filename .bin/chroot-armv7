@@ -1,0 +1,12 @@
+#!/bin/sh
+
+CHROOT_PATH="${HOME}/chroot-armv7"
+
+cat /proc/mounts | grep -q $(readlink -f "${CHROOT_PATH}/array0") || sudo mount --bind /array0 "${CHROOT_PATH}/array0"
+mountpoint -q "${CHROOT_PATH}/backup" || sudo mount --bind /backup "${CHROOT_PATH}/backup"
+mountpoint -q "${CHROOT_PATH}/dev" || sudo mount --bind /dev "${CHROOT_PATH}/dev"
+mountpoint -q "${CHROOT_PATH}/dev/pts" || sudo mount --bind /dev/pts "${CHROOT_PATH}/dev/pts"
+mountpoint -q "${CHROOT_PATH}/proc" || sudo mount --bind /proc "${CHROOT_PATH}/proc"
+mountpoint -q "${CHROOT_PATH}/tmp" || sudo mount --bind /tmp "${CHROOT_PATH}/tmp"
+
+sudo chroot "${CHROOT_PATH}" /chroot
