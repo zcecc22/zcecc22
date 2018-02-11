@@ -89,7 +89,6 @@ alias rm="rm -rfv"
 
 alias aria2c="aria2c --enable-dht6=true --dscp=8"
 alias screen="screen -T ${TERM} -a -D -R"
-alias vpn="sudo openvpn ~/.vpn/IPredator-CLI-Password-https.conf"
 
 alias autoremove='sudo apt-get --purge autoremove'
 alias clean='sudo apt-get clean'
@@ -147,7 +146,7 @@ alias reboot='sudo reboot'
 # backup commands
   if which rsync &> /dev/null; then
     backup_root() {
-      sudo rsync -axhAXH --numeric-ids --delete --progress \
+      sudo rsync -axhH --numeric-ids --delete --progress \
         --exclude "/array*/*" \
         --exclude "/backup/*" \
         --exclude "/dev/*" \
