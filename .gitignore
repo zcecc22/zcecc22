@@ -32,6 +32,7 @@
 .local/
 .m2/
 .mozilla/
+.muttrc
 .nbi/
 .netbeans*/
 .node/
