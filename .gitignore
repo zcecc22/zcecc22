@@ -5,6 +5,7 @@
 .*ash_history
 .cache/
 .dbus/
+.emulator_console_auth_token
 .ICEauthority
 .pki/
 .sudo_as_admin_successful
@@ -19,6 +20,7 @@
 .ssh/
 
 # Standard Config Files
+.[Aa]ndroid*/
 .atom/
 .bogofilter/
 .config/
@@ -26,6 +28,7 @@
 .gconf/
 .gnome/
 .go/
+.gradle/
 .icons/
 .[Ii]dea*/
 .java/
@@ -41,6 +44,7 @@
 .thunderbird/
 
 # Storage
+[Aa]ndroid
 [Cc]hroot*
 [Dd]esktop
 [Dd]ocuments
