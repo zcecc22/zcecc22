@@ -15,4 +15,5 @@ firmware-linux \
 intel-microcode \
 dropbear \
 sudo \
-vblade-persist
+rsync \
+samba

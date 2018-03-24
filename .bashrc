@@ -160,24 +160,6 @@ alias reboot='sudo reboot'
         --exclude "/tmp/*" \
         --exclude "/var/run/*" \
         --exclude "/var/tmp/*" \
-        / "node99:/array0/backup/${HOSTNAME}/"
-    }
-    backup_array0() {
-      mountpoint -q /array2 && sudo rsync -axhH \
-        --numeric-ids --delete --progress \
-        --exclude "chroot*/array*/*" \
-        --exclude "chroot*/backup/*" \
-        --exclude "chroot*/dev/*" \
-        --exclude "chroot*/export/*" \
-        --exclude "chroot*/media/*" \
-        --exclude "chroot*/mnt/*" \
-        --exclude "chroot*/proc/*" \
-        --exclude "chroot*/run/*" \
-        --exclude "chroot*/swapfile" \
-        --exclude "chroot*/sys/*" \
-        --exclude "chroot*/tmp/*" \
-        --exclude "chroot*/var/run/*" \
-        --exclude "chroot*/var/tmp/*" \
-        /array0/ /array2/
+        / "nodex:/array0/backup/${HOSTNAME}/"
     }
   fi

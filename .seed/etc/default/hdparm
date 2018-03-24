@@ -1,2 +1,2 @@
-harddisks="/dev/sd[abcd]"
+harddisks="/dev/sd[abcde]"
 hdparm_opts="-S240"
