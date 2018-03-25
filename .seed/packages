@@ -13,6 +13,7 @@ firmware-iwlwifi \
 firmware-realtek \
 firmware-linux \
 intel-microcode \
+thermald \
 openssh-server \
 openssh-client \
 sudo \
