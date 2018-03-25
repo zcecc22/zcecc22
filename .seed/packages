@@ -13,7 +13,8 @@ firmware-iwlwifi \
 firmware-realtek \
 firmware-linux \
 intel-microcode \
-dropbear \
+openssh-server \
+openssh-client \
 sudo \
 rsync \
 samba
