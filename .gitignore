@@ -1,5 +1,8 @@
 # ~/.gitignore
 
+*
+!.*
+
 # Temporary Files
 *.pid
 .*ash_history
