@@ -131,6 +131,7 @@ alias reboot='sudo reboot'
       echo "[Converting] ${filename} (${vcodec}/${acodec})"
       ffmpeg -threads 2 -i "${INPUT_FILE}" \
         -strict experimental -map_metadata -1 \
+        -map 0 -map -0:s \
         -c:v ${vcodec} -preset medium -crf 28 \
         -c:a ${acodec} -b:a 192k \
         -f mp4 "${OUTPUT_DIR}/${filename/%.${extension}/.mp4}" &
