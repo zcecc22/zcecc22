@@ -1,5 +1,15 @@
-HostKey			/etc/ssh/ssh_host_ed25519_key
-HostKey			/etc/ssh/ssh_host_rsa_key
-HostKey			/etc/ssh/ssh_host_ecdsa_key
-Subsystem		sftp  /usr/lib/sftp-server
-PermitRootLogin		without-password
+HostKey                 /etc/ssh/ssh_host_ed25519_key
+HostKey                 /etc/ssh/ssh_host_rsa_key
+HostKey                 /etc/ssh/ssh_host_ecdsa_key
+PasswordAuthentication  no
+PermitRootLogin         no
+Subsystem               sftp  /usr/lib/sftp-server
+
+Match Group             guest
+ForceCommand            internal-sftp
+PasswordAuthentication  yes
+ChrootDirectory         /array0
+PermitTunnel            no
+AllowAgentForwarding    no
+AllowTcpForwarding      no
+X11Forwarding           no
