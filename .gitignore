@@ -18,6 +18,7 @@
 
 # Private
 .bin/
+.fetchmailrc
 .gnupg/
 .password-store/
 .ssh/
