@@ -1,7 +1,7 @@
 # ~/.gitignore
 
-*
-!.*
+/*
+!/.*
 
 # Temporary Files
 *.pid
@@ -46,18 +46,3 @@
 .npm/
 .themes/
 .thunderbird/
-
-# Storage
-[Aa]ndroid
-[Cc]hroot*
-[Dd]esktop
-[Dd]ocuments
-[Dd]ownloads
-[Dd]ropbox
-[Gg]it
-[Mm]usic
-[Pp]ictures
-[Pp]rojects
-[Pp]ublic
-[Tt]emplates
-[Vv]ideos
