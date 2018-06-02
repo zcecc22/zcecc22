@@ -5,11 +5,6 @@
 
 [ -z "${PS1}" ] && return
 
-# chroot
-# ------
-
-[ -e /chroot ] && chroot=true
-
 # gpg agent
 # ---------
 
@@ -40,7 +35,7 @@ BLACK='\[\033[1;30m\]'
 DARKGREY='\[\033[0;30m\]'
 NIL='\[\033[00m\]'
 
-PS1="\n${GREEN}@\h${YELLOW}${chroot:+(chroot)}${RED}[\w]${NIL}$ "
+PS1="\n${GREEN}@\h${RED}[\w]${NIL}$ "
 
 complete -cf sudo
 [ -e /etc/bash_completion ] && source /etc/bash_completion
@@ -59,10 +54,7 @@ umask 022
 # paths
 # -----
 
-export GOPATH="${HOME}/.go"
-export NODEPATH="${HOME}/.node/bin"
-export NODEPKG="${HOME}/.node/pkg"
-export PATH="${HOME}/.bin:${GOPATH}/bin:${NODEPATH}/bin:${NODEPKG}/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
+export PATH="${HOME}/.bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
 
 # locale
 # ------
@@ -89,7 +81,6 @@ alias mkdir='mkdir -pv'
 alias mv="mv -v"
 alias rm="rm -rfv"
 
-alias aria2c="aria2c --enable-dht6=true --dscp=8"
 alias screen="screen -T ${TERM} -a -D -R"
 
 alias autoremove='sudo apt-get --purge autoremove'
@@ -106,45 +97,6 @@ alias reboot='sudo reboot'
 
 # functions
 # ---------
-
-# mp4c commands
-  if which ffmpeg &> /dev/null; then
-    __mp4c() {
-      OUTPUT_DIR="$1"
-      INPUT_FILE="$2"
-
-      filename=$(basename "${INPUT_FILE}")
-      extension="${filename##*.}"
-
-      if ffprobe "${INPUT_FILE}" 2>&1 | grep -q "Video: h264" || ffprobe "${INPUT_FILE}" 2>&1 | grep -q "Video: hevc"
-      then
-        vcodec=copy
-      else
-        vcodec=libx265
-      fi
-
-      if ffprobe "${INPUT_FILE}" 2>&1 | grep -q "Audio: aac"
-      then
-        acodec=copy
-      else
-        acodec=aac
-      fi
-
-      echo "[Converting] ${filename} (${vcodec}/${acodec})"
-      ffmpeg -threads 2 -i "${INPUT_FILE}" \
-        -strict experimental -map_metadata -1 \
-        -map 0 -map -0:s \
-        -c:v ${vcodec} -preset medium -crf 28 \
-        -c:a ${acodec} -b:a 192k \
-        -f mp4 "${OUTPUT_DIR}/${filename/%.${extension}/.mp4}" &
-      wait $!
-    }
-    convert_mp4() {
-      export -f __mp4c
-      find $1 -type f \( -iname \*.mp4 -o -iname \*.avi -o -iname \*.mkv \) \
-        -exec bash -c "__mp4c \"$2\" \"{}\"" \;
-    }
-  fi
 
 # backup commands
   if which rsync &> /dev/null; then
