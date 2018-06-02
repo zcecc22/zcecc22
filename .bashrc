@@ -54,6 +54,8 @@ shopt -s no_empty_cmd_completion
 
 export EDITOR=nano
 
+umask 022
+
 # paths
 # -----
 
