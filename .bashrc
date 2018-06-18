@@ -49,7 +49,14 @@ shopt -s no_empty_cmd_completion
 
 export EDITOR=nano
 
-umask 022
+# wsl fix
+# -------
+
+if grep -q Microsoft /proc/version; then
+  if [ "$(umask)" == '0000' ]; then
+    umask 0022
+  fi
+fi
 
 # paths
 # -----
