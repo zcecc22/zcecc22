@@ -90,14 +90,14 @@ alias rm="rm -rfv"
 
 alias screen="screen -T ${TERM} -a -D -R"
 
-alias autoremove='sudo apt-get --purge autoremove'
-alias clean='sudo apt-get clean'
-alias install='sudo apt-get install'
+alias autoremove='sudo apt --purge autoremove'
+alias clean='sudo apt clean'
+alias install='sudo apt install'
 alias mark='sudo apt-mark auto'
-alias remove='sudo apt-get --purge remove'
+alias remove='sudo apt --purge remove'
 alias search='apt-cache search'
-alias update='sudo apt-get update'
-alias upgrade='sudo apt-get dist-upgrade'
+alias update='sudo apt update'
+alias upgrade='sudo apt dist-upgrade'
 
 alias halt='sudo shutdown -h now'
 alias reboot='sudo reboot'
