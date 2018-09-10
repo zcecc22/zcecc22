@@ -9,6 +9,7 @@
 .cache/
 .dbus/
 .emulator_console_auth_token
+.face*
 .ICEauthority
 .pki/
 .sudo_as_admin_successful
@@ -33,9 +34,11 @@
 .gnome/
 .go/
 .gradle/
+.gtkrc-2.0
 .icons/
 .[Ii]dea*/
 .java/
+.kde/
 .local/
 .m2/
 .mozilla/
