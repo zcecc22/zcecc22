@@ -17,7 +17,6 @@ thermald \
 avahi-daemon \
 openssh-server \
 openssh-client \
-mosh \
 sudo \
 rsync \
 samba
