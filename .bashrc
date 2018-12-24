@@ -61,6 +61,7 @@ fi
 # paths
 # -----
 
+export GOPATH="${HOME}/.go"
 export PATH="${HOME}/.bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
 
 # locale
@@ -102,8 +103,47 @@ alias upgrade='sudo apt dist-upgrade'
 alias halt='sudo shutdown -h now'
 alias reboot='sudo reboot'
 
+alias aria2c="aria2c --enable-dht6=true --dscp=8"
+alias vpn="sudo openvpn ~/.vpn/IPredator-CLI-Password-default.conf"
+
 # functions
 # ---------
+
+# mp4c commands
+  if which ffmpeg &> /dev/null; then
+    __mp4c() {
+      OUTPUT_DIR="$1"
+      INPUT_FILE="$2"
+      filename=$(basename "${INPUT_FILE}")
+      extension="${filename##*.}"
+      if ffprobe "${INPUT_FILE}" 2>&1 | grep -q "Video: h264" || \
+        ffprobe "${INPUT_FILE}" 2>&1 | grep -q "Video: hevc"
+      then
+        vcodec=copy
+      else
+        vcodec=libx265
+      fi
+      if ffprobe "${INPUT_FILE}" 2>&1 | grep -q "Audio: aac"
+      then
+        acodec=copy
+      else
+        acodec=aac
+      fi
+      echo "[Converting] ${filename} (${vcodec}/${acodec})"
+      ffmpeg -threads 2 -i "${INPUT_FILE}" \
+        -strict experimental -map_metadata -1 \
+        -map 0 -map -0:s \
+        -c:v ${vcodec} -preset medium -crf 28 \
+        -c:a ${acodec} -b:a 192k \
+        -f mp4 "${OUTPUT_DIR}/${filename/%.${extension}/.mp4}" &
+      wait $!
+    }
+    convert_mp4() {
+      export -f __mp4c
+      find $1 -type f \( -iname \*.mp4 -o -iname \*.avi -o -iname \*.mkv \) \
+        -exec bash -c "__mp4c \"$2\" \"{}\"" \;
+    }
+  fi
 
 # backup commands
   if which rsync &> /dev/null; then
@@ -122,6 +162,6 @@ alias reboot='sudo reboot'
         --exclude "/tmp/*" \
         --exclude "/var/run/*" \
         --exclude "/var/tmp/*" \
-        / "nodex:/array0/backup/${HOSTNAME}/"
+        / "/array0/backup/${HOSTNAME}/"
     }
   fi

@@ -4,12 +4,3 @@ HostKey                 /etc/ssh/ssh_host_ecdsa_key
 PasswordAuthentication  no
 PermitRootLogin         without-password
 Subsystem               sftp  /usr/lib/sftp-server
-
-Match Group             guest
-ForceCommand            internal-sftp
-PasswordAuthentication  yes
-ChrootDirectory         /array0
-PermitTunnel            no
-AllowAgentForwarding    no
-AllowTcpForwarding      no
-X11Forwarding           no
