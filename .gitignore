@@ -9,6 +9,7 @@
 .cache/
 .dbus/
 .emulator_console_auth_token
+.esd_auth
 .face*
 .ICEauthority
 .pki/
