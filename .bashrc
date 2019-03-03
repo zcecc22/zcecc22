@@ -93,74 +93,15 @@ alias screen="screen -T ${TERM} -a -D -R"
 alias autoremove='sudo apt --purge autoremove'
 alias clean='sudo apt clean'
 alias install='sudo apt install'
-alias mark='sudo apt-mark auto'
 alias remove='sudo apt --purge remove'
-alias search='apt-cache search'
+alias search='sudo apt search'
 alias update='sudo apt update'
 alias upgrade='sudo apt dist-upgrade'
 
 alias halt='sudo shutdown -h now'
 alias reboot='sudo reboot'
 
-alias aria2c="aria2c --enable-dht6=true --dscp=8"
-alias vpn="sudo openvpn ~/.vpn/IPredator-CLI-Password-default.conf"
+# scripts
+# -------
 
-# functions
-# ---------
-
-# mp4c commands
-  if which ffmpeg &> /dev/null; then
-    __mp4c() {
-      OUTPUT_DIR="$1"
-      INPUT_FILE="$2"
-      filename=$(basename "${INPUT_FILE}")
-      extension="${filename##*.}"
-      if ffprobe "${INPUT_FILE}" 2>&1 | grep -q "Video: h264" || \
-        ffprobe "${INPUT_FILE}" 2>&1 | grep -q "Video: hevc"
-      then
-        vcodec=copy
-      else
-        vcodec=libx265
-      fi
-      if ffprobe "${INPUT_FILE}" 2>&1 | grep -q "Audio: aac"
-      then
-        acodec=copy
-      else
-        acodec=aac
-      fi
-      echo "[Converting] ${filename} (${vcodec}/${acodec})"
-      ffmpeg -threads 2 -i "${INPUT_FILE}" \
-        -strict experimental -map_metadata -1 \
-        -map 0 -map -0:s \
-        -c:v ${vcodec} -preset medium -crf 28 \
-        -c:a ${acodec} -b:a 192k \
-        -f mp4 "${OUTPUT_DIR}/${filename/%.${extension}/.mp4}" &
-      wait $!
-    }
-    convert_mp4() {
-      export -f __mp4c
-      find $1 -type f \( -iname \*.mp4 -o -iname \*.avi -o -iname \*.mkv \) \
-        -exec bash -c "__mp4c \"$2\" \"{}\"" \;
-    }
-  fi
-
-# backup commands
-  if which rsync &> /dev/null; then
-    backup_root() {
-      sudo rsync -axhH --numeric-ids --delete --progress \
-        --exclude "/array*/*" \
-        --exclude "/backup/*" \
-        --exclude "/dev/*" \
-        --exclude "/export/*" \
-        --exclude "/media/*" \
-        --exclude "/mnt/*" \
-        --exclude "/proc/*" \
-        --exclude "/run/*" \
-        --exclude "/swapfile" \
-        --exclude "/sys/*" \
-        --exclude "/tmp/*" \
-        --exclude "/var/run/*" \
-        --exclude "/var/tmp/*" \
-        / "/array0/backup/${HOSTNAME}/"
-    }
-  fi
+[ -e ~/.scripts ] && source ~/.scripts/*
