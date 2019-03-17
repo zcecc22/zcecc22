@@ -48,5 +48,6 @@
 .netbeans*/
 .node/
 .npm/
+.nvm/
 .themes/
 .thunderbird/

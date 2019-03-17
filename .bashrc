@@ -104,4 +104,4 @@ alias reboot='sudo reboot'
 # scripts
 # -------
 
-[ -e ~/.scripts ] && source ~/.scripts/*
+[ -e ~/.scripts ] && for s in ~/.scripts/*; do source $s; done
