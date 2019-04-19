@@ -3,3 +3,4 @@ LABEL=ROOT      /         ext4    noatime,nodiratime,data=writeback,barrier=0,er
 LABEL=SWAP      none      swap    defaults                                                                                    0 0
 LABEL=key0      /key0     ext4    noatime,nodiratime,data=writeback,barrier=0,errors=remount-ro,commit=3600                   0 2
 LABEL=array0    /array0   ext4    noatime,nodiratime,data=writeback,barrier=0,errors=remount-ro,commit=3600                   0 2
+LABEL=array1    /array1   ext4    noatime,nodiratime,data=writeback,barrier=0,errors=remount-ro,commit=3600                   0 2
