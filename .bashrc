@@ -101,6 +101,9 @@ alias upgrade='sudo apt dist-upgrade'
 alias halt='sudo shutdown -h now'
 alias reboot='sudo reboot'
 
+alias aria2c="aria2c -Z --enable-dht6=true --dscp=8"
+alias vpn="sudo openvpn ~/.vpn/IPredator-CLI-Password-default.conf"
+
 # scripts
 # -------
 
