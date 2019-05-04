@@ -7,6 +7,7 @@ if which rsync &> /dev/null; then
       --exclude "/backup/*" \
       --exclude "/dev/*" \
       --exclude "/export/*" \
+      --exclude "/key*/*" \
       --exclude "/media/*" \
       --exclude "/mnt/*" \
       --exclude "/proc/*" \
