@@ -3,6 +3,8 @@
 apt-get install \
 anacron \
 bash-completion \
+cryptsetup \
+locales \
 ntp \
 mdadm \
 hdparm \
