@@ -20,5 +20,4 @@ avahi-daemon \
 openssh-server \
 openssh-client \
 sudo \
-rsync \
-samba
+rsync
