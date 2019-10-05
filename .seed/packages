@@ -20,4 +20,7 @@ avahi-daemon \
 openssh-server \
 openssh-client \
 sudo \
-rsync
+rsync \
+nginx \
+certbot \
+aria2
