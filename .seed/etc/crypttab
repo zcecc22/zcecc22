@@ -1,2 +1,2 @@
-array0	UUID=03b1397b-25d8-4c0b-897c-9b457ebfb946	/key0/key
-array1	UUID=73f61369-23cc-448b-b725-5f4fc675a914	/key0/key
+array0	UUID=03b1397b-25d8-4c0b-897c-9b457ebfb946	/key0/key	luks
+array1	UUID=73f61369-23cc-448b-b725-5f4fc675a914	/key0/key	luks
