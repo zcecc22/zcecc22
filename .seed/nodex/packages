@@ -23,4 +23,6 @@ sudo \
 rsync \
 nginx \
 certbot \
-aria2
+aria2 \
+resolvconf \
+dnsmasq
