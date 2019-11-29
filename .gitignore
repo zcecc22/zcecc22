@@ -13,6 +13,8 @@
 .face*
 .ICEauthority
 .pki/
+.pub-cache/
+.stagehand
 .sudo_as_admin_successful
 .viminfo
 .Xauthority
@@ -20,6 +22,7 @@
 
 # Private
 .bin/
+.cert/
 .fetchmailrc
 .gnupg/
 .password-store/
@@ -32,6 +35,7 @@
 .config/
 .dropbox*/
 .dmrc
+.flutter/
 .gconf/
 .gnome/
 .go/
