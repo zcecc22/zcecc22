@@ -1,5 +1,0 @@
-#!/bin/sh
-
-if mountpoint -q /array0 && mountpoint -q /array1; then
-  rsync -av --delete /array0/ /array1/
-fi

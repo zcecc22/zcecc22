@@ -21,8 +21,4 @@ openssh-server \
 openssh-client \
 sudo \
 rsync \
-nginx \
-certbot \
-aria2 \
-resolvconf \
-dnsmasq
+resolvconf
