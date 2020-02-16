@@ -17,6 +17,7 @@
 .stagehand
 .sudo_as_admin_successful
 .viminfo
+.vscode/
 .Xauthority
 .xsession-errors*
 
@@ -33,9 +34,10 @@
 .atom/
 .bogofilter/
 .config/
+.dart*/
 .dropbox*/
 .dmrc
-.flutter/
+.flutter*
 .gconf/
 .gnome/
 .go/
