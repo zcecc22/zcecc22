@@ -23,6 +23,8 @@
 .xsession-errors*
 
 # Private
+.aws
+.azure
 .bin/
 .cert/
 .fetchmailrc
@@ -36,6 +38,7 @@
 .bogofilter/
 .config/
 .dart*/
+.docker/
 .dropbox*/
 .dmrc
 .flutter*
