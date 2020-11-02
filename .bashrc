@@ -14,6 +14,11 @@ if which gpg &> /dev/null; then
   gpg-connect-agent updatestartuptty /bye &> /dev/null
 fi
 
+# export display wsl
+# ------------------
+
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | cut -d ' ' -f 2)":0.0"
+
 # main conf
 # ---------
 
