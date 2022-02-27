@@ -12,6 +12,7 @@
 .esd_auth
 .face*
 .ICEauthority
+.ivy2/
 .pki/
 .pub-cache/
 .python_history
@@ -64,4 +65,6 @@
 .nvm/
 .themes/
 .thunderbird/
+.virtualenvs
 .vscode-server/
+.wget-hsts
