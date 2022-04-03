@@ -14,11 +14,6 @@ if which gpg &> /dev/null; then
   gpg-connect-agent updatestartuptty /bye &> /dev/null
 fi
 
-# export display wsl
-# ------------------
-
-export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | cut -d ' ' -f 2)":0.0"
-
 # main conf
 # ---------
 
@@ -54,19 +49,11 @@ shopt -s no_empty_cmd_completion
 
 export EDITOR=nano
 
-# wsl fix
-# -------
-
-if grep -q Microsoft /proc/version; then
-  if [ "$(umask)" == '0000' ]; then
-    umask 0022
-  fi
-fi
-
 # paths
 # -----
 
-export PATH="${HOME}/.bin:${HOME}/.local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
+export GOPATH="${HOME}/projects/go"
+export PATH="${GOPATH}/bin:${HOME}/.bin:${HOME}/.local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
 
 # locale
 # ------
