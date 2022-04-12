@@ -52,8 +52,9 @@ export EDITOR=nano
 # paths
 # -----
 
-export GOPATH="${HOME}/projects/go"
-export PATH="${GOPATH}/bin:${HOME}/.bin:${HOME}/.local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
+export GOROOT="/usr/local/go"
+export GOPATH="${HOME}/.go"
+export PATH="${GOROOT}/bin:${GOPATH}/bin:${HOME}/.bin:${HOME}/.local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
 
 # locale
 # ------
