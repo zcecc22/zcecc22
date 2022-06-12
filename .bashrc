@@ -54,7 +54,13 @@ export EDITOR=nano
 
 export GOROOT="/usr/local/go"
 export GOPATH="${HOME}/.go"
-export PATH="${GOROOT}/bin:${GOPATH}/bin:${HOME}/.bin:${HOME}/.local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
+export PYENV_ROOT="${HOME}/.pyenv"
+
+export PATH="${GOROOT}/bin:${GOPATH}/bin:${PYENV_ROOT}/bin:${HOME}/.bin:${HOME}/.local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
 
 # locale
 # ------
