@@ -47,14 +47,14 @@ shopt -s cmdhist
 shopt -s extglob
 shopt -s no_empty_cmd_completion
 
-export EDITOR=nano
+export EDITOR=vim
 
 # paths
 # -----
 
+export PYENV_ROOT="/usr/local/pyenv"
 export GOROOT="/usr/local/go"
 export GOPATH="${HOME}/.go"
-export PYENV_ROOT="${HOME}/.pyenv"
 
 export PATH="${GOROOT}/bin:${GOPATH}/bin:${PYENV_ROOT}/bin:${HOME}/.bin:${HOME}/.local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
 
@@ -87,7 +87,7 @@ alias mkdir='mkdir -pv'
 alias mv="mv -v"
 alias rm="rm -rfv"
 
-alias screen="screen -T ${TERM} -a -D -R"
+alias tmux="tmux new -As0"
 
 alias autoremove='sudo apt --purge autoremove'
 alias clean='sudo apt clean'
@@ -99,8 +99,3 @@ alias upgrade='sudo apt dist-upgrade'
 
 alias halt='sudo shutdown -h now'
 alias reboot='sudo reboot'
-
-# scripts
-# -------
-
-[ -e ~/.scripts ] && for s in ~/.scripts/*; do source $s; done

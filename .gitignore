@@ -38,6 +38,7 @@
 .atom/
 .bogofilter/
 .config/
+.clojure/
 .dart*/
 .docker/
 .dropbox*/
@@ -54,6 +55,7 @@
 .java/
 .jupyter/
 .kde/
+.lein/
 .local/
 .m2/
 .mozilla/
