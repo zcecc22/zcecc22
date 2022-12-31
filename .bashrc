@@ -37,6 +37,8 @@ NIL='\[\033[00m\]'
 
 PS1="\n${GREEN}@\h${RED}[\w]${NIL}$ "
 
+[ -e "${HOME}/.dir_colors" ] && eval `dircolors "${HOME}/.dir_colors"`
+
 complete -cf sudo
 [ -e /etc/bash_completion ] && source /etc/bash_completion
 
@@ -52,9 +54,9 @@ export EDITOR=vim
 # paths
 # -----
 
-export PYENV_ROOT="/usr/local/pyenv"
 export GOROOT="/usr/local/go"
 export GOPATH="${HOME}/.go"
+export PYENV_ROOT="${HOME}/.pyenv"
 
 export PATH="${GOROOT}/bin:${GOPATH}/bin:${PYENV_ROOT}/bin:${HOME}/.bin:${HOME}/.local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
 
