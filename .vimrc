@@ -94,12 +94,6 @@ set background=dark
 colorscheme solarized
 set termguicolors
 
-" Force true color in screen/tmux
-if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-endif
-
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
