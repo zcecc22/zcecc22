@@ -141,6 +141,17 @@ map <leader>h :bprevious<cr>
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
+" NERDTree Settings
+map <leader>p :NERDTreeToggleVCS<cr>
+let NERDTreeShowHidden=1
+let NERDTreeQuitOnOpen=1
+let NERDTreeMinimalUI=1
+let NERDTreeDirArrows=1
+
+" Airline Settings
+let g:airline#extensions#tabline#enabled=1
+let g:airline_powerline_fonts=1
+
 " Specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab
