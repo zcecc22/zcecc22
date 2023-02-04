@@ -54,7 +54,7 @@ export EDITOR=vim
 # paths
 # -----
 
-export GOROOT="/usr/local/go"
+export GOROOT='/usr/local/go'
 export GOPATH="${HOME}/.go"
 export PYENV_ROOT="${HOME}/.pyenv"
 
@@ -81,15 +81,16 @@ export HISTIGNORE='&:ls:ll:la:cd:exit:clear:history'
 # aliases
 # -------
 
-alias cp="cp -rv"
-alias df="df -h"
+alias cp='cp -rv'
+alias df='df -h'
 alias diff='diff -u'
 alias ls='ls -hF --color=auto'
 alias mkdir='mkdir -pv'
-alias mv="mv -v"
-alias rm="rm -rfv"
+alias mv='mv -v'
+alias rm='rm -rfv'
 
-alias tmux="tmux new -As0"
+alias tmux='tmux new -As0'
+alias gpg-keyfromcard='gpg-connect-agent "scd serialno" "learn --force" /bye'
 
 alias autoremove='sudo apt --purge autoremove'
 alias clean='sudo apt clean'
