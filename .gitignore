@@ -13,6 +13,7 @@
 .face*
 .ICEauthority
 .ivy2/
+.lesshst
 .pki/
 .pub-cache/
 .python_history
@@ -20,6 +21,7 @@
 .sudo_as_admin_successful
 .viminfo
 .vscode/
+.wget-hsts
 .Xauthority
 .xsession-errors*
 
@@ -56,6 +58,7 @@
 .jupyter/
 .kde/
 .lein/
+.lesshst
 .local/
 .m2/
 .mozilla/
@@ -70,4 +73,3 @@
 .thunderbird/
 .virtualenvs
 .vscode-server/
-.wget-hsts
