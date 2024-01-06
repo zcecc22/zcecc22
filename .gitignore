@@ -30,6 +30,8 @@
 .azure
 .bin/
 .cert/
+.config/micro/backups/
+.config/micro/buffers/
 .fetchmailrc
 .gnupg/
 .password-store/
@@ -39,7 +41,6 @@
 .[Aa]ndroid*/
 .atom/
 .bogofilter/
-.config/
 .clojure/
 .dart*/
 .docker/
