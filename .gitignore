@@ -68,6 +68,7 @@
 .node/
 .npm/
 .nvm/
+.ploomber/
 .pyenv/
 .themes/
 .thunderbird/
