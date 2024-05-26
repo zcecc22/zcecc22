@@ -5,7 +5,7 @@
 
 # Temporary Files
 *.pid
-.*ash_history
+.*_history
 .cache/
 .dbus/
 .emulator_console_auth_token
@@ -16,7 +16,6 @@
 .lesshst
 .pki/
 .pub-cache/
-.python_history
 .stagehand
 .sudo_as_admin_successful
 .viminfo
