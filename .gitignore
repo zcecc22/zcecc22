@@ -70,7 +70,6 @@
 .npm/
 .nvm/
 .ploomber/
-.pyenv/
 .themes/
 .thunderbird/
 .virtualenvs

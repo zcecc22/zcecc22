@@ -56,9 +56,12 @@ export EDITOR=micro
 
 export GOROOT="${HOME}/.local/go"
 export GOPATH="${HOME}/.go"
-export PYENV_ROOT="${HOME}/.pyenv"
+export PYENV_ROOT="${HOME}/.local/pyenv"
 
 export PATH="${GOROOT}/bin:${GOPATH}/bin:${PYENV_ROOT}/bin:${HOME}/.bin:${HOME}/.local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
+
+# pyenv
+# -----
 
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
