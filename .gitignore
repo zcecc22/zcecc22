@@ -41,6 +41,7 @@
 .atom/
 .bogofilter/
 .clojure/
+.config/go/
 .dart*/
 .docker/
 .dropbox*/
@@ -71,5 +72,6 @@
 .ploomber/
 .themes/
 .thunderbird/
+.vim/pack/
 .virtualenvs
 .vscode-server/
