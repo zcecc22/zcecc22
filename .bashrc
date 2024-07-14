@@ -49,14 +49,12 @@ shopt -s cmdhist
 shopt -s extglob
 shopt -s no_empty_cmd_completion
 
-export EDITOR=micro
+export EDITOR=vim
 
 # paths
 # -----
 
-export GOPATH="${HOME}/.go"
-export GOROOT="${HOME}/.local/go"
-export PATH="${GOPATH}/bin:${GOROOT}/bin:${HOME}/.bin:${HOME}/.local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
+export PATH="${HOME}/.bin:${HOME}/.local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
 
 # locale
 # ------
