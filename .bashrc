@@ -80,9 +80,11 @@ alias ls='ls -hF --color=auto'
 alias mkdir='mkdir -pv'
 alias mv='mv -v'
 alias rm='rm -rfv'
+alias so="source ${HOME}/.bashrc"
 
 alias tmux='tmux new -As0'
-alias gpg-keyfromcard='gpg-connect-agent "scd serialno" "learn --force" /bye'
+alias gpg-key-from-card='gpg-connect-agent "scd serialno" "learn --force" /bye'
+alias ssh-base-host='ssh -p 23 root@localhost'
 
 alias autoremove='sudo apt --purge autoremove'
 alias clean='sudo apt clean'
