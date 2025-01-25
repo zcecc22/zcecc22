@@ -1,0 +1,2 @@
+#!/bin/sh
+docker exec -it aegis-aegis-1 su - zcecc22

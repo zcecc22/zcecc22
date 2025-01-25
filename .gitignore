@@ -27,10 +27,8 @@
 # Private
 .aws
 .azure
-.bin/
 .cert/
-.config/micro/backups/
-.config/micro/buffers/
+.config/
 .fetchmailrc
 .gnupg/
 .password-store/
