@@ -95,3 +95,8 @@ alias upgrade='sudo apt dist-upgrade'
 
 alias halt='sudo shutdown -h now'
 alias reboot='sudo reboot'
+
+# auto-launch
+# -----------
+
+[ -z "${TMUX}" ] && tmux
