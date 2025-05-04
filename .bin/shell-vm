@@ -1,2 +1,2 @@
 #!/bin/sh
-docker exec -it base-host-base-host-1 su - zcecc22
+ssh -p2222 zcecc22@localhost
