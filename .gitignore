@@ -28,7 +28,6 @@
 .aws
 .azure
 .cert/
-.config/
 .fetchmailrc
 .gnupg/
 .password-store/
@@ -39,6 +38,7 @@
 .atom/
 .bogofilter/
 .clojure/
+.config/go/
 .dart*/
 .docker/
 .dropbox*/
