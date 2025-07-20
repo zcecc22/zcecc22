@@ -41,12 +41,14 @@
 .config/go/
 .dart*/
 .docker/
+.dotnet/
 .dropbox*/
 .dmrc
 .flutter*
 .gconf/
 .gnome/
 .go/
+.go-sdk/
 .gradle/
 .gtkrc-2.0
 .icons/
