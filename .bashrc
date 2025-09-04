@@ -55,8 +55,7 @@ export EDITOR=vim
 # -----
 
 export GOPATH="${HOME}/.go"
-export GOROOT="${HOME}/.local/go"
-export PATH="${GOROOT}/bin:${HOME}/.bin:${HOME}/.local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
+export PATH="${HOME}/.bin:${HOME}/.local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
 
 # locale
 # ------
