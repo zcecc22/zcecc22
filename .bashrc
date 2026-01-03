@@ -54,8 +54,13 @@ export EDITOR=vim
 # paths
 # -----
 
-export GOPATH="${HOME}/.go"
 export PATH="${HOME}/.bin:${HOME}/.local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
+
+export GOPATH="${HOME}/.go"
+export PATH="${GOPATH}/bin:${PATH}"
+
+export NPMPATH="${HOME}/.npm/packages"
+export PATH="${NPMPATH}/bin:${PATH}"
 
 # locale
 # ------
