@@ -25,6 +25,7 @@ python3 \
 python3-setuptools \
 python3-poetry \
 rsync \
+swig \
 tk-dev \
 tmux \
 unzip \

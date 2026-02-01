@@ -1,0 +1,9 @@
+#!/bin/bash
+
+sudo rsync -aHAXv --progress --delete public@media.frentzel.xyz:/home/public/ /array/home/public/
+
+sudo rsync -aHAXv --progress --delete media@media.frentzel.xyz:/home/media/ /array/home/media/
+
+sudo rsync -aHAXv --progress --delete /home/zcecc22/ /array/home/zcecc22/
+
+sudo rsync -aHAXv --progress --delete /home/backup/ /array/home/backup/
