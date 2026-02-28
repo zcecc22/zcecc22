@@ -49,7 +49,7 @@ shopt -s cmdhist
 shopt -s extglob
 shopt -s no_empty_cmd_completion
 
-export EDITOR=vim
+export EDITOR=micro
 
 # paths
 # -----

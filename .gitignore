@@ -1,7 +1,7 @@
 # ~/.gitignore
 
-!/.*
 /*
+!/.*
 .[Aa]ndroid*/
 .atom/
 .aws
@@ -12,6 +12,7 @@
 .clojure/
 .config/go/
 .config/gopls/
+.config/micro/buffers/
 .dart*/
 .dbus/
 .dmrc
