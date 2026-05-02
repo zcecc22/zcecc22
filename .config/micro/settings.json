@@ -1,4 +1,6 @@
 {
     "colorcolumn": 80,
-    "colorscheme": "solarized"
+    "colorscheme": "solarized",
+    "softwrap": true,
+    "wordwrap": true
 }

@@ -9,10 +9,13 @@
 .bogofilter/
 .cache/
 .cert/
+.claude*
 .clojure/
+.config/git/
 .config/go/
 .config/gopls/
 .config/micro/buffers/
+.config/mimeapps.list
 .dart*/
 .dbus/
 .dmrc
