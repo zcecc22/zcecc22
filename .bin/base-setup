@@ -2,7 +2,7 @@
 
 sudo apt update
 
-# Base development tools
+# Base System
 sudo apt -y install \
 build-essential \
 clojure \
@@ -35,6 +35,5 @@ swig \
 tk-dev \
 tmux \
 unzip \
-vim \
 wget \
 zlib1g-dev
