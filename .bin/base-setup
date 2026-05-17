@@ -7,7 +7,6 @@ sudo apt -y install \
 build-essential \
 clojure \
 default-jdk \
-ffmpeg \
 file \
 flex \
 gawk \
