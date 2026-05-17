@@ -30,7 +30,7 @@ Run the setup scripts:
 
 ```bash
 # Dev tools (compilers, languages, utilities)
-~/.bin/system_setup
+~/.bin/base-setup
 
 # Desktop environment (sway, alacritty, waybar, etc.)
 ~/.bin/desktop-setup
@@ -89,7 +89,7 @@ Uses ifupdown2 + wpa_supplicant. Configure interfaces in `/etc/network/interface
 ├── .gitignore                      # Global ignores
 ├── .npmrc                          # npm prefix
 ├── .bin/
-│   ├── system_setup                # Dev tools installer
+│   ├── base-setup                 # Dev tools installer
 │   ├── desktop-setup               # Desktop env installer
 │   ├── start-desktop               # Launch Sway
 │   └── convert-mp4                 # Batch video conversion

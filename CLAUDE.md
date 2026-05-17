@@ -2,7 +2,7 @@
 
 ## Philosophy
 - Minimalist: avoid duplication of application roles
-- Two install scripts: `.bin/system_setup` (dev tools) and `.bin/desktop-setup` (desktop env)
+- Two install scripts: `.bin/base-setup` (dev tools) and `.bin/desktop-setup` (desktop env)
 - Solarized Dark theme applied consistently across all tools
 - Network via ifupdown2 + wpa_supplicant (no NetworkManager)
 - No display manager or auto-launch: start Sway manually via `~/.bin/start-desktop`
@@ -60,17 +60,15 @@ green:   #859900
 - `.bash_logout` - GPG agent cleanup
 - `.inputrc` - Readline (case-insensitive completion)
 - `.tmux.conf` - Ctrl-A prefix, mouse on, status bar off
-- `.vimrc` - Solarized dark, syntax on, true color
 - `.dir_colors` - Solarized ls colors
 - `.gitconfig` - GPG-signed commits, user config
 - `.gitignore` - Global ignores
 - `.npmrc` - npm prefix
 - `.config/micro/` - Solarized theme, keybindings
 - `.gnupg/` - GPG agent with SSH support
-- `.vim/colors/solarized.vim` - Vim color scheme
 
 ### Scripts (.bin/)
-- `system_setup` - Dev tools package installation
+- `base-setup` - Dev tools package installation
 - `desktop-setup` - Desktop environment package installation
 - `start-desktop` - Wayland env vars + exec sway
 - `convert-mp4` - Batch video conversion
