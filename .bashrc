@@ -42,7 +42,7 @@ BLACK='\[\033[1;30m\]'
 DARKGREY='\[\033[0;30m\]'
 NIL='\[\033[00m\]'
 
-PS1="\n${GREEN}@\h${RED}[\w]${YELLOW}\$(__git_ps1 ' (%s)')${NIL}\$ "
+PS1="\n${GREEN}@\h${RED}[\w]${YELLOW}\$(__git_ps1 '(%s)')${NIL}\$ "
 
 [ -e "${HOME}/.dir_colors" ] && eval `dircolors "${HOME}/.dir_colors"`
 
