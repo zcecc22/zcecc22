@@ -5,3 +5,19 @@ set completion-ignore-case on
 
 # symlink auto-complete
 set mark-symlinked-directories on
+
+# single-tab completion menu
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+
+# colors in completion
+set colored-stats on
+set colored-completion-prefix on
+set visible-stats on
+
+# up/down arrow = prefix-aware history search
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+# quiet bell
+set bell-style none
