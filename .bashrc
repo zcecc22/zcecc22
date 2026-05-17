@@ -8,10 +8,10 @@
 # gpg agent
 # ---------
 
-if which gpg &> /dev/null; then
+if command -v gpg >/dev/null 2>&1; then
   export GPG_TTY=$(tty)
   export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-  gpg-connect-agent updatestartuptty /bye &> /dev/null
+  PROMPT_COMMAND='gpg-connect-agent updatestartuptty /bye >/dev/null 2>&1; history -a'
 fi
 
 # main conf
@@ -85,7 +85,7 @@ alias diff='diff -u'
 alias ls='ls -hF --color=auto'
 alias mkdir='mkdir -pv'
 alias mv='mv -v'
-alias rm='rm -rfv'
+alias rm='rm -Iv'
 alias so="source ${HOME}/.bashrc"
 
 alias tmux='tmux new -As0'
