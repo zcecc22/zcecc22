@@ -80,10 +80,13 @@ Start Sway from a TTY:
 | `Super+Return` | Open terminal |
 | `Super+d` | App launcher |
 | `Super+Shift+q` | Close window |
+| `Super+Arrow` | Focus window |
+| `Super+Shift+Arrow` | Move window |
 | `Super+1–9` | Switch workspace |
 | `Super+Shift+1–9` | Move window to workspace |
 | `Super+f` | Fullscreen |
 | `Super+Space` | Toggle floating |
+| `Super+Shift+Space` | Toggle focus tiling / floating |
 | `Super+h` / `Super+v` | Split horizontal / vertical |
 | `Super+r` | Resize mode (arrows to resize, Esc to exit) |
 | `Super+l` | Lock screen |
