@@ -1,0 +1,30 @@
+#!/bin/bash
+
+sudo apt update
+
+# Desktop environment
+sudo apt -y install \
+sway \
+swayidle \
+swaylock \
+swaybg \
+alacritty \
+tofi \
+waybar \
+firefox-esr \
+mako-notifier \
+wl-clipboard \
+brightnessctl \
+fonts-inconsolata \
+fonts-font-awesome
+
+# Audio
+sudo apt -y install \
+pipewire \
+pipewire-pulse \
+wireplumber
+
+# Network
+sudo apt -y install \
+ifupdown2 \
+wpasupplicant
