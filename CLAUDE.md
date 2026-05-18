@@ -12,6 +12,7 @@
 | Role | Application |
 |---|---|
 | Window Manager | Sway (Wayland) + autotiling |
+| Power Management | TLP + tlp-pd (power profiles via DBus) |
 | X11 Compatibility | XWayland |
 | Terminal | Alacritty |
 | App Launcher | tofi |

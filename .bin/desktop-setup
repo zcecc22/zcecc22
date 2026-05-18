@@ -31,3 +31,9 @@ wireplumber
 sudo apt -y install \
 ifupdown2 \
 wpasupplicant
+
+# Power management (from trixie-backports)
+sudo apt -y -t trixie-backports install \
+tlp \
+tlp-pd \
+tlp-rdw

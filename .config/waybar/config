@@ -4,7 +4,7 @@
     "height": 28,
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["clock"],
-    "modules-right": ["network", "pulseaudio", "backlight", "battery"],
+    "modules-right": ["power-profiles-daemon", "network", "pulseaudio", "backlight", "battery"],
 
     "sway/workspaces": {
         "disable-scroll": true
@@ -13,6 +13,17 @@
     "clock": {
         "format": "{:%a %d %b  %H:%M}",
         "tooltip-format": "{:%Y-%m-%d}"
+    },
+
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "{profile}",
+        "format-icons": {
+            "default":     "",
+            "performance": "",
+            "balanced":    "",
+            "power-saver": ""
+        }
     },
 
     "battery": {
