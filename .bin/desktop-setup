@@ -8,6 +8,9 @@ sway \
 swayidle \
 swaylock \
 swaybg \
+xwayland \
+dbus-bin \
+autotiling \
 alacritty \
 tofi \
 waybar \

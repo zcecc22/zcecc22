@@ -11,7 +11,8 @@
 
 | Role | Application |
 |---|---|
-| Window Manager | Sway (Wayland) |
+| Window Manager | Sway (Wayland) + autotiling |
+| X11 Compatibility | XWayland |
 | Terminal | Alacritty |
 | App Launcher | tofi |
 | Status Bar | Waybar |
@@ -31,6 +32,8 @@ Laptop - includes brightness control (brightnessctl), battery status, lid handli
 ## Sway Defaults
 - Mod key: Super/Logo
 - Wallpaper: solid solarized base03 (#002b36)
+- Tiling: autotiling daemon — split direction chosen automatically by container aspect ratio
+- DBus/systemd env: `dbus-update-activation-environment` propagates `WAYLAND_DISPLAY`, `DISPLAY`, `XDG_CURRENT_DESKTOP` on startup (required for portals and screen sharing)
 
 ## Theme: Solarized Dark Palette
 ```
