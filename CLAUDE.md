@@ -64,7 +64,6 @@ green:   #859900
 ### Existing Dotfiles
 - `.bashrc` - Shell config, aliases, GPG agent, PATH
 - `.bash_profile` - Sources .bashrc
-- `.bash_logout` - GPG agent cleanup
 - `.inputrc` - Readline (case-insensitive completion)
 - `.tmux.conf` - Ctrl-A prefix, mouse on, status bar off
 - `.dir_colors` - Solarized ls colors
@@ -78,7 +77,6 @@ green:   #859900
 - `base-setup` - Dev tools package installation
 - `desktop-setup` - Desktop environment package installation
 - `start-desktop` - Wayland env vars, startup brightness, exec sway
-- `convert-mp4` - Batch video conversion
 
 ### Desktop Config Files
 - `.config/sway/config` - Sway WM configuration

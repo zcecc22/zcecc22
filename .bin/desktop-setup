@@ -1,8 +1,9 @@
 #!/bin/bash
+set -e
 
 sudo apt update
 
-# Desktop environment
+echo "Installing desktop environment..."
 sudo apt -y install \
 sway \
 swayidle \
@@ -21,19 +22,21 @@ brightnessctl \
 fonts-inconsolata \
 fonts-font-awesome
 
-# Audio
+echo "Installing audio stack..."
 sudo apt -y install \
 pipewire \
 pipewire-pulse \
 wireplumber
 
-# Network
+echo "Installing network tools..."
 sudo apt -y install \
 ifupdown2 \
 wpasupplicant
 
-# Power management (from trixie-backports)
+echo "Installing power management..."
 sudo apt -y -t trixie-backports install \
 tlp \
 tlp-pd \
 tlp-rdw
+
+echo "Done."
