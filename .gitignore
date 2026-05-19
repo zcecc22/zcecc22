@@ -73,3 +73,11 @@
 .wget-hsts
 .Xauthority
 .xsession-errors*
+
+# Suckless build artifacts
+.bin/dwm
+.bin/slock
+.bin/slstatus
+.dwm/*.o
+.slock/*.o
+.slstatus/*.o

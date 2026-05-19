@@ -1,40 +1,42 @@
-# Dotfiles - Sway Desktop on Debian Stable
+# Dotfiles - dwm Desktop on Debian Stable (X11)
 
 ## Philosophy
 - Minimalist: avoid duplication of application roles
 - Two install scripts: `.bin/base-setup` (dev tools) and `.bin/desktop-setup` (desktop env)
+- Suckless tools (dwm, slock, slstatus) managed as source in project root, configured via `config.h`
 - Solarized Dark theme applied consistently across all tools
 - Network via ifupdown2 + wpa_supplicant (no NetworkManager)
-- No display manager or auto-launch: start Sway manually via `~/.bin/start-desktop`
+- No display manager or auto-launch: start X manually via `startx`
 
 ## System Components
 
 | Role | Application |
 |---|---|
-| Window Manager | Sway (Wayland) + autotiling |
-| Power Management | TLP + tlp-pd (power profiles via DBus) |
-| X11 Compatibility | XWayland |
+| Window Manager | dwm (X11, master-stack tiling) |
+| Status Bar | dwm built-in + slstatus |
+| App Launcher | dmenu |
+| Screen Lock | slock + xautolock |
+| Notifications | dunst |
 | Terminal | Alacritty |
-| App Launcher | tofi |
-| Status Bar | Waybar |
-| Notifications | mako |
-| Screen Lock | swaylock + swayidle |
 | Browser | Firefox ESR |
 | Audio | PipeWire (pipewire-pulse + wireplumber) |
-| Clipboard | wl-clipboard |
+| Clipboard | xclip |
+| Power Management | TLP + tlp-rdw |
 | Editor | micro |
 | Shell | bash |
 | Multiplexer | tmux |
-| Fonts | Inconsolata (text), Font Awesome (waybar icons) |
+| Fonts | Inconsolata (text), Font Awesome (icons) |
 
 ## Hardware Target
 Laptop - includes brightness control (brightnessctl), battery status, lid handling.
 
-## Sway Defaults
-- Mod key: Super/Logo
-- Wallpaper: solid solarized base03 (#002b36)
-- Tiling: autotiling daemon — split direction chosen automatically by container aspect ratio
-- DBus/systemd env: `dbus-update-activation-environment` propagates `WAYLAND_DISPLAY`, `DISPLAY`, `XDG_CURRENT_DESKTOP` on startup (required for portals and screen sharing)
+## dwm Defaults
+- Mod key: Super/Logo (Mod4)
+- Wallpaper: solid solarized base03 (#002b36) via xsetroot
+- Tiling: master-stack built-in; Mod+t/f/m to switch tile/float/monocle
+- Auto-lock: xautolock after 5 minutes idle, slock as locker
+- Status bar: slstatus — battery state+%, brightness, volume, datetime
+- Screen off: xset dpms 300 600 600 (standby 5 min, off 10 min)
 
 ## Theme: Solarized Dark Palette
 ```
@@ -71,17 +73,20 @@ green:   #859900
 - `.config/micro/` - Solarized theme, keybindings
 - `.gnupg/` - GPG agent with SSH support
 
+### Suckless Sources (.dwm/, .slock/, .slstatus/)
+Each directory contains the full upstream source. `config.h` is the only file edited.
+`desktop-setup` builds and installs all three via `sudo make install`.
+
+- `.dwm/config.h` - dwm: colors, font, keybindings, rules, layouts
+- `.slock/config.h` - slock: Solarized lock screen colors
+- `.slstatus/config.h` - slstatus: battery, brightness, volume, datetime
+
 ### Scripts (.bin/)
 - `base-setup` - Dev tools package installation
-- `desktop-setup` - Desktop environment package installation
-- `start-desktop` - Wayland env vars + exec sway
+- `desktop-setup` - Desktop environment package installation and suckless build
 - `convert-mp4` - Batch video conversion
 
-### Desktop Config Files
-- `.config/sway/config` - Sway WM configuration
+### Session and Config Files
+- `.xinitrc` - X11 session: env vars, xsetroot, xautolock, dunst, slstatus, exec dwm
 - `.config/alacritty/alacritty.toml` - Terminal configuration
-- `.config/waybar/config` - Status bar modules
-- `.config/waybar/style.css` - Status bar styling
-- `.config/mako/config` - Notification daemon styling
-- `.config/swaylock/config` - Lock screen styling
-- `.config/tofi/config` - App launcher styling
+- `.config/dunst/dunstrc` - Notification daemon styling

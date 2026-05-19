@@ -1,25 +1,32 @@
 #!/bin/bash
 
+DOTS="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
 sudo apt update
 
-# Desktop environment
+# X11 base
 sudo apt -y install \
-sway \
-swayidle \
-swaylock \
-swaybg \
-xwayland \
-dbus-bin \
-autotiling \
+xserver-xorg \
+xinit \
+xclip \
+xautolock
+
+# Suckless build dependencies
+sudo apt -y install \
+build-essential \
+libx11-dev \
+libxft-dev \
+libxinerama-dev \
+libxss-dev
+
+# Desktop tools
+sudo apt -y install \
 alacritty \
-tofi \
-waybar \
+dmenu \
+dunst \
 firefox-esr \
-mako-notifier \
-wl-clipboard \
 brightnessctl \
-fonts-inconsolata \
-fonts-font-awesome
+fonts-inconsolata
 
 # Audio
 sudo apt -y install \
@@ -35,5 +42,14 @@ wpasupplicant
 # Power management (from trixie-backports)
 sudo apt -y -t trixie-backports install \
 tlp \
-tlp-pd \
 tlp-rdw
+
+# Build suckless tools and place binaries in .bin/
+for tool in .dwm .slock .slstatus; do
+    make -C "$DOTS/$tool"
+done
+mv "$DOTS/.dwm/dwm"            "$DOTS/.bin/"
+mv "$DOTS/.slock/slock"        "$DOTS/.bin/"
+mv "$DOTS/.slstatus/slstatus"  "$DOTS/.bin/"
+sudo chown root:root "$DOTS/.bin/slock"
+sudo chmod u+s       "$DOTS/.bin/slock"

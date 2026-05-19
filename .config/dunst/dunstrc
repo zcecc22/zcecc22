@@ -1,0 +1,45 @@
+[global]
+    font = Inconsolata 11
+    format = "<b>%s</b>\n%b"
+    sort = true
+    alignment = left
+    origin = top-right
+    offset = 10x30
+    width = 300
+    height = 200
+    frame_width = 2
+    frame_color = "#268bd2"
+    separator_height = 2
+    separator_color = frame
+    padding = 8
+    horizontal_padding = 8
+    line_height = 0
+    idle_threshold = 120
+    show_indicators = true
+    icon_position = off
+    startup_notification = false
+    browser = firefox-esr -new-tab
+
+[shortcuts]
+    close = ctrl+space
+    close_all = ctrl+shift+space
+    history = ctrl+grave
+    context = ctrl+shift+period
+
+[urgency_low]
+    background = "#073642"
+    foreground = "#839496"
+    frame_color = "#268bd2"
+    timeout = 5
+
+[urgency_normal]
+    background = "#073642"
+    foreground = "#93a1a1"
+    frame_color = "#268bd2"
+    timeout = 5
+
+[urgency_critical]
+    background = "#073642"
+    foreground = "#dc322f"
+    frame_color = "#dc322f"
+    timeout = 0
