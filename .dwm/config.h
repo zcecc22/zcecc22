@@ -7,8 +7,9 @@ static const unsigned int snap         = 32;
 static const int showbar               = 1;
 static const int topbar                = 1;
 static const int refreshrate           = 60;
-static const char *fonts[]             = { "Inconsolata:size=11" };
-static const char dmenufont[]          = "Inconsolata:size=11";
+#define FONT "Inconsolata:size=11"
+static const char *fonts[]             = { FONT };
+static const char dmenufont[]          = FONT;
 static const char col_bg[]             = "#002b36";
 static const char col_bg2[]            = "#073642";
 static const char col_fg[]             = "#839496";
@@ -31,7 +32,7 @@ static const Rule rules[] = {
 /* layout(s) */
 static const float mfact        = 0.55;
 static const int nmaster        = 1;
-static const int resizehints    = 1;
+static const int resizehints    = 0;
 static const int lockfullscreen = 1;
 
 static const Layout layouts[] = {

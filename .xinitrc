@@ -6,7 +6,7 @@ export MOZ_X11_EGL=1
 
 xsetroot -solid "#002b36"
 brightnessctl set 40%
-xset s 300
+xset s off
 xset dpms 300 600 600
 xautolock -time 5 -locker slock &
 dunst &

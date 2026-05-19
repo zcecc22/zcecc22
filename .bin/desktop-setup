@@ -39,8 +39,8 @@ sudo apt -y install \
 ifupdown2 \
 wpasupplicant
 
-# Power management (from trixie-backports)
-sudo apt -y -t trixie-backports install \
+# Power management
+sudo apt -y install \
 tlp \
 tlp-rdw
 
