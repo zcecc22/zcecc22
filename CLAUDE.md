@@ -1,4 +1,4 @@
-# Dotfiles - dwm Desktop on Debian Stable (X11)
+# Dotfiles - dwm Desktop on Debian Stable
 
 ## Philosophy
 - Minimalist: avoid duplication of application roles
@@ -25,7 +25,7 @@
 | Editor | micro |
 | Shell | bash |
 | Multiplexer | tmux |
-| Fonts | Inconsolata (text), Font Awesome (icons) |
+| Fonts | Inconsolata |
 
 ## Hardware Target
 Laptop - includes brightness control (brightnessctl), battery status, lid handling.
@@ -36,7 +36,8 @@ Laptop - includes brightness control (brightnessctl), battery status, lid handli
 - Tiling: master-stack built-in; Mod+t/f/m to switch tile/float/monocle
 - Auto-lock: xautolock after 5 minutes idle, slock as locker
 - Status bar: slstatus — battery state+%, brightness, volume, datetime
-- Screen off: xset dpms 300 600 600 (standby 5 min, off 10 min)
+- Startup brightness: 40% via brightnessctl
+- Screen off: xset dpms 300 600 600 (standby/suspend 5 min, off 10 min)
 
 ## Theme: Solarized Dark Palette
 ```
@@ -75,7 +76,7 @@ green:   #859900
 
 ### Suckless Sources (.dwm/, .slock/, .slstatus/)
 Each directory contains the full upstream source. `config.h` is the only file edited.
-`desktop-setup` builds and installs all three via `sudo make install`.
+`desktop-setup` builds all three and moves binaries to `.bin/`; slock gets setuid root via two targeted sudo commands.
 
 - `.dwm/config.h` - dwm: colors, font, keybindings, rules, layouts
 - `.slock/config.h` - slock: Solarized lock screen colors
