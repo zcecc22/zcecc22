@@ -32,7 +32,7 @@ static const Rule rules[] = {
 /* layout(s) */
 static const float mfact        = 0.55;
 static const int nmaster        = 1;
-static const int resizehints    = 0;
+static const int resizehints    = 1;
 static const int lockfullscreen = 1;
 
 static const Layout layouts[] = {
@@ -54,7 +54,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0";
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 	"-nb", col_bg, "-nf", col_fg, "-sb", col_blue, "-sf", col_fg2, NULL };
-static const char *termcmd[]  = { "alacritty", NULL };
+static const char *termcmd[]  = { "st", NULL };
 static const char *lockcmd[]  = { "slock", NULL };
 
 static const Key keys[] = {

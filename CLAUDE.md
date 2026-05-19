@@ -3,7 +3,7 @@
 ## Philosophy
 - Minimalist: avoid duplication of application roles
 - Two install scripts: `.bin/base-setup` (dev tools) and `.bin/desktop-setup` (desktop env)
-- Suckless tools (dwm, slock, slstatus) managed as source in project root, configured via `config.h`
+- Suckless tools (dwm, slock, slstatus, st) managed as source in project root, configured via `config.h`
 - Solarized Dark theme applied consistently across all tools
 - Network via ifupdown2 + wpa_supplicant (no NetworkManager)
 - No display manager or auto-launch: start X manually via `startx`
@@ -17,7 +17,7 @@
 | App Launcher | dmenu |
 | Screen Lock | slock + xautolock |
 | Notifications | dunst |
-| Terminal | Alacritty |
+| Terminal | st |
 | Browser | Firefox ESR |
 | Audio | PipeWire (pipewire-pulse + wireplumber) |
 | Clipboard | xclip |

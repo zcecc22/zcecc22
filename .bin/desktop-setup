@@ -21,7 +21,6 @@ libxss-dev
 
 # Desktop tools
 sudo apt -y install \
-alacritty \
 dmenu \
 dunst \
 firefox-esr \
@@ -45,11 +44,12 @@ tlp \
 tlp-rdw
 
 # Build suckless tools and place binaries in .bin/
-for tool in .dwm .slock .slstatus; do
+for tool in .dwm .slock .slstatus .st; do
     make -C "$DOTS/$tool"
 done
 mv "$DOTS/.dwm/dwm"            "$DOTS/.bin/"
 mv "$DOTS/.slock/slock"        "$DOTS/.bin/"
 mv "$DOTS/.slstatus/slstatus"  "$DOTS/.bin/"
+mv "$DOTS/.st/st"              "$DOTS/.bin/"
 sudo chown root:root "$DOTS/.bin/slock"
 sudo chmod u+s       "$DOTS/.bin/slock"

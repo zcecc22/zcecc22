@@ -18,7 +18,7 @@ Minimalist [dwm](https://dwm.suckless.org/) desktop on Debian Stable. Solarized 
 | Role | Tool |
 |---|---|
 | Window Manager | dwm (X11, master-stack tiling) |
-| Terminal | Alacritty |
+| Terminal | st |
 | Status Bar | slstatus |
 | App Launcher | dmenu |
 | Notifications | dunst |
@@ -35,7 +35,7 @@ Minimalist [dwm](https://dwm.suckless.org/) desktop on Debian Stable. Solarized 
 ## Design decisions
 
 - **No display manager** — X starts manually from a TTY via `startx`.
-- **Suckless tools as source** — dwm, slock, and slstatus live as full upstream source trees in the repo. `config.h` is the only file edited. `desktop-setup` builds all three.
+- **Suckless tools as source** — dwm, slock, slstatus, and st live as full upstream source trees in the repo. `config.h` is the only file edited. `desktop-setup` builds all four.
 - **No NetworkManager** — `ifupdown2` and `wpa_supplicant` are sufficient for a single machine and keep the service footprint minimal.
 - **GPG as SSH agent** — `gpg-agent` handles both git commit signing and SSH authentication. A hardware key (e.g. YubiKey) covers both.
 - **micro over vim** — lighter, no modal editing, good out-of-the-box defaults for a general-purpose terminal editor.
@@ -61,7 +61,7 @@ Run the setup scripts:
 ~/.bin/desktop-setup # dwm, slock, slstatus (builds from source), plus desktop packages
 ```
 
-`desktop-setup` builds all three Suckless binaries and installs them to `~/.bin/`. slock receives setuid root via two targeted `sudo` commands so it can lock the session.
+`desktop-setup` builds all four Suckless binaries and installs them to `~/.bin/`. slock receives setuid root via two targeted `sudo` commands so it can lock the session.
 
 **Shell config only** (branch `base`):
 
@@ -162,8 +162,9 @@ Some non-obvious things the bash configuration sets up:
 │   └── config.h                    # slock: Solarized lock screen colors
 ├── .slstatus/
 │   └── config.h                    # slstatus: battery, brightness, volume, datetime
+├── .st/
+│   └── config.h                    # st: Solarized colors, font, clipboard shortcuts
 ├── .config/
-│   ├── alacritty/alacritty.toml    # Terminal
 │   ├── dunst/dunstrc               # Notification daemon styling
 │   └── micro/                      # Editor config + keybindings
 └── .gnupg/                         # GPG agent with SSH support
