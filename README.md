@@ -6,11 +6,12 @@ Minimalist [dwm](https://dwm.suckless.org/) desktop on Debian Stable. Solarized 
 
 | Branch | Purpose |
 |---|---|
+| `main` | Alias for `dwm` — default clone target |
 | `dwm` | Full X11/dwm desktop environment |
 | `sway` | Full Sway/Wayland desktop environment |
 | `base` | Dev tools and shell config only (no desktop) |
 
-Clone `base` if you only want the shell setup (bash, tmux, git, micro). Clone `dwm` or `sway` for a complete desktop.
+`main` tracks `dwm`. Clone `base` if you only want the shell setup (bash, tmux, git, micro). Clone `dwm` or `sway` for a complete desktop.
 
 ## Stack
 
