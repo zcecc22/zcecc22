@@ -33,7 +33,10 @@ Laptop - includes brightness control (brightnessctl), battery status, lid handli
 ## Sway Defaults
 - Mod key: Super/Logo
 - Wallpaper: solid solarized base03 (#002b36)
+- Startup brightness: 40% via brightnessctl
 - Tiling: autotiling daemon — split direction chosen automatically by container aspect ratio
+- Auto-lock: swayidle — lock after 5 min idle, display off after 10 min
+- Power profiles: tlp-pd via Waybar — click to cycle performance/balanced/power-saver
 - DBus/systemd env: `dbus-update-activation-environment` propagates `WAYLAND_DISPLAY`, `DISPLAY`, `XDG_CURRENT_DESKTOP` on startup (required for portals and screen sharing)
 
 ## Theme: Solarized Dark Palette
@@ -74,7 +77,7 @@ green:   #859900
 ### Scripts (.bin/)
 - `base-setup` - Dev tools package installation
 - `desktop-setup` - Desktop environment package installation
-- `start-desktop` - Wayland env vars + exec sway
+- `start-desktop` - Wayland env vars, startup brightness, exec sway
 - `convert-mp4` - Batch video conversion
 
 ### Desktop Config Files

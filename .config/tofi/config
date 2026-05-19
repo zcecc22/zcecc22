@@ -1,6 +1,6 @@
 # ~/.config/tofi/config
 
-font = /usr/share/fonts/truetype/inconsolata/Inconsolata.otf
+font = Inconsolata
 font-size = 14
 
 background-color = #002b36
