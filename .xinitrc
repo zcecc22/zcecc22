@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export PATH="$HOME/.bin:$PATH"
 export XDG_SESSION_TYPE=x11
 export XDG_CURRENT_DESKTOP=dwm
 export MOZ_X11_EGL=1

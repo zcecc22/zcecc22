@@ -64,7 +64,6 @@ green:   #859900
 ### Existing Dotfiles
 - `.bashrc` - Shell config, aliases, GPG agent, PATH
 - `.bash_profile` - Sources .bashrc
-- `.bash_logout` - GPG agent cleanup
 - `.inputrc` - Readline (case-insensitive completion)
 - `.tmux.conf` - Ctrl-A prefix, mouse on, status bar off
 - `.dir_colors` - Solarized ls colors
@@ -74,20 +73,19 @@ green:   #859900
 - `.config/micro/` - Solarized theme, keybindings
 - `.gnupg/` - GPG agent with SSH support
 
-### Suckless Sources (.dwm/, .slock/, .slstatus/)
+### Suckless Sources (.dwm/, .slock/, .slstatus/, .st/)
 Each directory contains the full upstream source. `config.h` is the only file edited.
-`desktop-setup` builds all three and moves binaries to `.bin/`; slock gets setuid root via two targeted sudo commands.
+`desktop-setup` builds all four and moves binaries to `.bin/`; slock gets setuid root via two targeted sudo commands.
 
 - `.dwm/config.h` - dwm: colors, font, keybindings, rules, layouts
 - `.slock/config.h` - slock: Solarized lock screen colors
 - `.slstatus/config.h` - slstatus: battery, brightness, volume, datetime
+- `.st/config.h` - st: Solarized colors, font, clipboard shortcuts
 
 ### Scripts (.bin/)
 - `base-setup` - Dev tools package installation
 - `desktop-setup` - Desktop environment package installation and suckless build
-- `convert-mp4` - Batch video conversion
 
 ### Session and Config Files
-- `.xinitrc` - X11 session: env vars, xsetroot, xautolock, dunst, slstatus, exec dwm
-- `.config/alacritty/alacritty.toml` - Terminal configuration
+- `.xinitrc` - X11 session: PATH, env vars, xsetroot, xautolock, dunst, slstatus, exec dwm
 - `.config/dunst/dunstrc` - Notification daemon styling

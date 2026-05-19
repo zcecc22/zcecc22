@@ -1,17 +1,19 @@
 #!/bin/bash
+set -e
 
 DOTS="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
+echo "Updating package lists..."
 sudo apt update
 
-# X11 base
+echo "Installing X11 base..."
 sudo apt -y install \
 xserver-xorg \
 xinit \
 xclip \
 xautolock
 
-# Suckless build dependencies
+echo "Installing suckless build dependencies..."
 sudo apt -y install \
 build-essential \
 libx11-dev \
@@ -19,7 +21,7 @@ libxft-dev \
 libxinerama-dev \
 libxss-dev
 
-# Desktop tools
+echo "Installing desktop tools..."
 sudo apt -y install \
 dmenu \
 dunst \
@@ -27,23 +29,23 @@ firefox-esr \
 brightnessctl \
 fonts-inconsolata
 
-# Audio
+echo "Installing audio stack..."
 sudo apt -y install \
 pipewire \
 pipewire-pulse \
 wireplumber
 
-# Network
+echo "Installing network tools..."
 sudo apt -y install \
 ifupdown2 \
 wpasupplicant
 
-# Power management
+echo "Installing power management..."
 sudo apt -y install \
 tlp \
 tlp-rdw
 
-# Build suckless tools and place binaries in .bin/
+echo "Building suckless tools..."
 for tool in .dwm .slock .slstatus .st; do
     make -C "$DOTS/$tool"
 done
@@ -51,5 +53,10 @@ mv "$DOTS/.dwm/dwm"            "$DOTS/.bin/"
 mv "$DOTS/.slock/slock"        "$DOTS/.bin/"
 mv "$DOTS/.slstatus/slstatus"  "$DOTS/.bin/"
 mv "$DOTS/.st/st"              "$DOTS/.bin/"
+for tool in .dwm .slock .slstatus .st; do
+    make -C "$DOTS/$tool" clean
+done
 sudo chown root:root "$DOTS/.bin/slock"
 sudo chmod u+s       "$DOTS/.bin/slock"
+
+echo "Done."

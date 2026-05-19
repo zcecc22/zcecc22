@@ -78,6 +78,9 @@
 .bin/dwm
 .bin/slock
 .bin/slstatus
+.bin/st
 .dwm/*.o
 .slock/*.o
 .slstatus/*.o
+.st/*.o
+.st/st
