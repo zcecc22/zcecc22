@@ -7,8 +7,9 @@ static const unsigned int snap         = 32;
 static const int showbar               = 1;
 static const int topbar                = 1;
 static const int refreshrate           = 60;
-#define FONT "Inconsolata:size=11"
-static const char *fonts[]             = { FONT };
+#define FONT       "Inconsolata:size=11"
+#define FONT_ICONS "Font Awesome 6 Free:style=Solid:size=10"
+static const char *fonts[]             = { FONT, FONT_ICONS };
 static const char dmenufont[]          = FONT;
 static const char col_bg[]             = "#002b36";
 static const char col_bg2[]            = "#073642";

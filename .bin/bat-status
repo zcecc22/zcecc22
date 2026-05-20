@@ -1,0 +1,14 @@
+#!/bin/bash
+p=$(cat /sys/class/power_supply/BAT0/capacity 2>/dev/null) || exit 1
+s=$(cat /sys/class/power_supply/BAT0/status 2>/dev/null)
+
+if   [ "$p" -ge 90 ]; then i='\xef\x89\x80'
+elif [ "$p" -ge 70 ]; then i='\xef\x89\x81'
+elif [ "$p" -ge 45 ]; then i='\xef\x89\x82'
+elif [ "$p" -ge 20 ]; then i='\xef\x89\x83'
+else                       i='\xef\x89\x84'
+fi
+
+printf "$i"
+[ "$s" = "Charging" ] && printf ' \xef\x83\xa7'
+printf ' %d%%' "$p"

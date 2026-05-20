@@ -30,7 +30,7 @@ Minimalist [dwm](https://dwm.suckless.org/) desktop on Debian Stable. Solarized 
 | Editor | micro |
 | Shell | bash |
 | Multiplexer | tmux |
-| Fonts | Inconsolata |
+| Fonts | Inconsolata, Font Awesome 6 Free |
 
 ## Design decisions
 
@@ -39,7 +39,7 @@ Minimalist [dwm](https://dwm.suckless.org/) desktop on Debian Stable. Solarized 
 - **No NetworkManager** — `ifupdown2` and `wpa_supplicant` are sufficient for a single machine and keep the service footprint minimal.
 - **GPG as SSH agent** — `gpg-agent` handles both git commit signing and SSH authentication. A hardware key (e.g. YubiKey) covers both.
 - **micro over vim** — lighter, no modal editing, good out-of-the-box defaults for a general-purpose terminal editor.
-- **Solarized Dark everywhere** — consistent palette across Alacritty, dunst, slock, slstatus, micro, and `ls` colors.
+- **Solarized Dark everywhere** — consistent palette across st, dunst, slock, slstatus, micro, and `ls` colors.
 
 ## Prerequisites
 
@@ -58,7 +58,7 @@ Run the setup scripts:
 
 ```bash
 ~/.bin/base-setup    # dev tools: compilers, languages, utilities
-~/.bin/desktop-setup # dwm, slock, slstatus (builds from source), plus desktop packages
+~/.bin/desktop-setup # dwm, slock, slstatus, st (builds from source), plus desktop packages
 ```
 
 `desktop-setup` builds all four Suckless binaries and installs them to `~/.bin/`. slock receives setuid root via two targeted `sudo` commands so it can lock the session.
@@ -155,13 +155,16 @@ Some non-obvious things the bash configuration sets up:
 ├── .xinitrc                        # X11 session: env, wallpaper, autolock, slstatus, exec dwm
 ├── .bin/
 │   ├── base-setup                  # Dev tools installer
-│   └── desktop-setup               # Desktop env installer + Suckless build
+│   ├── desktop-setup               # Desktop env installer + Suckless build
+│   ├── bat-status                  # Battery icon (by level) + bolt if charging + %
+│   ├── vol-status                  # Volume icon (mute-aware) + %
+│   └── net-status                  # Wifi essid or ethernet indicator (Font Awesome icons)
 ├── .dwm/
 │   └── config.h                    # dwm: colors, font, keybindings, rules, layouts
 ├── .slock/
 │   └── config.h                    # slock: Solarized lock screen colors
 ├── .slstatus/
-│   └── config.h                    # slstatus: battery, brightness, volume, datetime
+│   └── config.h                    # slstatus: battery, brightness, volume, network, datetime (FA icons)
 ├── .st/
 │   └── config.h                    # st: Solarized colors, font, clipboard shortcuts
 ├── .config/

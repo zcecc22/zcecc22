@@ -27,7 +27,9 @@ dmenu \
 dunst \
 firefox-esr \
 brightnessctl \
-fonts-inconsolata
+fonts-inconsolata \
+fonts-font-awesome \
+iw
 
 echo "Installing audio stack..."
 sudo apt -y install \

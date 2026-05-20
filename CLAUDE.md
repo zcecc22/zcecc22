@@ -25,7 +25,7 @@
 | Editor | micro |
 | Shell | bash |
 | Multiplexer | tmux |
-| Fonts | Inconsolata |
+| Fonts | Inconsolata, Font Awesome 6 Free |
 
 ## Hardware Target
 Laptop - includes brightness control (brightnessctl), battery status, lid handling.
@@ -35,7 +35,7 @@ Laptop - includes brightness control (brightnessctl), battery status, lid handli
 - Wallpaper: solid solarized base03 (#002b36) via xsetroot
 - Tiling: master-stack built-in; Mod+t/f/m to switch tile/float/monocle
 - Auto-lock: xautolock after 5 minutes idle, slock as locker
-- Status bar: slstatus — battery state+%, brightness, volume, datetime
+- Status bar: slstatus — battery (icon+%), brightness (icon+%), volume (icon+%), network (wifi essid or eth), datetime
 - Startup brightness: 40% via brightnessctl
 - Screen off: xset dpms 300 600 600 (standby/suspend 5 min, off 10 min)
 
@@ -79,12 +79,15 @@ Each directory contains the full upstream source. `config.h` is the only file ed
 
 - `.dwm/config.h` - dwm: colors, font, keybindings, rules, layouts
 - `.slock/config.h` - slock: Solarized lock screen colors
-- `.slstatus/config.h` - slstatus: battery, brightness, volume, datetime
+- `.slstatus/config.h` - slstatus: battery, brightness, volume, network, datetime (Font Awesome icons via bat-status/vol-status/net-status)
 - `.st/config.h` - st: Solarized colors, font, clipboard shortcuts
 
 ### Scripts (.bin/)
 - `base-setup` - Dev tools package installation
 - `desktop-setup` - Desktop environment package installation and suckless build
+- `bat-status` - Battery icon (level-dependent) + bolt if charging + %
+- `vol-status` - Volume icon (mute-aware) + %
+- `net-status` - Wifi essid or ethernet indicator with FA icons
 
 ### Session and Config Files
 - `.xinitrc` - X11 session: PATH, env vars, xsetroot, xautolock, dunst, slstatus, exec dwm
