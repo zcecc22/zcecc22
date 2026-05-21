@@ -35,4 +35,5 @@ tk-dev \
 tmux \
 unzip \
 wget \
+xxd \
 zlib1g-dev
