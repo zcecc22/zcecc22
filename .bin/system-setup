@@ -103,24 +103,13 @@ ln -sf /usr/share/zoneinfo/CET /etc/localtime
 
 cat > /etc/apt/sources.list << 'SOURCES'
 deb https://deb.debian.org/debian stable main contrib non-free non-free-firmware
-deb https://deb.debian.org/debian-security stable-security main contrib non-free non-free-firmware
-deb https://deb.debian.org/debian stable-updates main contrib non-free non-free-firmware
 SOURCES
 
 apt-get update
-apt-get -y install locales-all systemd-boot efibootmgr sudo
+apt-get -y install locales-all grub-efi-amd64 efibootmgr sudo linux-image-amd64 firmware-iwlwifi wireless-tools wpasupplicant
 
-echo "LANG=en_US.UTF-8" > /etc/locale.conf
-
-bootctl install
-
-cat > /boot/loader/loader.conf << 'LOADER'
-default @saved
-timeout 3
-console-mode max
-LOADER
-
-apt-get -y install linux-image-amd64
+grub-install --efi-directory=/boot
+update-grub
 
 groupadd -g 1000 zcecc22
 useradd -u 1000 -g 1000 -M -d /home/zcecc22 -s /bin/bash zcecc22
@@ -151,4 +140,4 @@ echo
 echo "Done."
 echo "  Hostname : $HOSTNAME"
 echo "  Disk     : $DISK"
-echo "Boot from $DISK (systemd-boot, select Debian)."
+echo "Boot from $DISK (grub, select Debian)."
