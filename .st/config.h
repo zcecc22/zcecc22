@@ -1,8 +1,8 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static char *font = "Inconsolata:size=11";
-static int borderpx = 2;
+static char *font = "Inconsolata:size=18";
+static int borderpx = 0;
 
 /* behavior */
 static char *shell = "/bin/bash";
@@ -22,7 +22,7 @@ static double maxlatency = 33;
 static unsigned int blinktimeout = 800;
 static unsigned int cursorthickness = 2;
 static int bellvolume = 0;
-char *termname = "st-256color";
+char *termname = "xterm-256color";
 unsigned int tabspaces = 8;
 
 /* colors (Solarized Dark) */

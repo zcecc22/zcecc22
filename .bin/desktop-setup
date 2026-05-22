@@ -11,7 +11,6 @@ sudo apt -y install \
 xserver-xorg \
 xinit \
 xclip \
-xautolock
 
 echo "Installing suckless build dependencies..."
 sudo apt -y install \
@@ -28,8 +27,7 @@ dunst \
 firefox-esr \
 brightnessctl \
 fonts-inconsolata \
-fonts-font-awesome \
-iw
+fonts-font-awesome
 
 echo "Installing audio stack..."
 sudo apt -y install \
@@ -37,28 +35,19 @@ pipewire \
 pipewire-pulse \
 wireplumber
 
-echo "Installing network tools..."
-sudo apt -y install \
-ifupdown2 \
-wpasupplicant
-
 echo "Installing power management..."
 sudo apt -y install \
-tlp \
-tlp-rdw
+tlp
 
 echo "Building suckless tools..."
-for tool in .dwm .slock .slstatus .st; do
+for tool in .dwm .slstatus .st; do
     make -C "$DOTS/$tool"
 done
 mv "$DOTS/.dwm/dwm"            "$DOTS/.bin/"
-mv "$DOTS/.slock/slock"        "$DOTS/.bin/"
 mv "$DOTS/.slstatus/slstatus"  "$DOTS/.bin/"
 mv "$DOTS/.st/st"              "$DOTS/.bin/"
-for tool in .dwm .slock .slstatus .st; do
+for tool in .dwm .slstatus .st; do
     make -C "$DOTS/$tool" clean
 done
-sudo chown root:root "$DOTS/.bin/slock"
-sudo chmod u+s       "$DOTS/.bin/slock"
 
 echo "Done."

@@ -8,7 +8,7 @@ static const char unknown_str[] = "n/a";
 
 static const struct arg args[] = {
 	/* function      format                argument */
-	{ run_command,   "%s  ",              "bat-status" },
+	{ run_command,   "  %s  ",              "bat-status" },
 	{ run_command,   ICON_SUN " %s  ",   "brightnessctl -m | cut -d, -f4" },
 	{ run_command,   "%s  ",              "vol-status" },
 	{ run_command,   "%s  ",              "net-status" },
