@@ -6,7 +6,7 @@ export XDG_CURRENT_DESKTOP=dwm
 export MOZ_X11_EGL=1
 
 xsetroot -solid "#002b36"
-brightnessctl set 40%
+brightnessctl set 15%
 xset s off
 xset dpms 300 600 600
 dunst &
