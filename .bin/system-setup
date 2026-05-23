@@ -25,17 +25,6 @@ read -rp "This will DESTROY all data on $DISK. Type YES to continue: " confirm
 HOSTNAME="$(tr -dc 'a-z0-9' < /dev/urandom | head -c 8)"
 echo "Hostname: $HOSTNAME"
 
-# --- Cleanup trap ---
-cleanup() {
-    for fs in dev/pts dev proc sys; do
-        mountpoint -q "$MOUNT/$fs" 2>/dev/null && umount "$MOUNT/$fs" || true
-    done
-    mountpoint -q "$MOUNT/boot" 2>/dev/null && umount "$MOUNT/boot" || true
-    mountpoint -q "$MOUNT/home" 2>/dev/null && umount "$MOUNT/home" || true
-    mountpoint -q "$MOUNT"      2>/dev/null && umount "$MOUNT"      || true
-}
-trap cleanup EXIT
-
 # --- Partition ---
 echo "Partitioning $DISK..."
 sgdisk --zap-all "$DISK"
@@ -82,9 +71,8 @@ FSTAB
 
 # --- Bind mounts for chroot ---
 for fs in dev proc sys; do
-    mount --bind "/$fs" "$MOUNT/$fs"
+    mount --rbind "/$fs" "$MOUNT/$fs"
 done
-mount --bind /dev/pts "$MOUNT/dev/pts"
 
 # --- Chroot setup ---
 echo "Configuring system..."
