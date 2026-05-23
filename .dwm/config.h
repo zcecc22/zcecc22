@@ -7,8 +7,8 @@ static const unsigned int snap         = 32;
 static const int showbar               = 1;
 static const int topbar                = 1;
 static const int refreshrate           = 60;
-#define FONT       "Inconsolata:size=18"
-#define FONT_ICONS "Font Awesome 6 Free:style=Solid:size=18"
+#define FONT       "Inconsolata:size=20"
+#define FONT_ICONS "Font Awesome 6 Free:style=Solid:size=20"
 static const char *fonts[]             = { FONT, FONT_ICONS };
 static const char dmenufont[]          = FONT;
 static const char col_gray1[]       = "#002b36";
@@ -37,8 +37,8 @@ static const int resizehints    = 0;
 static const int lockfullscreen = 1;
 
 static const Layout layouts[] = {
-	{ "[]=", tile    },
-	{ "><>", NULL    },
+	{ "[T]", tile    },
+	{ "[F]", NULL    },
 	{ "[M]", monocle },
 };
 
@@ -46,9 +46,7 @@ static const Layout layouts[] = {
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY, view,       {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY, toggleview, {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY, tag,        {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY, toggletag,  {.ui = 1 << TAG} },
+	{ MODKEY|ShiftMask,             KEY, tag,        {.ui = 1 << TAG} },
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
@@ -63,7 +61,7 @@ static const Key keys[] = {
 	{ MODKEY,                    XK_j,                     focusstack,     {.i = +1 } },
 	{ MODKEY,                    XK_k,                     focusstack,     {.i = -1 } },
 	{ MODKEY,                    XK_space,                 zoom,           {0} },
-	{ MODKEY,                    XK_c,                     killclient,     {0} },
+	{ MODKEY,                    XK_q,                     killclient,     {0} },
 	{ MODKEY,                    XK_t,                     setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                    XK_f,                     setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                    XK_m,                     setlayout,      {.v = &layouts[2]} },

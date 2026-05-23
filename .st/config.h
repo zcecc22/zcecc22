@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static char *font = "Inconsolata:size=18";
+static char *font = "Inconsolata:size=20";
 static int borderpx = 0;
 
 /* behavior */
@@ -25,37 +25,34 @@ static int bellvolume = 0;
 char *termname = "xterm-256color";
 unsigned int tabspaces = 8;
 
-/* colors (Solarized Dark) */
+/* Colors (Solarized Dark) */
 static const char *colorname[] = {
-	/* 8 normal */
-	"#073642",  /* 0:  base02  */
-	"#dc322f",  /* 1:  red     */
-	"#859900",  /* 2:  green   */
-	"#b58900",  /* 3:  yellow  */
-	"#268bd2",  /* 4:  blue    */
-	"#d33682",  /* 5:  magenta */
-	"#2aa198",  /* 6:  cyan    */
-	"#eee8d5",  /* 7:  base2   */
-	/* 8 bright */
-	"#586e75",  /* 8:  base01  */
-	"#cb4b16",  /* 9:  orange  */
-	"#859900",  /* 10: green   */
-	"#b58900",  /* 11: yellow  */
-	"#268bd2",  /* 12: blue    */
-	"#6c71c4",  /* 13: violet  */
-	"#2aa198",  /* 14: cyan    */
-	"#fdf6e3",  /* 15: base3   */
-	[255] = 0,
-	"#839496",  /* 256: base0  - cursor     */
-	"#002b36",  /* 257: base03 - rev cursor */
-	"#839496",  /* 258: base0  - default fg */
-	"#002b36",  /* 259: base03 - default bg */
+	"#073642",  /*  0: black    */
+	"#dc322f",  /*  1: red      */
+	"#859900",  /*  2: green    */
+	"#b58900",  /*  3: yellow   */
+	"#268bd2",  /*  4: blue     */
+	"#d33682",  /*  5: magenta  */
+	"#2aa198",  /*  6: cyan     */
+	"#eee8d5",  /*  7: white    */
+	"#002b36",  /*  8: brblack  */
+	"#cb4b16",  /*  9: brred    */
+	"#586e75",  /* 10: brgreen  */
+	"#657b83",  /* 11: bryellow */
+	"#839496",  /* 12: brblue   */
+	"#6c71c4",  /* 13: brmagenta*/
+	"#93a1a1",  /* 14: brcyan   */
+	"#fdf6e3",  /* 15: brwhite  */
 };
 
-unsigned int defaultfg = 258;
-unsigned int defaultbg = 259;
-unsigned int defaultcs = 256;
-static unsigned int defaultrcs = 257;
+/*
+ * Default colors (colorname index)
+ * foreground, background, cursor, reverse cursor
+ */
+unsigned int defaultfg = 12;
+unsigned int defaultbg = 8;
+unsigned int defaultcs = 14;
+static unsigned int defaultrcs = 15;
 
 /* cursor */
 static unsigned int cursorshape = 2;
