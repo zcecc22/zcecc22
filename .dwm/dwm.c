@@ -167,6 +167,7 @@ static void expose(XEvent *e);
 static void focus(Client *c);
 static void focusin(XEvent *e);
 static void focusmon(const Arg *arg);
+static void cyclemaster(const Arg *arg);
 static void focusstack(const Arg *arg);
 static Atom getatomprop(Client *c, Atom prop);
 static int getrootptr(int *x, int *y);
@@ -2126,6 +2127,21 @@ xerrorstart(Display *dpy, XErrorEvent *ee)
 {
 	die("dwm: another window manager is already running");
 	return -1;
+}
+
+void
+cyclemaster(const Arg *arg)
+{
+	Client *master;
+
+	if (!selmon->lt[selmon->sellt]->arrange)
+		return;
+	master = nexttiled(selmon->clients);
+	if (!master || !nexttiled(master->next))
+		return;
+	focus(master);
+	restack(selmon);
+	zoom(arg);
 }
 
 void

@@ -38,7 +38,6 @@ static const int lockfullscreen = 1;
 
 static const Layout layouts[] = {
 	{ "[T]", tile    },
-	{ "[F]", NULL    },
 	{ "[M]", monocle },
 };
 
@@ -58,13 +57,10 @@ static const Key keys[] = {
 	/* modifier                  key                       function        argument */
 	{ MODKEY,                    XK_p,                     spawn,          {.v = dmenucmd } },
 	{ MODKEY,                    XK_Return,                spawn,          {.v = termcmd } },
-	{ MODKEY,                    XK_j,                     focusstack,     {.i = +1 } },
-	{ MODKEY,                    XK_k,                     focusstack,     {.i = -1 } },
-	{ MODKEY,                    XK_space,                 zoom,           {0} },
+	{ MODKEY,                    XK_Tab,                   cyclemaster,    {0} },
 	{ MODKEY,                    XK_q,                     killclient,     {0} },
 	{ MODKEY,                    XK_t,                     setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                    XK_f,                     setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                    XK_m,                     setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                    XK_m,                     setlayout,      {.v = &layouts[1]} },
 	{ MODKEY|ShiftMask,          XK_q,                     quit,           {0} },
 	{ 0, XF86XK_MonBrightnessUp,   spawn, SHCMD("brightnessctl set +5%") },
 	{ 0, XF86XK_MonBrightnessDown, spawn, SHCMD("brightnessctl set 5%-") },
