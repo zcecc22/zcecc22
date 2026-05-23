@@ -27,7 +27,7 @@ static const char *tags[] = { "1", "2", "3", "4" };
 
 static const Rule rules[] = {
 	/* class     instance  title  tags mask  isfloating  monitor */
-	NULL,
+	{ "",        NULL,       NULL,       0,            0,           -1 },
 };
 
 /* layout(s) */
@@ -76,16 +76,5 @@ static const Key keys[] = {
 
 /* button definitions */
 static const Button buttons[] = {
-	/* click          event mask  button   function        argument */
-	{ ClkLtSymbol,   0,          Button1, setlayout,      {0} },
-	{ ClkLtSymbol,   0,          Button3, setlayout,      {.v = &layouts[2]} },
-	{ ClkWinTitle,   0,          Button2, zoom,           {0} },
-	{ ClkStatusText, 0,          Button2, spawn,          {.v = termcmd } },
-	{ ClkClientWin,  MODKEY,     Button1, movemouse,      {0} },
-	{ ClkClientWin,  MODKEY,     Button2, togglefloating, {0} },
-	{ ClkClientWin,  MODKEY,     Button3, resizemouse,    {0} },
-	{ ClkTagBar,     0,          Button1, view,           {0} },
-	{ ClkTagBar,     0,          Button3, toggleview,     {0} },
-	{ ClkTagBar,     MODKEY,     Button1, tag,            {0} },
-	{ ClkTagBar,     MODKEY,     Button3, toggletag,      {0} },
+	{0},
 };
