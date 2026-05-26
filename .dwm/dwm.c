@@ -1849,16 +1849,14 @@ xerrorstart(Display *dpy, XErrorEvent *ee)
 void
 cyclemaster(const Arg *arg)
 {
-	Client *master;
+	Client *c;
 
 	if (!selmon->lt[selmon->sellt]->arrange)
 		return;
-	master = nexttiled(selmon->clients);
-	if (!master || !nexttiled(master->next))
+	if (!nexttiled(selmon->clients) || !nexttiled(nexttiled(selmon->clients)->next))
 		return;
-	focus(master);
-	restack(selmon);
-	zoom(arg);
+	for (c = nexttiled(selmon->clients); nexttiled(c->next); c = nexttiled(c->next));
+	pop(c);
 }
 
 void
