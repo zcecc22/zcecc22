@@ -102,6 +102,8 @@ update-grub
 groupadd -g 1000 zcecc22
 useradd -u 1000 -g 1000 -M -d /home/zcecc22 -s /bin/bash zcecc22
 usermod -aG sudo zcecc22
+usermod -aG audio zcecc22
+usermod -aG video zcecc22
 echo '%sudo ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/nopasswd
 chmod 0440 /etc/sudoers.d/nopasswd
 passwd -d root
