@@ -10,7 +10,8 @@ echo "Installing X11 base..."
 sudo apt -y install \
 xserver-xorg \
 xinit \
-xclip \
+xinput \
+xclip
 
 echo "Installing suckless build dependencies..."
 sudo apt -y install \
