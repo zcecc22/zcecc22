@@ -15,7 +15,6 @@ xclip
 
 echo "Installing suckless build dependencies..."
 sudo apt -y install \
-build-essential \
 libx11-dev \
 libxft-dev \
 libxinerama-dev \
