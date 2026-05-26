@@ -94,7 +94,7 @@ deb https://deb.debian.org/debian stable main contrib non-free non-free-firmware
 SOURCES
 
 apt-get update
-apt-get -y install locales-all grub-efi-amd64 efibootmgr sudo linux-image-amd64 firmware-iwlwifi wireless-tools wpasupplicant
+apt-get -y install locales-all grub-efi-amd64 efibootmgr sudo linux-image-amd64 firmware-iwlwifi wireless-tools wpasupplicant systemd-timesyncd
 
 grub-install --efi-directory=/boot
 update-grub
@@ -122,6 +122,13 @@ source /etc/network/interfaces.d/*
 
 auto lo
 iface lo inet loopback
+
+auto wlp0s20f3
+allow-hotplug wlp0s20f3
+iface wlp0s20f3 inet dhcp
+        wpa-ssid node
+        wpa-psk av1=Orr0
+iface wlp0s20f3 inet6 auto
 IFACES
 
 echo
