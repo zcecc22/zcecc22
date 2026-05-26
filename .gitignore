@@ -16,6 +16,7 @@
 .config/gopls/
 .config/micro/buffers/
 .config/mimeapps.list
+.config/pulse/
 .dart*/
 .dbus/
 .dmrc
