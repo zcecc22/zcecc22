@@ -1,8 +1,6 @@
 #!/bin/bash
 set -e
 
-DOTS="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-
 echo "Updating package lists..."
 sudo apt update
 
@@ -10,24 +8,21 @@ echo "Installing X11 base..."
 sudo apt -y install \
 xserver-xorg \
 xinit \
-xclip \
 
-echo "Installing suckless build dependencies..."
+echo "Installing GNOME core..."
 sudo apt -y install \
-build-essential \
-libx11-dev \
-libxft-dev \
-libxinerama-dev \
-libxss-dev
+gnome-session \
+gnome-shell \
+gnome-control-center \
+gnome-tweaks \
+gnome-terminal \
+nautilus \
 
 echo "Installing desktop tools..."
 sudo apt -y install \
-dmenu \
-dunst \
 firefox-esr \
 brightnessctl \
 fonts-inconsolata \
-fonts-font-awesome
 
 echo "Installing audio stack..."
 sudo apt -y install \
@@ -35,19 +30,32 @@ pipewire \
 pipewire-pulse \
 wireplumber
 
+echo "Installing network management..."
+sudo apt -y install \
+network-manager \
+
 echo "Installing power management..."
 sudo apt -y install \
 tlp
 
-echo "Building suckless tools..."
-for tool in .dwm .slstatus .st; do
-    make -C "$DOTS/$tool"
-done
-mv "$DOTS/.dwm/dwm"            "$DOTS/.bin/"
-mv "$DOTS/.slstatus/slstatus"  "$DOTS/.bin/"
-mv "$DOTS/.st/st"              "$DOTS/.bin/"
-for tool in .dwm .slstatus .st; do
-    make -C "$DOTS/$tool" clean
-done
+echo "Applying GNOME system defaults..."
+sudo mkdir -p /etc/dconf/db/local.d
+sudo tee /etc/dconf/db/local.d/00-gnome-defaults > /dev/null << 'EOF'
+[org/gnome/desktop/interface]
+color-scheme='prefer-dark'
+gtk-theme='Adwaita-dark'
+monospace-font-name='Inconsolata 11'
+font-name='Cantarell 11'
 
-echo "Done."
+[org/gnome/desktop/wm/preferences]
+button-layout='appmenu:minimize,maximize,close'
+
+[org/gnome/desktop/screensaver]
+lock-delay=uint32 0
+
+[org/gnome/desktop/session]
+idle-delay=uint32 300
+EOF
+sudo dconf update
+
+echo "Done. Run 'startx' to launch GNOME."

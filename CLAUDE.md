@@ -1,45 +1,47 @@
-# Dotfiles - dwm Desktop on Debian Stable
+# Dotfiles - GNOME Desktop on Debian Stable
 
 ## Philosophy
 - Minimalist: avoid duplication of application roles
 - Two install scripts: `.bin/base-setup` (dev tools) and `.bin/desktop-setup` (desktop env)
-- Suckless tools (dwm, slock, slstatus, st) managed as source in project root, configured via `config.h`
-- Solarized Dark theme applied consistently across all tools
-- Network via ifupdown2 + wpa_supplicant (no NetworkManager)
-- No display manager or auto-launch: start X manually via `startx`
+- GNOME Shell on Xorg, launched manually via `startx` — no display manager
+- Solarized Dark terminal and editor themes; GNOME uses Adwaita-dark system-wide
+- Network via NetworkManager
+- No display manager: start X manually via `startx`
 
 ## System Components
 
 | Role | Application |
 |---|---|
-| Window Manager | dwm (X11, master-stack tiling) |
-| Status Bar | dwm built-in + slstatus |
-| App Launcher | dmenu |
-| Screen Lock | slock + xautolock |
-| Notifications | dunst |
-| Terminal | st |
+| Window Manager | GNOME Shell / mutter (X11) |
+| Status Bar | GNOME Shell top bar |
+| App Launcher | GNOME Activities (Super key) |
+| Screen Lock | GNOME Shell built-in |
+| Notifications | GNOME Shell built-in |
+| Terminal | gnome-terminal |
+| File Manager | nautilus |
 | Browser | Firefox ESR |
 | Audio | PipeWire (pipewire-pulse + wireplumber) |
-| Clipboard | xclip |
-| Power Management | TLP + tlp-rdw |
+| Network | NetworkManager |
+| Power Management | TLP |
 | Editor | micro |
 | Shell | bash |
 | Multiplexer | tmux |
-| Fonts | Inconsolata, Font Awesome 6 Free |
+| Fonts | Inconsolata (mono), Cantarell (UI) |
 
 ## Hardware Target
-Laptop - includes brightness control (brightnessctl), battery status, lid handling.
+Laptop — includes brightness control (brightnessctl), battery status, lid handling.
 
-## dwm Defaults
-- Mod key: Super/Logo (Mod4)
-- Wallpaper: solid solarized base03 (#002b36) via xsetroot
-- Tiling: master-stack built-in; Mod+t/f/m to switch tile/float/monocle
-- Auto-lock: xautolock after 5 minutes idle, slock as locker
-- Status bar: slstatus — battery (icon+%), brightness (icon+%), volume (icon+%), network (wifi essid or eth), datetime
-- Startup brightness: 40% via brightnessctl
-- Screen off: xset dpms 300 600 600 (standby/suspend 5 min, off 10 min)
+## GNOME Defaults (applied by desktop-setup via dconf)
+- Theme: Adwaita-dark
+- Color scheme: prefer-dark
+- Monospace font: Inconsolata 11
+- UI font: Cantarell 11
+- Window buttons: minimize, maximize, close
+- Screen lock: immediate on idle
+- Idle timeout: 5 minutes
 
 ## Theme: Solarized Dark Palette
+Used in terminal (gnome-terminal), editor (micro), and shell prompt.
 ```
 base03:  #002b36   (background)
 base02:  #073642   (background highlights)
@@ -61,7 +63,7 @@ green:   #859900
 
 ## Repository Structure
 
-### Existing Dotfiles
+### Dotfiles
 - `.bashrc` - Shell config, aliases, GPG agent, PATH
 - `.bash_profile` - Sources .bashrc
 - `.inputrc` - Readline (case-insensitive completion)
@@ -73,22 +75,9 @@ green:   #859900
 - `.config/micro/` - Solarized theme, keybindings
 - `.gnupg/` - GPG agent with SSH support
 
-### Suckless Sources (.dwm/, .slock/, .slstatus/, .st/)
-Each directory contains the full upstream source. `config.h` is the only file edited.
-`desktop-setup` builds all four and moves binaries to `.bin/`; slock gets setuid root via two targeted sudo commands.
-
-- `.dwm/config.h` - dwm: colors, font, keybindings, rules, layouts
-- `.slock/config.h` - slock: Solarized lock screen colors
-- `.slstatus/config.h` - slstatus: battery, brightness, volume, network, datetime (Font Awesome icons via bat-status/vol-status/net-status)
-- `.st/config.h` - st: Solarized colors, font, clipboard shortcuts
-
 ### Scripts (.bin/)
 - `base-setup` - Dev tools package installation
-- `desktop-setup` - Desktop environment package installation and suckless build
-- `bat-status` - Battery icon (level-dependent) + bolt if charging + %
-- `vol-status` - Volume icon (mute-aware) + %
-- `net-status` - Wifi essid or ethernet indicator with FA icons
+- `desktop-setup` - Desktop environment package installation and GNOME dconf defaults
 
 ### Session and Config Files
-- `.xinitrc` - X11 session: PATH, env vars, xsetroot, xautolock, dunst, slstatus, exec dwm
-- `.config/dunst/dunstrc` - Notification daemon styling
+- `.xinitrc` - X11 session: env vars, exec gnome-session

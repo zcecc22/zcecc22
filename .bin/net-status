@@ -1,9 +1,0 @@
-#!/bin/bash
-iface=$(ls /sys/class/net/ | grep -E '^wl' | head -1 2>/dev/null)
-if [ -n "$iface" ]; then
-    ssid=$(iw dev "$iface" link 2>/dev/null | awk '/SSID:/{sub(/.*SSID: /, ""); print}')
-    [ -n "$ssid" ] && printf '\xef\x87\xab %s' "$ssid" || printf '\xef\x87\xab ---'
-else
-    iface=$(ip route show default 2>/dev/null | awk 'NR==1{print $5}')
-    [ -n "$iface" ] && printf '\xef\x9e\x96 eth' || printf '---'
-fi

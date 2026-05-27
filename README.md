@@ -1,6 +1,6 @@
 # zcecc22 dotfiles
 
-Minimalist [dwm](https://dwm.suckless.org/) desktop on Debian Stable. Solarized Dark across every tool. One role per tool, no overlap.
+Minimal [GNOME](https://www.gnome.org/) desktop on Debian Stable, launched via `startx` — no display manager. Solarized Dark in the terminal and editor; Adwaita-dark system-wide.
 
 ## Branches
 
@@ -8,38 +8,41 @@ Minimalist [dwm](https://dwm.suckless.org/) desktop on Debian Stable. Solarized 
 |---|---|
 | `main` | Alias for `dwm` — default clone target |
 | `dwm` | Full X11/dwm desktop environment |
+| `gnome` | Full X11/GNOME desktop environment |
 | `sway` | Full Sway/Wayland desktop environment |
 | `base` | Dev tools and shell config only (no desktop) |
 
-`main` tracks `dwm`. Clone `base` if you only want the shell setup (bash, tmux, git, micro). Clone `dwm` or `sway` for a complete desktop.
+Clone `base` if you only want the shell setup (bash, tmux, git, micro). Clone a desktop branch for a complete environment.
 
 ## Stack
 
 | Role | Tool |
 |---|---|
-| Window Manager | dwm (X11, master-stack tiling) |
-| Terminal | st |
-| Status Bar | slstatus |
-| App Launcher | dmenu |
-| Notifications | dunst |
-| Screen Lock | slock + xautolock |
+| Window Manager | GNOME Shell / mutter (X11) |
+| Terminal | gnome-terminal |
+| Status Bar | GNOME Shell top bar |
+| App Launcher | GNOME Activities (Super) |
+| Notifications | GNOME Shell built-in |
+| Screen Lock | GNOME Shell built-in |
+| File Manager | nautilus |
 | Audio | PipeWire (pipewire-pulse + wireplumber) |
-| Clipboard | xclip |
-| Power Management | TLP + tlp-rdw |
+| Network | NetworkManager |
+| Power Management | TLP |
 | Browser | Firefox ESR |
 | Editor | micro |
 | Shell | bash |
 | Multiplexer | tmux |
-| Fonts | Inconsolata, Font Awesome 6 Free |
+| Fonts | Inconsolata (mono), Cantarell (UI) |
 
 ## Design decisions
 
 - **No display manager** — X starts manually from a TTY via `startx`.
-- **Suckless tools as source** — dwm, slock, slstatus, and st live as full upstream source trees in the repo. `config.h` is the only file edited. `desktop-setup` builds all four.
-- **No NetworkManager** — `ifupdown2` and `wpa_supplicant` are sufficient for a single machine and keep the service footprint minimal.
+- **Minimal GNOME** — only core packages installed: `gnome-session`, `gnome-shell`, `gnome-control-center`, `gnome-tweaks`, `gnome-terminal`, `nautilus`. No GNOME extras or bundled apps.
+- **Adwaita-dark** — system theme set via `/etc/dconf/db/local.d/` so it applies to all users without requiring a running session.
+- **NetworkManager** — replaces ifupdown2/wpa_supplicant for GNOME panel integration; `nmcli` available for CLI use.
 - **GPG as SSH agent** — `gpg-agent` handles both git commit signing and SSH authentication. A hardware key (e.g. YubiKey) covers both.
 - **micro over vim** — lighter, no modal editing, good out-of-the-box defaults for a general-purpose terminal editor.
-- **Solarized Dark everywhere** — consistent palette across st, dunst, slock, slstatus, micro, and `ls` colors.
+- **Solarized Dark in the terminal** — consistent palette in gnome-terminal, micro, and `ls` colors.
 
 ## Prerequisites
 
@@ -51,17 +54,15 @@ Minimalist [dwm](https://dwm.suckless.org/) desktop on Debian Stable. Solarized 
 Clone directly into your home directory:
 
 ```bash
-git clone -b dwm git@github.com:zcecc22/zcecc22.git ~
+git clone -b gnome git@github.com:zcecc22/zcecc22.git ~
 ```
 
 Run the setup scripts:
 
 ```bash
 ~/.bin/base-setup    # dev tools: compilers, languages, utilities
-~/.bin/desktop-setup # dwm, slock, slstatus, st (builds from source), plus desktop packages
+~/.bin/desktop-setup # GNOME packages + dconf system defaults
 ```
-
-`desktop-setup` builds all four Suckless binaries and installs them to `~/.bin/`. slock receives setuid root via two targeted `sudo` commands so it can lock the session.
 
 **Shell config only** (branch `base`):
 
@@ -78,57 +79,14 @@ Start X from a TTY:
 startx
 ```
 
-### Key bindings
-
-`Super` (Logo key) is the mod key.
-
-| Key | Action |
-|---|---|
-| `Super+Shift+Return` | Open terminal |
-| `Super+p` | App launcher (dmenu) |
-| `Super+Shift+c` | Close window |
-| `Super+j` / `Super+k` | Focus next / prev window |
-| `Super+h` / `Super+l` | Shrink / grow master area |
-| `Super+i` / `Super+d` | Increase / decrease master count |
-| `Super+Return` | Promote focused window to master |
-| `Super+Tab` | Toggle last tag |
-| `Super+1–9` | Switch tag |
-| `Super+Shift+1–9` | Move window to tag |
-| `Super+0` | View all tags |
-| `Super+t` | Tile layout |
-| `Super+f` | Float layout |
-| `Super+m` | Monocle layout |
-| `Super+Space` | Toggle last layout |
-| `Super+Shift+Space` | Toggle floating |
-| `Super+b` | Toggle status bar |
-| `Super+,` / `Super+.` | Focus prev / next monitor |
-| `Super+Shift+l` | Lock screen (slock) |
-| `Super+Shift+q` | Quit dwm |
-
-Brightness and volume keys work out of the box via `brightnessctl` and `wpctl`.
-
-### Idle behavior
-
-| Condition | Action |
-|---|---|
-| 5 min idle | xautolock triggers slock |
-| DPMS standby | 5 min |
-| DPMS suspend / off | 10 min |
-
-### Mouse
-
-| Action | Result |
-|---|---|
-| `Super+Button1` drag | Move window |
-| `Super+Button2` | Toggle floating |
-| `Super+Button3` drag | Resize window |
+GNOME launches directly into a session. Use `gnome-tweaks` to adjust fonts, window decorations, and extensions after first login.
 
 ## Network
 
-Managed with `ifupdown2` and `wpa_supplicant`.
+Managed with NetworkManager.
 
-- **Wired**: configure `/etc/network/interfaces`
-- **WiFi**: add credentials to `/etc/wpa_supplicant/wpa_supplicant.conf`, then bring up the interface with `ifup`
+- **GUI**: GNOME Shell network indicator (top bar)
+- **CLI**: `nmcli device wifi connect <SSID> password <pass>`
 
 ## Shell highlights
 
@@ -152,23 +110,11 @@ Some non-obvious things the bash configuration sets up:
 ├── .gitconfig                      # GPG signing, modern diff/merge defaults
 ├── .gitignore                      # Global ignores
 ├── .npmrc                          # npm prefix
-├── .xinitrc                        # X11 session: env, wallpaper, autolock, slstatus, exec dwm
+├── .xinitrc                        # X11 session: env vars, exec gnome-session
 ├── .bin/
 │   ├── base-setup                  # Dev tools installer
-│   ├── desktop-setup               # Desktop env installer + Suckless build
-│   ├── bat-status                  # Battery icon (by level) + bolt if charging + %
-│   ├── vol-status                  # Volume icon (mute-aware) + %
-│   └── net-status                  # Wifi essid or ethernet indicator (Font Awesome icons)
-├── .dwm/
-│   └── config.h                    # dwm: colors, font, keybindings, rules, layouts
-├── .slock/
-│   └── config.h                    # slock: Solarized lock screen colors
-├── .slstatus/
-│   └── config.h                    # slstatus: battery, brightness, volume, network, datetime (FA icons)
-├── .st/
-│   └── config.h                    # st: Solarized colors, font, clipboard shortcuts
+│   └── desktop-setup               # GNOME installer + dconf defaults
 ├── .config/
-│   ├── dunst/dunstrc               # Notification daemon styling
 │   └── micro/                      # Editor config + keybindings
 └── .gnupg/                         # GPG agent with SSH support
 ```

@@ -74,17 +74,3 @@
 .Xauthority
 .xsession-errors*
 
-# Suckless build artifacts
-.bin/dwm
-.bin/slock
-.bin/slstatus
-.bin/st
-.dwm/dwm
-.dwm/*.o
-.slock/slock
-.slock/*.o
-.slstatus/slstatus
-.slstatus/*.o
-.slstatus/components/*.o
-.st/st
-.st/*.o
