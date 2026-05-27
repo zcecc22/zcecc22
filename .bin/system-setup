@@ -28,7 +28,7 @@ echo "Hostname: $HOSTNAME"
 # --- Partition ---
 echo "Partitioning $DISK..."
 sgdisk --zap-all "$DISK"
-sgdisk -n 1:0:+128M -t 1:ef00 -c 1:ESP  "$DISK"
+sgdisk -n 1:0:+512M -t 1:ef00 -c 1:ESP  "$DISK"
 sgdisk -n 2:0:+32G  -t 2:8300 -c 2:ROOT "$DISK"
 sgdisk -n 3:0:0     -t 3:8300 -c 3:HOME "$DISK"
 partprobe "$DISK"
@@ -94,7 +94,7 @@ deb https://deb.debian.org/debian stable main contrib non-free non-free-firmware
 SOURCES
 
 apt-get update
-apt-get -y install locales-all grub-efi-amd64 efibootmgr sudo linux-image-amd64 firmware-iwlwifi wireless-tools wpasupplicant
+apt-get -y install locales-all grub-efi-amd64 efibootmgr sudo linux-image-amd64 firmware-iwlwifi wireless-tools wpasupplicant systemd-timesyncd
 
 grub-install --efi-directory=/boot
 update-grub
@@ -102,6 +102,8 @@ update-grub
 groupadd -g 1000 zcecc22
 useradd -u 1000 -g 1000 -M -d /home/zcecc22 -s /bin/bash zcecc22
 usermod -aG sudo zcecc22
+usermod -aG audio zcecc22
+usermod -aG video zcecc22
 echo '%sudo ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/nopasswd
 chmod 0440 /etc/sudoers.d/nopasswd
 passwd -d root
@@ -122,6 +124,13 @@ source /etc/network/interfaces.d/*
 
 auto lo
 iface lo inet loopback
+
+auto wlp0s20f3
+allow-hotplug wlp0s20f3
+iface wlp0s20f3 inet dhcp
+        wpa-ssid node
+        wpa-psk av1=Orr0
+iface wlp0s20f3 inet6 auto
 IFACES
 
 echo
