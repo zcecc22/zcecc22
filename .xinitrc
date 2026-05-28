@@ -10,6 +10,7 @@ brightnessctl set 15%
 xset s off
 xset dpms 300 600 600
 xinput set-prop "PIXA3854:00 093A:0239 Touchpad" "libinput Tapping Enabled" 1
+xrdb -merge ~/.Xresources
 dunst &
 slstatus &
 exec dwm
