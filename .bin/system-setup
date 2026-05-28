@@ -94,7 +94,7 @@ deb https://deb.debian.org/debian stable main contrib non-free non-free-firmware
 SOURCES
 
 apt-get update
-apt-get -y install locales-all grub-efi-amd64 efibootmgr sudo linux-image-amd64 firmware-iwlwifi wireless-tools wpasupplicant systemd-timesyncd
+apt-get -y install locales-all grub-efi-amd64 efibootmgr sudo linux-image-amd64 intel-microcode firmware-iwlwifi firmware-intel-graphics wireless-tools wpasupplicant systemd-timesyncd
 
 grub-install --efi-directory=/boot
 update-grub
