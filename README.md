@@ -10,6 +10,7 @@ Minimalist [dwm](https://dwm.suckless.org/) desktop on Debian Stable. Solarized 
 | `dwm` | Full X11/dwm desktop environment |
 | `sway` | Full Sway/Wayland desktop environment |
 | `base` | Dev tools and shell config only (no desktop) |
+| `gnome` | GNOME desktop environment |
 
 `main` tracks `dwm`. Clone `base` if you only want the shell setup (bash, tmux, git, micro). Clone `dwm` or `sway` for a complete desktop.
 
@@ -22,10 +23,9 @@ Minimalist [dwm](https://dwm.suckless.org/) desktop on Debian Stable. Solarized 
 | Status Bar | slstatus |
 | App Launcher | dmenu |
 | Notifications | dunst |
-| Screen Lock | slock + xautolock |
 | Audio | PipeWire (pipewire-pulse + wireplumber) |
 | Clipboard | xclip |
-| Power Management | TLP + tlp-rdw |
+| Power Management | TLP |
 | Browser | Firefox ESR |
 | Editor | micro |
 | Shell | bash |
@@ -35,11 +35,11 @@ Minimalist [dwm](https://dwm.suckless.org/) desktop on Debian Stable. Solarized 
 ## Design decisions
 
 - **No display manager** — X starts manually from a TTY via `startx`.
-- **Suckless tools as source** — dwm, slock, slstatus, and st live as full upstream source trees in the repo. `config.h` is the only file edited. `desktop-setup` builds all four.
-- **No NetworkManager** — `ifupdown2` and `wpa_supplicant` are sufficient for a single machine and keep the service footprint minimal.
+- **Suckless tools as source** — dwm, slstatus, and st live as full upstream source trees in the repo. `config.h` is the only file edited. `desktop-setup` builds all three.
+- **No NetworkManager** — `ifupdown` and `wpa_supplicant` are sufficient for a single machine and keep the service footprint minimal.
 - **GPG as SSH agent** — `gpg-agent` handles both git commit signing and SSH authentication. A hardware key (e.g. YubiKey) covers both.
 - **micro over vim** — lighter, no modal editing, good out-of-the-box defaults for a general-purpose terminal editor.
-- **Solarized Dark everywhere** — consistent palette across st, dunst, slock, slstatus, micro, and `ls` colors.
+- **Solarized Dark everywhere** — consistent palette across st, dunst, slstatus, micro, and `ls` colors.
 
 ## Prerequisites
 
@@ -58,10 +58,10 @@ Run the setup scripts:
 
 ```bash
 ~/.bin/base-setup    # dev tools: compilers, languages, utilities
-~/.bin/desktop-setup # dwm, slock, slstatus, st (builds from source), plus desktop packages
+~/.bin/desktop-setup # dwm, slstatus, st (builds from source), plus desktop packages
 ```
 
-`desktop-setup` builds all four Suckless binaries and installs them to `~/.bin/`. slock receives setuid root via two targeted `sudo` commands so it can lock the session.
+`desktop-setup` builds three Suckless binaries (dwm, slstatus, st) and installs them to `~/.bin/`.
 
 **Shell config only** (branch `base`):
 
@@ -84,48 +84,32 @@ startx
 
 | Key | Action |
 |---|---|
-| `Super+Shift+Return` | Open terminal |
+| `Super+Return` | Open terminal |
 | `Super+p` | App launcher (dmenu) |
-| `Super+Shift+c` | Close window |
-| `Super+j` / `Super+k` | Focus next / prev window |
-| `Super+h` / `Super+l` | Shrink / grow master area |
-| `Super+i` / `Super+d` | Increase / decrease master count |
-| `Super+Return` | Promote focused window to master |
-| `Super+Tab` | Toggle last tag |
-| `Super+1–9` | Switch tag |
-| `Super+Shift+1–9` | Move window to tag |
-| `Super+0` | View all tags |
+| `Super+q` | Close window |
+| `Super+Tab` | Cycle master |
 | `Super+t` | Tile layout |
-| `Super+f` | Float layout |
 | `Super+m` | Monocle layout |
-| `Super+Space` | Toggle last layout |
-| `Super+Shift+Space` | Toggle floating |
-| `Super+b` | Toggle status bar |
-| `Super+,` / `Super+.` | Focus prev / next monitor |
-| `Super+Shift+l` | Lock screen (slock) |
+| `Super+1–4` | Switch tag |
+| `Super+Shift+1–4` | Move window to tag |
 | `Super+Shift+q` | Quit dwm |
 
-Brightness and volume keys work out of the box via `brightnessctl` and `wpctl`.
+| Media key | Action |
+|---|---|
+| Brightness up / down | ±5% via `brightnessctl` |
+| Volume up / down | ±5% via `wpctl` |
+| Mute | Toggle via `wpctl` |
 
 ### Idle behavior
 
 | Condition | Action |
 |---|---|
-| 5 min idle | xautolock triggers slock |
 | DPMS standby | 5 min |
 | DPMS suspend / off | 10 min |
 
-### Mouse
-
-| Action | Result |
-|---|---|
-| `Super+Button1` drag | Move window |
-| `Super+Button2` | Toggle floating |
-| `Super+Button3` drag | Resize window |
-
 ## Network
 
-Managed with `ifupdown2` and `wpa_supplicant`.
+Managed with `ifupdown` and `wpa_supplicant`.
 
 - **Wired**: configure `/etc/network/interfaces`
 - **WiFi**: add credentials to `/etc/wpa_supplicant/wpa_supplicant.conf`, then bring up the interface with `ifup`
@@ -156,13 +140,12 @@ Some non-obvious things the bash configuration sets up:
 ├── .bin/
 │   ├── base-setup                  # Dev tools installer
 │   ├── desktop-setup               # Desktop env installer + Suckless build
+│   ├── system-setup                # Bare-metal Debian installer
 │   ├── bat-status                  # Battery icon (by level) + bolt if charging + %
 │   ├── vol-status                  # Volume icon (mute-aware) + %
 │   └── net-status                  # Wifi essid or ethernet indicator (Font Awesome icons)
 ├── .dwm/
 │   └── config.h                    # dwm: colors, font, keybindings, rules, layouts
-├── .slock/
-│   └── config.h                    # slock: Solarized lock screen colors
 ├── .slstatus/
 │   └── config.h                    # slstatus: battery, brightness, volume, network, datetime (FA icons)
 ├── .st/
