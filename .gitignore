@@ -11,6 +11,8 @@
 .cert/
 .claude*
 .clojure/
+.config/Code/
+.config/dconf/
 .config/git/
 .config/go/
 .config/gopls/
@@ -71,6 +73,7 @@
 .virtualenvs
 .vscode/
 .vscode-server/
+.vscode-shared/
 .wget-hsts
 .Xauthority
 .xsession-errors*
